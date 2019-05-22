@@ -30,6 +30,8 @@ Class Procedura_in_Cucina<estende Ricetta, Preparazione> {
 Class Ricetta {
 	Titolo: testo
 	Pubblicato: si/no
+	Ingredienti: testo
+	Dosi: numero
 }
 
 Class Passo {
