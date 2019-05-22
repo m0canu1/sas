@@ -1,0 +1,5 @@
+*.pdf
+*.png
+*.uml
+
+/plantuml-images
