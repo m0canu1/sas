@@ -49,8 +49,12 @@ Class Scheda{
 }
 Class Evento {
 	Note: testo
+	Penale: sì/no
+	Annullato: sì/no
 }
 Evento "0..n" -- "1" Chef
+Chef "1" -- "0..n" Ricetta: Scrive >
+Cuoco "1" -- "0..n" Ricetta: Scrive >
 Evento "0..n" -- "1..n" Membro_del_Personale
 Scheda "1" -- "1" Evento
 Organizzatore "1" -- "0..n" Scheda: Compila >
