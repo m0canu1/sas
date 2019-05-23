@@ -5,15 +5,13 @@ actor Cuoco
 participant Sistema
 
 Cuoco -> Sistema : creaRicetta(titolo?)
-alt successo
-	Sistema -> Cuoco : ricetta con titolo	
-else estensione 1a
-	Sistema -> Cuoco : ricetta senza titolo
+alt 
+	Sistema --> Cuoco : ricetta con titolo	
+else 
+	Sistema --> Cuoco : ricetta senza titolo
 else eccezione 1.1a
 	Sistema --> Cuoco : titolo già presente
 end
-Sistema --> Cuoco : ricetta registrata
-
 
 loop fino a soddisfacimento 
 	Cuoco -> Sistema : scriviPassoRicetta(ricetta)
@@ -30,14 +28,11 @@ end
 
 opt
 	loop fino a soddisfacimento
+		
+		Cuoco -> Sistema : segnaIndicazioni(ingredienti?, dosi?)
 		alt successo
-			Cuoco -> Sistema : segnaIndicazioni(ingredienti?, dosi?)
+			Sistema --> Cuoco : nota registrata
 		else estensione 4a
-			loop
-				Cuoco -> Sistema : inserisciNota(ingredienti?, dosi?)
-				Sistema --> Cuoco : nota registrata
-			end
-		else estensione 4b
 			loop
 				Cuoco -> Sistema : segnalaPreparazioneEsistente(preparazione)
 				Sistema --> Cuoco : preparazione registrata tra gli ingredienti della ricetta

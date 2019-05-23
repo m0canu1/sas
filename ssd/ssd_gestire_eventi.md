@@ -55,18 +55,11 @@ loop
 	end
 	
 	opt
-		Organizzatore -> Sistema : 7. modificaEvento(evento)
-		alt Estensione 7a
-			Organizzatore -> Sistema : 7a.1 spostaEvento(evento)
+		Organizzatore -> Sistema : 7. spostaEvento(evento)
+		alt successo
 			Sistema --> Organizzatore : ricomincia la compilazione
-end	
-		else Estensione 7b
-			Organizzatore -> Sistema : 7b.1 eliminaEvento(evento)
-			alt Eccezione 7b.1a
-				Organizzatore -> Sistema : 7b.1a fare pagare una penale
-			else Eccezione 7b.1b
-				Organizzatore -> Sistema : 7b.1b non fare pagare una penale
-			end
+		else Eccezione 7a
+			Organizzatore -> Sistema : 7b eliminaEvento(evento)
 			Sistema --> Organizzatore : evento rimosso
 		end
 	end
