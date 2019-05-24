@@ -3,8 +3,9 @@ actor Organizzatore
 participant Sistema
 
 loop
-	Organizzatore -> Sistema : 1. creaEvento
-	alt successo
+
+	Organizzatore -> Sistema : 1. creaEvento 
+    alt successo
 		Sistema --> Organizzatore : evento 
 	else Estensione 1a
 		Organizzatore -> Sistema : 1a. scegliEventoPreesistente
@@ -58,11 +59,13 @@ loop
 		Organizzatore -> Sistema : 7. spostaEvento(evento)
 		alt successo
 			Sistema --> Organizzatore : ricomincia la compilazione
-		else Eccezione 7a
+        else Eccezione 7a
 			Organizzatore -> Sistema : 7b eliminaEvento(evento)
 			Sistema --> Organizzatore : evento rimosso
 		end
 	end
+end
+note right: Il loop esegue se un evento è spostato e bisogna ricrearlo
 
 opt
 	Organizzatore -> Sistema : 8. scriviNote(evento)
