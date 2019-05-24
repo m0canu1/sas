@@ -52,6 +52,8 @@ Class Evento {
 	Penale: sì/no
 	Annullato: sì/no
 }
+
+Chef "1" -- "0..n" menu: è proprietario di >
 Evento "0..n" -- "1" Chef
 Chef "1" -- "0..n" Ricetta: Scrive >
 Cuoco "1" -- "0..n" Ricetta: Scrive >
