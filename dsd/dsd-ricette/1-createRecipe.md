@@ -28,7 +28,8 @@ else
     "r: Recipe" -> "doses:\nList<Float>":create()
     create "steps:\nList<Step>"
     "r: Recipe" -> "steps:\nList<Step>":create()
-    Event --> "CatERingAppManager.RecipeManager:  \nRecipeManager": r
+    "r: Recipe" --> "CatERingAppManager.RecipeManager:  \nRecipeManager": r
+    deactivate "r: Recipe"
     "CatERingAppManager.RecipeManager:  \nRecipeManager" -> "CatERingAppManager.RecipeManager:  \nRecipeManager":setCurrentRecipe(r)
     "CatERingAppManager.RecipeManager:  \nRecipeManager" --> User:r
 end
