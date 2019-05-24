@@ -23,9 +23,11 @@ else
     "r: Recipe" -> "r: Recipe":setOwner(user)
     "r: Recipe" -> "r: Recipe":setPublished(false)
     create "ingredients:\nList<Ingredient>"
-    "r: Recipe" -> "ingredients:\nList<Ingredient>":create
+    "r: Recipe" -> "ingredients:\nList<Ingredient>":create()
     create "doses:\nList<Float>"
-    "r: Recipe" -> "doses:\nList<Float>":create
+    "r: Recipe" -> "doses:\nList<Float>":create()
+    create "steps:\nList<Step>"
+    "r: Recipe" -> "steps:\nList<Step>":create()
     Event --> "CatERingAppManager.RecipeManager:  \nRecipeManager": r
     "CatERingAppManager.RecipeManager:  \nRecipeManager" -> "CatERingAppManager.RecipeManager:  \nRecipeManager":setCurrentRecipe(r)
     "CatERingAppManager.RecipeManager:  \nRecipeManager" --> User:r
