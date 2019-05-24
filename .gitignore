@@ -2,4 +2,4 @@
 *.png
 *.uml
 
-/plantuml-images
+/plantuml-images/*
