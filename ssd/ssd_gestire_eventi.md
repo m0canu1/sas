@@ -20,6 +20,7 @@ loop
 			Organizzatore -> Sistema : 2a. modificaScheda
 			Sistema --> Organizzatore : scheda aggiornata
 		end
+        note right: La scheda può essere modificata\n n volte (n potrebbe essere anche 0)
 	end
 	
 	loop Fin quando uno chef non è disponibile
@@ -39,6 +40,7 @@ loop
 			Sistema --> Organizzatore : personale non disponibile
 		end
 	end
+    note right: I loop ai passi 3-4\n vanno ripetuti fin quando\n uno chef/membro del personale\n non è disponibile
 	
 	opt
 		Organizzatore -> Sistema : 5. modificaPersonale(personale)
