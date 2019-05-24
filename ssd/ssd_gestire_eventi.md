@@ -46,6 +46,7 @@ loop
 		Organizzatore -> Sistema : 5. modificaPersonale(personale)
 		Sistema --> Organizzatore : personale modificato
 	end
+    note right: il passo 5 è opzionale in quanto\n non sempre è necessario modificare\n il personale
 	
 	opt
 		Organizzatore -> Sistema : 6. rimuoviEvento(evento)
@@ -66,6 +67,7 @@ loop
 			Sistema --> Organizzatore : evento rimosso
 		end
 	end
+    note right: Spostare/Rimuovere un evento (passi 6-7)\n sono azioni straordinarie quindi\n sono rese opzionali
 end
 note right: Il loop esegue se un evento è spostato e bisogna ricrearlo
 
@@ -73,6 +75,7 @@ opt
 	Organizzatore -> Sistema : 8. scriviNote(evento)
 	Sistema --> Organizzatore : note evento inserite
 end
+note right: Il passo 8 non è obbligatorio\n quindi è stato reso opzionale
 
 
 ```
