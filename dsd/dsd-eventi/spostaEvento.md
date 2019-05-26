@@ -12,14 +12,14 @@ opt
         eM -> currentE: moveEvent(event)
         Activate currentE
         
-        currentE -> currentE: checkAvailability(event, chef)
-        currentE -> currentE: checkAvailability(event, "staff:List<staffMember>")
+        currentE -> currentE: checkAvailability(chef)
+        currentE -> currentE: checkAvailability("staff:List<staffMember>")
 
         alt [!movingIsPossible]
-            currentE -> currentE: setAnnullato(event, true)
+            currentE -> currentE: setAnnullato(true)
         else
-            currentE -> currentE: setDate(event, date)
-            currentE -> currentE: setLocation(event, location)
+            currentE -> currentE: setDate(date)
+            currentE -> currentE: setLocation(location)
         end
         currentE --> eM: event
     end

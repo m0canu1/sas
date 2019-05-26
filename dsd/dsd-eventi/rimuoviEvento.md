@@ -4,11 +4,11 @@ Participant eM
 Participant currentE
 
 opt
-    User -> eM: rimuoviEvento(event)
+    User -> eM: removeEvento(event)
     alt [currentevent!=null]
         eM --> User: throw UseCaseLogicException
     else
-        eM -> currentE: rimuoviEvento(event)
+        eM -> currentE: removeEvento(event)
         Activate currentE
 
         currentE -> currentE: setAnnullato(event, true)
