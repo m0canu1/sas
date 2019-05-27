@@ -6,12 +6,12 @@ Participant "CatERingAppManager.ChefManager"
 
 User -> "CatERingAppManager.EventManager": addChef(event) 
 Activate "CatERingAppManager.EventManager"
-alt [currentevent!=null]
+alt [currentEvent==null]
     "CatERingAppManager.EventManager" --> User: throw UseCaseLogicException
 else
     "CatERingAppManager.EventManager" -> "CatERingAppManager.EventManager: event": addChef(event)
     Activate "CatERingAppManager.EventManager: event"
-    loop ["until chef.available == true"]
+    loop ["until chef.available != true"]
         "CatERingAppManager.EventManager: event" -> "CatERingAppManager.ChefManager": selectChef(chef)
         Activate "CatERingAppManager.ChefManager"
 

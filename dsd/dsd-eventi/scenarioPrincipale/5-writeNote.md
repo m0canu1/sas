@@ -6,7 +6,7 @@ Participant "CatERingAppManager.EventManager: event"
 opt
     User -> "CatERingAppManager.EventManager": writeNote(event)
     Activate "CatERingAppManager.EventManager"  
-    alt [currentevent!=null]
+    alt [currentEvent==null]
         "CatERingAppManager.EventManager" --> User: throw UseCaseLogicException
     else
         "CatERingAppManager.EventManager" -> "CatERingAppManager.EventManager: event": writeNote(event)
