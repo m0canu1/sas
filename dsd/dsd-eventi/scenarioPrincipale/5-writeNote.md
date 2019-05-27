@@ -5,7 +5,7 @@ Participant "CatERingAppManager.EventManager: event"
 
 opt
     User -> "CatERingAppManager.EventManager": writeNote(event)
-    
+    Activate "CatERingAppManager.EventManager"  
     alt [currentevent!=null]
         "CatERingAppManager.EventManager" --> User: throw UseCaseLogicException
     else
@@ -20,7 +20,7 @@ opt
     Deactivate "CatERingAppManager.EventManager: event"
 
     "CatERingAppManager.EventManager" --> User: event
-
+    Deactivate "CatERingAppManager.EventManager"
 end
 
 ```

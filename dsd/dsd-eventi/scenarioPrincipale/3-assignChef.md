@@ -21,8 +21,9 @@ else
     "CatERingAppManager.EventManager: event" -> "CatERingAppManager.EventManager: event": setChef(c)
 
     "CatERingAppManager.EventManager: event" --> "CatERingAppManager.EventManager": event
+    Deactivate "CatERingAppManager.EventManager: event"
     "CatERingAppManager.EventManager" --> User: event
 end
 Deactivate "CatERingAppManager.EventManager"
-Deactivate "CatERingAppManager.EventManager: event"
+
 ```
