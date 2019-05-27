@@ -4,13 +4,14 @@ Participant "CatERingAppManager.EventManager:  \neventManager"
 Participant "EventManager.currentEvent:  \ne"
 
 
-User -> "EventManager.currentEvent:  \ne": defineForm(event)
-Activate "EventManager.currentEvent:  \ne"   
+User -> "CatERingAppManager.EventManager:  \neventManager": defineForm(event)
+Activate "CatERingAppManager.EventManager:  \neventManager"   
 
 alt [currentEvent==null]
     "CatERingAppManager.EventManager:  \neventManager" --> User: throw UseCaseLogicException
 else
-    
+    "CatERingAppManager.EventManager:  \neventManager" -> Activate "EventManager.currentEvent:  \ne": defineForm(event)
+    Activate "EventManager.currentEvent:  \ne"   
     create "f: Form"
     "EventManager.currentEvent:  \ne" -> "f: Form": createForm(event)
     Activate "f: Form"
