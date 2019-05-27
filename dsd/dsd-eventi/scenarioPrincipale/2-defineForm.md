@@ -6,7 +6,7 @@ Participant "EventManager.currentEvent:  \ne"
 
 User -> "CatERingAppManager.EventManager:  \neventManager": defineForm(event)
 Activate "CatERingAppManager.EventManager:  \neventManager"
-alt [!currentEvent==null]
+alt [currentEvent==null]
     "CatERingAppManager.EventManager:  \neventManager" --> User: throw UseCaseLogicException
 else
 "CatERingAppManager.EventManager:  \neventManager" -> "EventManager.currentEvent:  \ne": defineForm(event)
