@@ -28,7 +28,9 @@ else
     "CatERingAppManager.EventManager: event" -> "CatERingAppManager.EventManager: event": addStaff(event, "staff:List<StaffMember>")
     
     "CatERingAppManager.EventManager: event" --> "CatERingAppManager.EventManager": event
+    Deactivate
     "CatERingAppManager.EventManager" --> User: event
+    Deactivate
 end
 Deactivate "CatERingAppManager.EventManager"
 Deactivate "CatERingAppManager.EventManager: event"
