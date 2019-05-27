@@ -1,46 +1,46 @@
 ```plantuml
 Actor User
-Participant eM
-Participant currentE
-Participant sM
+Participant "CatERingAppManager.EventManager"
+Participant "CatERingAppManager.EventManager: event"
+Participant "CatERingAppManager.StaffManager"
 
 opt
-    User -> eM: modifyStaff(event)
-    Activate eM
+    User -> "CatERingAppManager.EventManager": modifyStaff(event)
+    Activate "CatERingAppManager.EventManager"
     
     alt currentevent!=null
-        eM --> User: UseCaseLogicException
+        "CatERingAppManager.EventManager" --> User: UseCaseLogicException
     else
-        eM -> currentE: modifyStaff(event)
-        Activate currentE
+        "CatERingAppManager.EventManager" -> "CatERingAppManager.EventManager: event": modifyStaff(event)
+        Activate "CatERingAppManager.EventManager: event"
         loop forever
-            currentE -> sM:  getStaff(event)
-            Activate sM
+            "CatERingAppManager.EventManager: event" -> "CatERingAppManager.StaffManager":  getStaff(event)
+            Activate "CatERingAppManager.StaffManager"
     
-            sM --> currentE: "staff:List<staffMembers>"
+            "CatERingAppManager.StaffManager" --> "CatERingAppManager.EventManager: event": "staff:List<staffMembers>"
 
             alt remove
-                currentE -> sM: removeMember(staffmember, "staff:List<staffMembers>")
-                Activate sM
-                sM -> sM: remove(staffmember, "staff:List<staffMembers>")
+                "CatERingAppManager.EventManager: event" -> "CatERingAppManager.StaffManager": remov"CatERingAppManager.EventManager"ember(staffmember, "staff:List<staffMembers>")
+                Activate "CatERingAppManager.StaffManager"
+                "CatERingAppManager.StaffManager" -> "CatERingAppManager.StaffManager": remove(staffmember, "staff:List<staffMembers>")
             else add
-                currentE -> sM: addMember(staffmember, "staff:List<staffMembers>")
+                "CatERingAppManager.EventManager: event" -> "CatERingAppManager.StaffManager": addMember(staffmember, "staff:List<staffMembers>")
 
-                sM -> sM: checkAvailability(staffMember)
+                "CatERingAppManager.StaffManager" -> "CatERingAppManager.StaffManager": checkAvailability(staffMember)
                 alt ["staffmember.availability==true"]
-                    sM -> sM: add(staffmember, "staff:List<staffMembers>")
+                    "CatERingAppManager.StaffManager" -> "CatERingAppManager.StaffManager": add(staffmember, "staff:List<staffMembers>")
                 end
-                sM --> currentE: "staff:List<staffMembers>"
+                "CatERingAppManager.StaffManager" --> "CatERingAppManager.EventManager: event": "staff:List<staffMembers>"
             end
-            Deactivate sM
+            Deactivate "CatERingAppManager.StaffManager"
         end
     end
-    Deactivate sM
-    currentE --> eM: event
-    eM --> User: event
+    Deactivate "CatERingAppManager.StaffManager"
+    "CatERingAppManager.EventManager: event" --> "CatERingAppManager.EventManager": event
+    "CatERingAppManager.EventManager" --> User: event
 end
-Deactivate currentE
-Deactivate eM
+Deactivate "CatERingAppManager.EventManager: event"
+Deactivate "CatERingAppManager.EventManager"
 
 
 ```

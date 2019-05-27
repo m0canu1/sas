@@ -1,25 +1,25 @@
 ```plantuml
 Actor User
-Participant eM
-Participant currentE
+Participant "CatERingAppManager.EventManager"
+Participant "CatERingAppManager.EventManager: event"
 
 opt
-    User -> eM: removeEvento(event)
+    User -> "CatERingAppManager.EventManager": removeEvento(event)
     alt [currentevent!=null]
-        eM --> User: throw UseCaseLogicException
+        "CatERingAppManager.EventManager" --> User: throw UseCaseLogicException
     else
-        eM -> currentE: removeEvento(event)
-        Activate currentE
+        "CatERingAppManager.EventManager" -> "CatERingAppManager.EventManager: event": removeEvento(event)
+        Activate "CatERingAppManager.EventManager: event"
 
-        currentE -> currentE: setAnnullato(event, true)
+        "CatERingAppManager.EventManager: event" -> "CatERingAppManager.EventManager: event": setAnnullato(event, true)
         opt 
-            currentE -> currentE: setPenale(event, true)
+            "CatERingAppManager.EventManager: event" -> "CatERingAppManager.EventManager: event": setPenale(event, true)
         end
     end
-    currentE --> eM: event
-    Deactivate currentE
+    "CatERingAppManager.EventManager: event" --> "CatERingAppManager.EventManager": event
+    Deactivate "CatERingAppManager.EventManager: event"
 
-    eM --> User: event
+    "CatERingAppManager.EventManager" --> User: event
 end
 
 

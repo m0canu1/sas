@@ -1,39 +1,39 @@
 ```plantuml
 Actor User
-Participant eM
-Participant currentE
-Participant fM
+Participant "CatERingAppManager.EventManager"
+Participant "CatERingAppManager.EventManager: event"
+Participant "CatERingAppManager.FormManager"
 
-User -> eM: modifyInfo(event)
-Activate eM
+User -> "CatERingAppManager.EventManager": modifyInfo(event)
+Activate "CatERingAppManager.EventManager"
 
 alt [currentevent!=null]
-    eM --> User: throw UseCaseLogicException
+    "CatERingAppManager.EventManager" --> User: throw UseCaseLogicException
 else
-    eM -> currentE: modifyInfo(event)
-    Activate currentE
+    "CatERingAppManager.EventManager" -> "CatERingAppManager.EventManager: event": modifyInfo(event)
+    Activate "CatERingAppManager.EventManager: event"
     
-    currentE -> fM: getForm()
-    Activate fM
+    "CatERingAppManager.EventManager: event" -> "CatERingAppManager.FormManager": getForm()
+    Activate "CatERingAppManager.FormManager"
     opt
-        fM -> fM: setDate(date)
+        "CatERingAppManager.FormManager" -> "CatERingAppManager.FormManager": setDate(date)
     end
     opt
-        fM -> fM: setLocation(String)
+        "CatERingAppManager.FormManager" -> "CatERingAppManager.FormManager": setLocation(String)
     end
     opt
-        fM -> fM: setNumberOfParticipants(Int) 
+        "CatERingAppManager.FormManager" -> "CatERingAppManager.FormManager": setNumberOfParticipants(Int) 
     end
-    fM --> currentE: form
-    Deactivate fM
+    "CatERingAppManager.FormManager" --> "CatERingAppManager.EventManager: event": form
+    Deactivate "CatERingAppManager.FormManager"
     
-    currentE -> currentE: setForm(form)
+    "CatERingAppManager.EventManager: event" -> "CatERingAppManager.EventManager: event": setForm(form)
 
-    currentE --> eM: event
-    Deactivate currentE
+    "CatERingAppManager.EventManager: event" --> "CatERingAppManager.EventManager": event
+    Deactivate "CatERingAppManager.EventManager: event"
 end
-eM --> User: event
-Deactivate eM
+"CatERingAppManager.EventManager" --> User: event
+Deactivate "CatERingAppManager.EventManager"
 
 
 ```

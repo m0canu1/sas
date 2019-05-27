@@ -1,31 +1,31 @@
 ```plantuml
 Actor User
-Participant eM
-Participant currentE
+Participant "CatERingAppManager.EventManager"
+Participant "CatERingAppManager.EventManager: event"
 
 opt
-    User -> eM: moveEvent(event)
+    User -> "CatERingAppManager.EventManager": moveEvent(event)
 
     alt [currentevent!=null]
-        eM --> User: throw UseCaseLogicException
+        "CatERingAppManager.EventManager" --> User: throw UseCaseLogicException
     else
-        eM -> currentE: moveEvent(event)
-        Activate currentE
+        "CatERingAppManager.EventManager" -> "CatERingAppManager.EventManager: event": moveEvent(event)
+        Activate "CatERingAppManager.EventManager: event"
         
-        currentE -> currentE: checkAvailability(chef)
-        currentE -> currentE: checkAvailability("staff:List<staffMember>")
+        "CatERingAppManager.EventManager: event" -> "CatERingAppManager.EventManager: event": checkAvailability(chef)
+        "CatERingAppManager.EventManager: event" -> "CatERingAppManager.EventManager: event": checkAvailability("staff:List<staffMember>")
 
         alt [!movingIsPossible]
-            currentE -> currentE: setAnnullato(true)
+            "CatERingAppManager.EventManager: event" -> "CatERingAppManager.EventManager: event": setAnnullato(true)
         else
-            currentE -> currentE: setDate(date)
-            currentE -> currentE: setLocation(location)
+            "CatERingAppManager.EventManager: event" -> "CatERingAppManager.EventManager: event": setDate(date)
+            "CatERingAppManager.EventManager: event" -> "CatERingAppManager.EventManager: event": setLocation(location)
         end
-        currentE --> eM: event
+        "CatERingAppManager.EventManager: event" --> "CatERingAppManager.EventManager": event
     end
-    Deactivate currentE
+    Deactivate "CatERingAppManager.EventManager: event"
 
-    eM --> User: event
+    "CatERingAppManager.EventManager" --> User: event
 end
 
 

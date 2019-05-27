@@ -1,28 +1,28 @@
 ```plantuml
 Actor User
-Participant eM
-Participant currentE
-Participant chM
+Participant "CatERingAppManager.EventManager"
+Participant "CatERingAppManager.EventManager: event"
+Participant "CatERingAppManager.ChefManager"
 
-User -> eM: addChef(event) 
-Activate eM
+User -> "CatERingAppManager.EventManager": addChef(event) 
+Activate "CatERingAppManager.EventManager"
 alt [currentevent!=null]
-    eM --> User: throw UseCaseLogicException
+    "CatERingAppManager.EventManager" --> User: throw UseCaseLogicException
 else
-    eM -> currentE: addChef(event)
-    Activate currentE
+    "CatERingAppManager.EventManager" -> "CatERingAppManager.EventManager: event": addChef(event)
+    Activate "CatERingAppManager.EventManager: event"
     loop ["until chef.available == true"]
-        currentE -> chM: selectChef(chef)
-        Activate chM
+        "CatERingAppManager.EventManager: event" -> "CatERingAppManager.ChefManager": selectChef(chef)
+        Activate "CatERingAppManager.ChefManager"
 
-        chM --> currentE: c
-        Deactivate chM
+        "CatERingAppManager.ChefManager" --> "CatERingAppManager.EventManager: event": c
+        Deactivate "CatERingAppManager.ChefManager"
     end
-    currentE -> currentE: setChef(c)
+    "CatERingAppManager.EventManager: event" -> "CatERingAppManager.EventManager: event": setChef(c)
 
-    currentE --> eM: event
-    eM --> User: event
+    "CatERingAppManager.EventManager: event" --> "CatERingAppManager.EventManager": event
+    "CatERingAppManager.EventManager" --> User: event
 end
-Deactivate eM
-Deactivate currentE
+Deactivate "CatERingAppManager.EventManager"
+Deactivate "CatERingAppManager.EventManager: event"
 ```
