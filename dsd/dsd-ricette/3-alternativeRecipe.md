@@ -1,35 +1,32 @@
 ```plantuml
 Actor User
-Participant rM
-Participant currentR
+Participant "CatERing.AppManager.RecipeManager: \nrecipeManager"
+Participant "RecipeManager.currentRecipe: \nr"
 opt
-    User -> rM: addAlternatives()
-    Activate rM
-    alt ["currentrecipe!=null"]
-        rM --> User: throw UseCaseLogicException
+    User -> "CatERing.AppManager.RecipeManager: \nrecipeManager": addAlternative(recipe)
+    Activate "CatERing.AppManager.RecipeManager: \nrecipeManager"
+    alt [""RecipeManager.currentRecipe: \nr"ecipe!=null"]
+        "CatERing.AppManager.RecipeManager: \nrecipeManager" --> User: throw UseCaseLogicException
     else
-        rM -> currentR: addAlternatives()
-        Activate currentR
-        loop forever
+        "CatERing.AppManager.RecipeManager: \nrecipeManager" -> "RecipeManager.currentRecipe: \nr": addAlternative()
+        Activate "RecipeManager.currentRecipe: \nr"
+        loop ["n volte"]
             create "r: AlternativeRecipe"
-            currentR -> "r: AlternativeRecipe": addTitle(title, String)
+            "RecipeManager.currentRecipe: \nr" -> "r: AlternativeRecipe": copyCurrentRecipe(recipe)
             Activate "r: AlternativeRecipe"
-            "r: AlternativeRecipe" -> "r: AlternativeRecipe": setTitle("title+String")
-            "r: AlternativeRecipe" -> "r: AlternativeRecipe": setPubblicata(false)
-            currentR -> "r: AlternativeRecipe": addSteps("Steps:List<step>")
-            "r: AlternativeRecipe" -> "r: AlternativeRecipe": setSteps("Steps:List<step>")
+            "r: AlternativeRecipe" -> "r: AlternativeRecipe": setTitle(title)
             loop forever
-                "r: AlternativeRecipe" -> "r: AlternativeRecipe": setIngredients(String)
-                "r: AlternativeRecipe" -> "r: AlternativeRecipe": setDoses(Int)
+                "r: AlternativeRecipe" -> "r: AlternativeRecipe": setIngredients(ingredient)
+                "r: AlternativeRecipe" -> "r: AlternativeRecipe": setDoses(ingredient, dose)
             end
         end
-        "r: AlternativeRecipe" --> currentR: r
+        "r: AlternativeRecipe" --> "RecipeManager.currentRecipe: \nr": r
         Deactivate "r: AlternativeRecipe"
-        currentR --> rM: r
-        Deactivate currentR
-        rM -> rM: addRecipe(r)
-        rM --> User
-        Deactivate rM
+        "RecipeManager.currentRecipe: \nr" --> "CatERing.AppManager.RecipeManager: \nrecipeManager": r
+        Deactivate "RecipeManager.currentRecipe: \nr"
+        "CatERing.AppManager.RecipeManager: \nrecipeManager" -> "CatERing.AppManager.RecipeManager: \nrecipeManager": addRecipe(r)
+        "CatERing.AppManager.RecipeManager: \nrecipeManager" --> User
+        Deactivate "CatERing.AppManager.RecipeManager: \nrecipeManager"
     end
 end
 ```
