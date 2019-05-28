@@ -11,10 +11,12 @@ alt ["currentRecipe == null"]
          create "s: Step"
          "RecipeManager.currentRecipe:  \nr" -> "s: Step":createStep(details)
          activate "s: Step"
-         "s: Step" -> "s: Step":setDetails(details)
+         opt
+            "s: Step" -> "s: Step":setDetails(details)
+         end
          "s: Step" --> "RecipeManager.currentRecipe:  \nr": s
          deactivate "s: Step"
-         "RecipeManager.currentRecipe:  \nr" -> "RecipeManager.currentRecipe:  \nr": addStep(s)
+         "RecipeManager.currentRecipe:  \nr" -> "currentRecipe.currentStep:  \ns": addStep(s)
     end
     "RecipeManager.currentRecipe:  \nr" -> "CatERingAppManager.RecipeManager:  \nRecipeManager": r
     deactivate "RecipeManager.currentRecipe:  \nr"

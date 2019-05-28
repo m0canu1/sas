@@ -28,8 +28,9 @@ else
     Deactivate "e: Evento"
     "CatERingAppManager.EventManager:  \neventManager" -> "CatERingAppManager.EventManager:  \neventManager" : setCurrentEvent(e)
     "CatERingAppManager.EventManager:  \neventManager" --> User: e
-end
 Deactivate "CatERingAppManager.EventManager:  \neventManager"
+end
+
 
 
 
