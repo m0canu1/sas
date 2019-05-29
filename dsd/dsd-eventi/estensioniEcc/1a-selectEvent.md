@@ -8,7 +8,7 @@ Activate "CatERingAppManager.EventManager"
 
 "CatERingAppManager.EventManager" -> "CatERingAppManager.UserManager": getCurrentUser()
 Activate "CatERingAppManager.UserManager"
-
+    
 "CatERingAppManager.UserManager" --> "CatERingAppManager.EventManager": user
 Deactivate "CatERingAppManager.UserManager"
 
@@ -19,7 +19,4 @@ else
     "CatERingAppManager.EventManager" --> User: event
     Deactivate "CatERingAppManager.EventManager"
 end
-
-
-
 ```

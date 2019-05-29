@@ -5,7 +5,8 @@ Participant "CatERingAppManager.EventManager: event"
 
 opt
     User -> "CatERingAppManager.EventManager": removeEvento(event)
-    alt [currentevent!=null]
+    Activate "CatERingAppManager.EventManager"
+    alt [currentEvent==null]
         "CatERingAppManager.EventManager" --> User: throw UseCaseLogicException
     else
         "CatERingAppManager.EventManager" -> "CatERingAppManager.EventManager: event": removeEvento(event)
@@ -20,6 +21,7 @@ opt
     Deactivate "CatERingAppManager.EventManager: event"
 
     "CatERingAppManager.EventManager" --> User: event
+    Deactivate "CatERingAppManager.EventManager"
 end
 
 
