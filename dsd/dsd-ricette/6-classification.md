@@ -7,7 +7,7 @@ Participant "CatERing.AppManager.ClassManager: \nclassManager"
 User -> "CatERing.AppManager.RecipeManager: \nrecipeManager": addClassification(recipe)
 Activate "CatERing.AppManager.RecipeManager: \nrecipeManager"
 
-alt [currentRecipe=null]
+alt ["currentRecipe == null"]
 	"CatERing.AppManager.RecipeManager: \nrecipeManager" --> User: throw UseCaseLogicException
 else
 	"CatERing.AppManager.RecipeManager: \nrecipeManager" -> "RecipeManager.currentRecipe: \nr": addClassification()
