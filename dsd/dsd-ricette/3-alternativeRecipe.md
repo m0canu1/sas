@@ -5,7 +5,7 @@ Participant "RecipeManager.currentRecipe: \nr"
 opt
     User -> "CatERing.AppManager.RecipeManager: \nrecipeManager": addAlternative(recipe)
     Activate "CatERing.AppManager.RecipeManager: \nrecipeManager"
-    alt [""RecipeManager.currentRecipe: \nr"ecipe!=null"]
+    alt ["currentRecipe == null"]
         "CatERing.AppManager.RecipeManager: \nrecipeManager" --> User: throw UseCaseLogicException
     else
         "CatERing.AppManager.RecipeManager: \nrecipeManager" -> "RecipeManager.currentRecipe: \nr": addAlternative()

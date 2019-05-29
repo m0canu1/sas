@@ -6,7 +6,7 @@ Participant "currentRecipe.currentStep: \ns"
 opt
     User -> "CatERingAppManager.RecipeManager": modifyStep(recipe, step)
     Activate "CatERingAppManager.RecipeManager"
-    alt [currentRecipe!=null]
+    alt ["currentRecipe == null"]
         "CatERingAppManager.RecipeManager" --> User: throw UseCaseLogicException
     
     else

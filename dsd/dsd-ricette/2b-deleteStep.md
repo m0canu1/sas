@@ -7,7 +7,7 @@ opt
     User -> "CatERingAppManager.RecipeManager": deleteStep(recipe, step)
     Activate "CatERingAppManager.RecipeManager"
 
-    alt [currentRecipe!=null]
+    alt ["currentRecipe == null"]
         "CatERingAppManager.RecipeManager" --> User: throw UseCaseLogicException
     else
         "CatERingAppManager.RecipeManager" -> "CatERingAppManager.RecipeManager: \ncurrentRecipe": deleteStep(step)
