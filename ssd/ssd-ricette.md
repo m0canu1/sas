@@ -4,89 +4,79 @@
 actor Cuoco
 participant Sistema
 
-Cuoco -> Sistema : 1. creaRicetta(titolo?)
 alt 
-	Sistema --> Cuoco : ricetta con titolo	
-else 
-	Sistema --> Cuoco : ricetta senza titolo
+Cuoco -> Sistema : 1. creaRicetta(titolo?)
+	Sistema --> Cuoco : ricetta
 else eccezione 1.1a
-	Sistema --> Cuoco : titolo già presente
+Cuoco -> Sistema : 1. creaRicetta(titolo?)
+	
+	Sistema --> Cuoco : errore titolo già presente
+	destroy Sistema
 end
 note right: inizialmente una ricetta può essere creata senza titolo\nche può essere inserito successivamente.
-
-loop fino a soddisfacimento 
-	Cuoco -> Sistema : 2. scriviPassoRicetta(ricetta)
-	Sistema --> Cuoco : passo registrato
-end
-
-opt
-	loop
-		Cuoco -> Sistema : 3. scriviAlternativa(ricetta)
-	 	Sistema --> Cuoco : salva alternativa
+loop
+	loop fino a soddisfacimento 
+		alt 
+		Cuoco -> Sistema : 2. scriviPassoRicetta(ricetta)
+		Sistema --> Cuoco : passo registrato
+		else Estensione 2a
+			Cuoco -> Sistema: 2a.1 modificaPasso(passo)
+			Sistema --> Cuoco: passo registrato 
+		else Estensione 2b
+			Cuoco -> Sistema: 2b.1 eliminaPasso(passo)
+			Sistema --> Cuoco: passo
+			destroy Sistema 
+		end
+		note right: Le estensioni del passo due possono\nessere delle alternative al passo.
 	end
-end
-note right: per alternativa si intende un'alternativa\nagli ingredienti/alle dosi.
 
-opt
-	loop fino a soddisfacimento
-		
-		Cuoco -> Sistema : 4. segnaIndicazioni(ingredienti?, dosi?)
-		alt successo
-			Sistema --> Cuoco : nota registrata
-		else estensione 4a
-			loop
+	opt
+		loop
+			Cuoco -> Sistema : 3. scriviAlternativa(ricetta)
+			Sistema --> Cuoco : alternativa salvata
+		end
+	end
+	note right: per alternativa si intende un'alternativa\nagli ingredienti/alle dosi.
+
+	opt	
+			Cuoco -> Sistema : 4. segnaIndicazioni(ingredienti?, dosi?)
+			Sistema --> Cuoco : indicazioni salvate
+			alt estensione 4a
 				Cuoco -> Sistema : segnalaPreparazioneEsistente(preparazione)
 				Sistema --> Cuoco : preparazione registrata tra gli ingredienti della ricetta
-
-			end	
-		end
-
-	Sistema --> Cuoco : indicazioni salvate
+			else Estensione 4b
+				Cuoco -> Sistema : modificaDose(ingrediente, ricetta)
+				Sistema --> Cuoco: modifica salvata
+			end
 	end
+	note right: Segnare note su ingredienti/dosi e segnalare una\npreparazione come base di una ricetta è opzionale\ne può essere ripetuto n volte.
 end
-note right: Segnare note su ingredienti/dosi e segnalare una\npreparazione come base di una ricetta è opzionale\ne può essere ripetuto n volte.
-
-opt
-	Cuoco -> Sistema : 5. modificaRicetta(ricetta)
-	loop
-		alt  estensione 5a
-			Cuoco -> Sistema : aggiungiPasso(ricetta)
-		else estensione 5b
-			Cuoco -> Sistema : eliminaPasso(ricetta, passo)
-		else estensione 5c
-			Cuoco -> Sistema : modificaDosiIngredienti(dosi?, ingredienti?) 
-		end
-		Sistema --> Cuoco : modifica registrata
-	end
-end
-note right: Modificare la ricetta a posteriori è un passo\nopzionale e può essere ripetuto n volte.
 
 loop
-	Cuoco -> Sistema : 6. dettagliaPasso(passo)
+	Cuoco -> Sistema : 5. dettagliaPasso(passo)
 	Sistema --> Cuoco : salva dettagli
 end
 
-Cuoco -> Sistema : 7. classificaRicetta(ricetta)
-Sistema --> Cuoco : salva la ricetta nella sezione corretta del ricettario
+Cuoco -> Sistema : 6. classificaRicetta(ricetta)
+Sistema --> Cuoco : classificazione salvata
 
-opt Estensione (2-7)a
-		Cuoco -> Sistema : inserisciTitolo(ricetta)
-	alt successo
-		Sistema --> Cuoco : titolo salvato	
-	else Eccezione (2-7)a
-		Sistema -> Cuoco : titolo già esistente
-	end
+opt Estensione (2-6)a
+		Cuoco -> Sistema : (2-6)a.1 inserisciTitolo(ricetta, titolo)
+		Sistema --> Cuoco: titolo salvato
+	else Eccezione (2-6)a.1a
+		Sistema -> Cuoco : errore titolo già esistente
+		destroy Sistema
 end
 note right: dare un titolo alla ricetta non è obbligatorio\ne può essere dato in qualunque momento.
 
-opt Estensione (2-7)b
-	Cuoco -> Sistema : interrompiCompilazione(ricetta)
+opt Estensione (2-6)b
+	Cuoco -> Sistema :(2-6)b.1 interrompiCompilazione(ricetta)
 	Sistema --> Cuoco : modifiche salvate e interruzione
 end
 note right: Si può interrompere la compilazione e salvare\nle modifiche in qualunque momento.
 
-Cuoco -> Sistema : 8. pubblicaRicetta(ricetta)
-Sistema --> Cuoco : ricetta aggiunta al ricettario
+Cuoco -> Sistema : 7. pubblicaRicetta(ricetta)
+Sistema --> Cuoco : ricetta pubblicata
 
 
 ```

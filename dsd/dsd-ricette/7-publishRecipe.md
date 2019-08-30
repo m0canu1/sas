@@ -6,7 +6,7 @@ Participant "RecipeManager.currentRecipe:  \nr"
 User -> "CatERingAppManager.RecipeManager:  \nRecipeManager": publishRecipe(recipe)
 Activate "CatERingAppManager.RecipeManager:  \nRecipeManager"
 
-alt ["recipe != null"]
+alt ["currentRecipe == null"]
 	"CatERingAppManager.RecipeManager:  \nRecipeManager" --> User: throw UseCaseLogicException
 else 
 	"CatERingAppManager.RecipeManager:  \nRecipeManager" -> "RecipeManager.currentRecipe:  \nr": publishRecipe()

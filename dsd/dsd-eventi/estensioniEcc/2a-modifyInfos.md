@@ -7,13 +7,13 @@ Participant "CatERingAppManager.FormManager"
 User -> "CatERingAppManager.EventManager": modifyInfo(event)
 Activate "CatERingAppManager.EventManager"
 
-alt [currentevent!=null]
+alt [currentEvent==null]
     "CatERingAppManager.EventManager" --> User: throw UseCaseLogicException
 else
     "CatERingAppManager.EventManager" -> "CatERingAppManager.EventManager: event": modifyInfo(event)
     Activate "CatERingAppManager.EventManager: event"
     
-    "CatERingAppManager.EventManager: event" -> "CatERingAppManager.FormManager": getForm()
+    "CatERingAppManager.EventManager: event" -> "CatERingAppManager.FormManager": modifyForm()
     Activate "CatERingAppManager.FormManager"
     opt
         "CatERingAppManager.FormManager" -> "CatERingAppManager.FormManager": setDate(date)
