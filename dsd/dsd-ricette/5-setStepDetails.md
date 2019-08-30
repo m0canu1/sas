@@ -23,5 +23,4 @@ end
 Deactivate "RecipeManager.currentRecipe:  \nr"
 "CatERingAppManager.RecipeManager:  \nRecipeManager" -> User: r
 Deactivate "CatERingAppManager.RecipeManager:  \nRecipeManager"
-end
 ```
