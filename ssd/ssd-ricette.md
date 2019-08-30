@@ -14,8 +14,7 @@ Cuoco -> Sistema : 1. creaRicetta(titolo?)
 	destroy Sistema
 end
 note right: inizialmente una ricetta può essere creata senza titolo\nche può essere inserito successivamente.
-loop
-	loop fino a soddisfacimento 
+loop fino a soddisfacimento 
 		alt 
 		Cuoco -> Sistema : 2. scriviPassoRicetta(ricetta)
 		Sistema --> Cuoco : passo registrato
@@ -24,44 +23,47 @@ loop
 			Sistema --> Cuoco: passo registrato 
 		else Estensione 2b
 			Cuoco -> Sistema: 2b.1 eliminaPasso(passo)
-			Sistema --> Cuoco: passo
+			Sistema --> Cuoco: passo eliminato
 			destroy Sistema 
-		end
+        else Estensione 2c
+            Cuoco -> Sistema: 2c.1 selezionaPassiDaRaggruppare()
+            Sistema --> Cuoco: raggruppamento
+        else Estensione 2d
+            Cuoco -> Sistema : 2d.1 aggiungiVariante(passo)
+            Sistema --> Cuoco: passo (variante) registrato
+
+        end
 		note right: Le estensioni del passo due possono\nessere delle alternative al passo.
-	end
+end
 
-	opt
-		loop
-			Cuoco -> Sistema : 3. scriviAlternativa(ricetta)
-			Sistema --> Cuoco : alternativa salvata
-		end
-	end
-	note right: per alternativa si intende un'alternativa\nagli ingredienti/alle dosi.
-
+loop
 	opt	
-			Cuoco -> Sistema : 4. segnaIndicazioni(ingredienti?, dosi?)
+			Cuoco -> Sistema : 3. segnaIndicazioni(ingredienti?, dosi?)
 			Sistema --> Cuoco : indicazioni salvate
-			alt estensione 4a
+			alt estensione 3a
 				Cuoco -> Sistema : segnalaPreparazioneEsistente(preparazione)
 				Sistema --> Cuoco : preparazione registrata tra gli ingredienti della ricetta
-			else Estensione 4b
-				Cuoco -> Sistema : modificaDose(ingrediente, ricetta)
+			else Estensione 3b
+				Cuoco -> Sistema : modificaDose(ingrediente, dose)
 				Sistema --> Cuoco: modifica salvata
 			end
 	end
 	note right: Segnare note su ingredienti/dosi e segnalare una\npreparazione come base di una ricetta è opzionale\ne può essere ripetuto n volte.
-end
 
-loop
-	Cuoco -> Sistema : 5. dettagliaPasso(passo)
+	Cuoco -> Sistema : 4. dettagliaPasso(passo)
 	Sistema --> Cuoco : salva dettagli
-end
 
-Cuoco -> Sistema : 6. classificaRicetta(ricetta)
+end
+Cuoco -> Sistema : 5. classificaRicetta(nome)
 Sistema --> Cuoco : classificazione salvata
 
+opt
+    Cuoco -> Sistema : 6. segnaAlternativa(ricetta)
+    Sistema --> Cuoco : registrazione salvata
+end
+
 opt Estensione (2-6)a
-		Cuoco -> Sistema : (2-6)a.1 inserisciTitolo(ricetta, titolo)
+		Cuoco -> Sistema : (2-6)a.1 inserisciTitolo(titolo)
 		Sistema --> Cuoco: titolo salvato
 	else Eccezione (2-6)a.1a
 		Sistema -> Cuoco : errore titolo già esistente

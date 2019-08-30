@@ -32,6 +32,7 @@ Class Ricetta {
 	Pubblicato: si/no
 	Ingredienti: testo
 	Dosi: numero
+    Originale: ricetta
 }
 
 Class Passo {
