@@ -36,7 +36,8 @@ Class Ricetta {
 }
 
 Class Passo {
-	Dettaglio: testo
+    Titolo: testo
+    Dettagli: testo
 }
 
 Class Classe {
