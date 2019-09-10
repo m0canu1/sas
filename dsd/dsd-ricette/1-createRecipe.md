@@ -1,21 +1,21 @@
 ```plantuml
 
 Actor User
-Participant "CatERingAppManager.RecipeManager:  \nRecipeManager"
-Participant "CatERingAppManager.UserManager:  \nUserManager"
+Participant "CatERingAppManager.RecipeManager:  \nRecipeManager" as RM
+Participant "CatERingAppManager.UserManager:  \nUserManager" as UM
 
-User -> "CatERingAppManager.RecipeManager:  \nRecipeManager":createRecipe(title?)
-activate "CatERingAppManager.RecipeManager:  \nRecipeManager"
-"CatERingAppManager.RecipeManager:  \nRecipeManager" -> "CatERingAppManager.UserManager:  \nUserManager":getCurrentUser()
-activate "CatERingAppManager.UserManager:  \nUserManager"
-"CatERingAppManager.UserManager:  \nUserManager" -> "CatERingAppManager.RecipeManager:  \nRecipeManager":user
-deactivate "CatERingAppManager.UserManager:  \nUserManager"
+User -> RM :createRecipe(title?)
+activate RM
+RM -> UM:getCurrentUser()
+activate UM
+UM -> RM :user
+deactivate UM
 
 alt [!user.isChef()]
-    "CatERingAppManager.RecipeManager:  \nRecipeManager" --> User:throw UseCaseLogicException
+    RM --> User:throw UseCaseLogicException
 else 
     create "r: Recipe"
-    "CatERingAppManager.RecipeManager:  \nRecipeManager" -> "r: Recipe":create(user, title?)
+    RM -> "r: Recipe":create(user, title?)
     activate "r: Recipe"
     opt [title!=null]
         "r: Recipe" -> "r: Recipe":setTitle(title)
@@ -28,11 +28,11 @@ else
     "r: Recipe" -> "doses:\nList<Float>":create()
     create "steps:\nList<Step>"
     "r: Recipe" -> "steps:\nList<Step>":create()
-    "r: Recipe" --> "CatERingAppManager.RecipeManager:  \nRecipeManager": r
+    "r: Recipe" --> RM : r
     deactivate "r: Recipe"
-    "CatERingAppManager.RecipeManager:  \nRecipeManager" -> "CatERingAppManager.RecipeManager:  \nRecipeManager":setCurrentRecipe(r)
-    "CatERingAppManager.RecipeManager:  \nRecipeManager" --> User:r
+    RM -> RM :setCurrentRecipe(r)
+    RM --> User:r
 end
-    deactivate "CatERingAppManager.RecipeManager:  \nRecipeManager"
+    deactivate RM
 
 ```
