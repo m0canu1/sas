@@ -4,7 +4,7 @@ Actor User
 Participant "CatERingAppManager.RecipeManager:  \nRecipeManager" as RM
 Participant "CatERingAppManager.UserManager:  \nUserManager" as UM
 
-User -> RM :createRecipe(title?)
+User -> RM:createRecipe(title?)
 activate RM
 RM -> UM:getCurrentUser()
 activate UM

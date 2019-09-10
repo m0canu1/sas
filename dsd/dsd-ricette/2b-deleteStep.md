@@ -1,33 +1,31 @@
 ```plantuml
 Actor User
-Participant "CatERingAppManager.RecipeManager"
-Participant "CatERingAppManager.RecipeManager: \ncurrentRecipe"
+Participant "CatERingAppManager.RecipeManager" as RM
+Participant "CatERingAppManager.RecipeManager: \ncurrentRecipe" as CR
+Participant "CatERingAppManager.currentRecipe.currentStep: \ns" as CS
 
 opt
-    User -> "CatERingAppManager.RecipeManager": deleteStep(recipe, step)
-    Activate "CatERingAppManager.RecipeManager"
+    User -> RM: deleteStep(recipe, step)
+    Activate RM
 
     alt ["currentRecipe == null"]
-        "CatERingAppManager.RecipeManager" --> User: throw UseCaseLogicException
+        RM --> User: throw UseCaseLogicException
     else
-        "CatERingAppManager.RecipeManager" -> "CatERingAppManager.RecipeManager: \ncurrentRecipe": deleteStep(step)
-        Activate "CatERingAppManager.RecipeManager: \ncurrentRecipe"
-        
-        "CatERingAppManager.RecipeManager: \ncurrentRecipe" -> "CatERingAppManager.RecipeManager: \ncurrentRecipe": deleteStep(step)
+        RM -> CR: deleteStep(step)
+        Activate CR
+    
+        CR -> CS: deleteStep(step)
+        Activate CS
+        CS -> CS: delete()
+        Destroy CS
 
-        "CatERingAppManager.RecipeManager: \ncurrentRecipe" -> "CatERingAppManager.RecipeManager": recipe
-        Deactivate "CatERingAppManager.RecipeManager: \ncurrentRecipe"
+        CR --> RM: recipe
+        Deactivate CR
 
-        "CatERingAppManager.RecipeManager" -> User: recipe
-        Deactivate "CatERingAppManager.RecipeManager"
+        RM --> User: recipe
+        Deactivate RM
 
     end
-    
-
-
 end
-
-
-
 
 ```
