@@ -1,21 +1,21 @@
 ```plantuml
 Actor User
-Participant "CatERingAppManager.RecipeManager:  \nRecipeManager"
-Participant "RecipeManager.currentRecipe:  \nr"
+Participant "CatERingAppManager.RecipeManager:  \nRecipeManager" as RM
+Participant "RecipeManager.currentRecipe:  \nr" as CR
 
-User -> "CatERingAppManager.RecipeManager:  \nRecipeManager": publishRecipe(recipe)
-Activate "CatERingAppManager.RecipeManager:  \nRecipeManager"
+User -> RM: publishRecipe(recipe)
+Activate RM
 
 alt ["currentRecipe == null"]
-	"CatERingAppManager.RecipeManager:  \nRecipeManager" --> User: throw UseCaseLogicException
+	RM --> User: throw UseCaseLogicException
 else 
-	"CatERingAppManager.RecipeManager:  \nRecipeManager" -> "RecipeManager.currentRecipe:  \nr": publishRecipe()
-	Activate "RecipeManager.currentRecipe:  \nr"
-	"RecipeManager.currentRecipe:  \nr" -> "RecipeManager.currentRecipe:  \nr": setPubblicata(true)
-	"RecipeManager.currentRecipe:  \nr" -> "CatERingAppManager.RecipeManager:  \nRecipeManager": r
-	Deactivate "RecipeManager.currentRecipe:  \nr"
-	"CatERingAppManager.RecipeManager:  \nRecipeManager" -> User: r
-	Deactivate "CatERingAppManager.RecipeManager:  \nRecipeManager"
+	RM -> CR: publishRecipe()
+	Activate CR
+	CR -> CR: setPublished(true)
+	CR -> RM: r
+	Deactivate CR
+	RM -> User: r
+	Deactivate RM
 end
 
 

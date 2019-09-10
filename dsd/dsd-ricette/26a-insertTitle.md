@@ -1,19 +1,22 @@
 ```plantuml
-	Actor User
-	Participant "CatERingAppManager.RecipeManager:  \nRecipeManager"
-	Participant "RecipeManager.currentRecipe:  \nr"
+Actor User
+Participant "CatERingAppManager.RecipeManager:  \nRecipeManager" as RM
+Participant "RecipeManager.currentRecipe:  \nr" as CR
 
-	User -> "CatERingAppManager.RecipeManager:  \nRecipeManager": insertTitle(recipe)
-	Activate "CatERingAppManager.RecipeManager:  \nRecipeManager"
+opt
+
+	User -> RM: insertTitle(recipe)
+	Activate RM
 	alt ["currentRecipe == null"]
-		"CatERingAppManager.RecipeManager:  \nRecipeManager" --> User: Throw UseCaseLogicException
+		RM --> User: Throw UseCaseLogicException
 	else 
-		"CatERingAppManager.RecipeManager:  \nRecipeManager" -> "RecipeManager.currentRecipe:  \nr": insertTitle(title)
-		Activate "RecipeManager.currentRecipe:  \nr"
-		"RecipeManager.currentRecipe:  \nr" -> "RecipeManager.currentRecipe:  \nr": setTitle(title)
-		"RecipeManager.currentRecipe:  \nr" -> "CatERingAppManager.RecipeManager:  \nRecipeManager": r
-		Deactivate "RecipeManager.currentRecipe:  \nr"
+		RM -> CR: insertTitle(title)
+		Activate CR
+		CR -> CR: setTitle(title)
+		CR -> RM: r
+		Deactivate CR
 	end
-	"CatERingAppManager.RecipeManager:  \nRecipeManager" -> User: r
-	Deactivate "CatERingAppManager.RecipeManager:  \nRecipeManager"
+	RM -> User: r
+	Deactivate RM
+end
 ```

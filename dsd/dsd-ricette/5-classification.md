@@ -1,31 +1,31 @@
 ```plantuml
 Actor User
-Participant "CatERing.AppManager.RecipeManager: \nrecipeManager"
-Participant "RecipeManager.currentRecipe: \nr"
-Participant "CatERing.AppManager.ClassManager: \nclassManager"
+Participant "CatERing.AppManager.RecipeManager: \nrecipeManager" as RM
+Participant "RecipeManager.currentRecipe: \nr" as CR
+Participant "CatERing.AppManager.ClassManager: \nclassManager" as CM
 
-User -> "CatERing.AppManager.RecipeManager: \nrecipeManager": addClassification(recipe)
-Activate "CatERing.AppManager.RecipeManager: \nrecipeManager"
+User -> RM: addClassification(recipe)
+Activate RM
 
 alt ["currentRecipe == null"]
-	"CatERing.AppManager.RecipeManager: \nrecipeManager" --> User: throw UseCaseLogicException
+	RM --> User: throw UseCaseLogicException
 else
-	"CatERing.AppManager.RecipeManager: \nrecipeManager" -> "RecipeManager.currentRecipe: \nr": addClassification()
-	Activate "RecipeManager.currentRecipe: \nr"
+	RM -> CR: addClassification()
+	Activate CR
 
-	"RecipeManager.currentRecipe: \nr" -> "CatERing.AppManager.ClassManager: \nclassManager": getClass()
-	Activate "CatERing.AppManager.ClassManager: \nclassManager"
+	CR -> CM: getClass()
+	Activate CM
 
-	"CatERing.AppManager.ClassManager: \nclassManager" --> "RecipeManager.currentRecipe: \nr": class
-	Deactivate "CatERing.AppManager.ClassManager: \nclassManager"
+	CM --> CR: class
+	Deactivate CM
 
-	"RecipeManager.currentRecipe: \nr" -> "RecipeManager.currentRecipe: \nr": setClass(class)
+	CR -> CR: setClass(class)
 	
-	"RecipeManager.currentRecipe: \nr" --> "CatERing.AppManager.RecipeManager: \nrecipeManager": r
-	Deactivate "RecipeManager.currentRecipe: \nr"
+	CR --> RM: r
+	Deactivate CR
 
-	"CatERing.AppManager.RecipeManager: \nrecipeManager" --> User: r
-	Deactivate "CatERing.AppManager.RecipeManager: \nrecipeManager"
+	RM --> User: r
+	Deactivate RM
 
 end
 

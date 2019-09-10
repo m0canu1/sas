@@ -1,22 +1,26 @@
 ```plantuml
+
 Actor User
-Participant "CatERingAppManager.RecipeManager:  \nRecipeManager"
-Participant "RecipeManager.currentRecipe:  \nr"
+Participant "CatERingAppManager.RecipeManager:  \nRecipeManager" as RM
+Participant "RecipeManager.currentRecipe:  \nr" as CR
 
-User -> "CatERingAppManager.RecipeManager:  \nRecipeManager": addPreparationIngredient(recipe)
-Activate "CatERingAppManager.RecipeManager:  \nRecipeManager"
+opt 
 
-alt ["currentRecipe == null"]
-	"CatERingAppManager.RecipeManager:  \nRecipeManager" --> User: throw UseCaseLogicException
-else 
-	"CatERingAppManager.RecipeManager:  \nRecipeManager" -> "RecipeManager.currentRecipe:  \nr": addPreparationIngredient()
-	Activate "RecipeManager.currentRecipe:  \nr"
-	loop ["fino a soddisfacimento"]
-		"RecipeManager.currentRecipe:  \nr" -> "RecipeManager.currentRecipe:  \nr": addPreparationAsIngredient(preparation)
+	User -> RM: addPreparationIngredient(recipe, preparation)
+	Activate RM
+
+	alt ["currentRecipe == null"]
+		RM --> User: throw UseCaseLogicException
+	else 
+		RM -> CR: addPreparationIngredient(preparation)
+		Activate CR
+		CR -> CR: addIngredient(preparation)
+		CR --> RM: r
+		Deactivate CR
+		RM -> User: r
+		Deactivate RM
 	end
-	"RecipeManager.currentRecipe:  \nr" -> "CatERingAppManager.RecipeManager:  \nRecipeManager": r
-	Deactivate "RecipeManager.currentRecipe:  \nr"
-	"CatERingAppManager.RecipeManager:  \nRecipeManager" -> User: r
-	Deactivate "CatERingAppManager.RecipeManager:  \nRecipeManager"
+
 end
+
 ```
