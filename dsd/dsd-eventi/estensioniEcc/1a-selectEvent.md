@@ -1,22 +1,22 @@
 ```plantuml
 Actor  User
-Participant "CatERingAppManager.EventManager" 
-Participant "CatERingAppManager.UserManager"
+Participant "CatERingAppManager.EventManager: \nEventManager"  as EM
+Participant "CatERingAppManager.UserManager" as UM
 
-User -> "CatERingAppManager.EventManager": getEvent()
-Activate "CatERingAppManager.EventManager"
+User -> EM: getEvent()
+Activate EM
 
-"CatERingAppManager.EventManager" -> "CatERingAppManager.UserManager": getCurrentUser()
-Activate "CatERingAppManager.UserManager"
+EM -> UM: getCurrentUser()
+Activate UM
     
-"CatERingAppManager.UserManager" --> "CatERingAppManager.EventManager": user
-Deactivate "CatERingAppManager.UserManager"
+UM --> EM: user
+Deactivate UM
 
 alt [!user.isOrganizzatore()]
-    "CatERingAppManager.EventManager" --> User: throw UseCaseLogicException
+    EM --> User: throw UseCaseLogicException
 else
-    "CatERingAppManager.EventManager" -> "CatERingAppManager.EventManager": selectEvent()
-    "CatERingAppManager.EventManager" --> User: event
-    Deactivate "CatERingAppManager.EventManager"
+    EM -> EM: selectEvent()
+    EM --> User: event
+    Deactivate EM
 end
 ```

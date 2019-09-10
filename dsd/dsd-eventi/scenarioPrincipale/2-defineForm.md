@@ -1,33 +1,33 @@
 ```plantuml
 Actor User
-Participant "CatERingAppManager.EventManager:  \neventManager"
-Participant "EventManager.currentEvent:  \ne"
+Participant "CatERingAppManager.EventManager:  \neventManager" as EM
+Participant "EventManager.currentEvent:  \ne" as CE
 
 
-User -> "CatERingAppManager.EventManager:  \neventManager": defineForm(event)
-Activate "CatERingAppManager.EventManager:  \neventManager"
+User -> EM: defineForm(event)
+Activate EM
 alt [currentEvent==null]
-    "CatERingAppManager.EventManager:  \neventManager" --> User: throw UseCaseLogicException
+    EM --> User: throw UseCaseLogicException
 else
-"CatERingAppManager.EventManager:  \neventManager" -> "EventManager.currentEvent:  \ne": defineForm(event)
-    Activate "EventManager.currentEvent:  \ne"   
+EM -> CE: defineForm(event)
+    Activate CE   
     create "f: Form"
-    "EventManager.currentEvent:  \ne" -> "f: Form": createForm(event)
+    CE -> "f: Form": createForm(event)
     Activate "f: Form"
 
     "f: Form" -> "f: Form": setDate(date)
     "f: Form" -> "f: Form": setLuogo(String)
     "f: Form" -> "f: Form": setPartecipants(Int)
 
-    "f: Form" --> "EventManager.currentEvent:  \ne": f
+    "f: Form" --> CE: f
     Deactivate
-     "EventManager.currentEvent:  \ne" ->  "EventManager.currentEvent:  \ne": setForm(f)
+     CE ->  CE: setForm(f)
 
-    "EventManager.currentEvent:  \ne" --> "CatERingAppManager.EventManager:  \neventManager": e
-    Deactivate "EventManager.currentEvent:  \ne"   
+    CE --> EM: e
+    Deactivate CE   
     
-    "CatERingAppManager.EventManager:  \neventManager" --> User: e
-    Deactivate "CatERingAppManager.EventManager:  \neventManager"
+    EM --> User: e
+    Deactivate EM
 end
     deactivate "f: Form"
 

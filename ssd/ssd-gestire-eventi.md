@@ -70,7 +70,7 @@ opt
 	Organizzatore -> Sistema : 5. scriviNota(nota)
 	Sistema --> Organizzatore : nota evento salvata
 end
-note right: Il passo 5 non è obbligatorio\n quindi è stato reso opzionale
+note right: Non è obbligatorio aggiungere una nota all'evento\n
 
 opt Estensione (2-5)a
 	Organizzatore -> Sistema : (2-5)a.1 eliminaEvento(evento)

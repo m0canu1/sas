@@ -1,39 +1,39 @@
 ```plantuml
 Actor User
-Participant "CatERingAppManager.EventManager"
-Participant "CatERingAppManager.EventManager: event"
-Participant "CatERingAppManager.StaffManager"
+Participant "CatERingAppManager.EventManager: \nEventManager" as EM
+Participant "CatERingAppManager.EventManager: \nevent" as E
+Participant "CatERingAppManager.StaffManager" as SM
 
-User -> "CatERingAppManager.EventManager": addStaff(event)
-Activate "CatERingAppManager.EventManager"
+User -> EM: addStaff(event)
+Activate EM
 alt [currentEvent==null]
-    "CatERingAppManager.EventManager" --> User: throw UseCaseLogicException
+    EM --> User: throw UseCaseLogicException
 else
-    "CatERingAppManager.EventManager" -> "CatERingAppManager.EventManager: event": addStaff(event, staff:List<StaffMember>)
-    Activate "CatERingAppManager.EventManager: event"
+    EM -> E: addStaff(event, staff:List<StaffMember>)
+    Activate E
     
     loop n volte
-        "CatERingAppManager.EventManager: event" -> "CatERingAppManager.StaffManager": selectStaffMember(staffMember)
-        Activate "CatERingAppManager.StaffManager"
+        E -> SM: selectStaffMember(staffMember)
+        Activate SM
         
-        "CatERingAppManager.StaffManager" -> "CatERingAppManager.StaffManager": checkAvailability()
+        SM -> SM: checkAvailability()
         alt staffmember.available() == true
-            "CatERingAppManager.StaffManager" -> "CatERingAppManager.StaffManager": add(staffmember, staff:List<StaffMember>)
+            SM -> SM: add(staffmember, staff:List<StaffMember>)
         else
             
         end
-        "CatERingAppManager.StaffManager" --> "CatERingAppManager.EventManager: event": staff:List<StaffMember>
-        Deactivate "CatERingAppManager.StaffManager"
+        SM --> E: staff:List<StaffMember>
+        Deactivate SM
     end
-    "CatERingAppManager.EventManager: event" -> "CatERingAppManager.EventManager: event": addStaff(event, staff:List<StaffMember>)
+    E -> E: addStaff(event, staff:List<StaffMember>)
     
-    "CatERingAppManager.EventManager: event" --> "CatERingAppManager.EventManager": event
-    Deactivate "CatERingAppManager.EventManager: event"
-    "CatERingAppManager.EventManager" --> User: event
-    Deactivate "CatERingAppManager.EventManager"
+    E --> EM: event
+    Deactivate E
+    EM --> User: event
+    Deactivate EM
 end
-Deactivate "CatERingAppManager.EventManager"
-Deactivate "CatERingAppManager.EventManager: event"
+Deactivate EM
+Deactivate E
 
 
 

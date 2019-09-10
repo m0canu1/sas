@@ -1,39 +1,39 @@
 ```plantuml
 Actor User
-Participant "CatERingAppManager.EventManager"
-Participant "CatERingAppManager.EventManager: event"
-Participant "CatERingAppManager.FormManager"
+Participant "CatERingAppManager.EventManager: \nEventManager" as EM
+Participant "CatERingAppManager.EventManager: \nevent" as E
+Participant "CatERingAppManager.FormManager" as FM
 
-User -> "CatERingAppManager.EventManager": modifyInfo(event)
-Activate "CatERingAppManager.EventManager"
+User -> EM: modifyInfo(event)
+Activate EM
 
 alt [currentEvent==null]
-    "CatERingAppManager.EventManager" --> User: throw UseCaseLogicException
+    EM --> User: throw UseCaseLogicException
 else
-    "CatERingAppManager.EventManager" -> "CatERingAppManager.EventManager: event": modifyInfo(event)
-    Activate "CatERingAppManager.EventManager: event"
+    EM -> E: modifyInfo(event)
+    Activate E
     
-    "CatERingAppManager.EventManager: event" -> "CatERingAppManager.FormManager": modifyForm()
-    Activate "CatERingAppManager.FormManager"
+    E -> FM: modifyForm()
+    Activate FM
     opt
-        "CatERingAppManager.FormManager" -> "CatERingAppManager.FormManager": setDate(date)
+        FM -> FM: setDate(date)
     end
     opt
-        "CatERingAppManager.FormManager" -> "CatERingAppManager.FormManager": setLocation(String)
+        FM -> FM: setLocation(String)
     end
     opt
-        "CatERingAppManager.FormManager" -> "CatERingAppManager.FormManager": setNumberOfParticipants(Int) 
+        FM -> FM: setNumberOfParticipants(Int) 
     end
-    "CatERingAppManager.FormManager" --> "CatERingAppManager.EventManager: event": form
-    Deactivate "CatERingAppManager.FormManager"
+    FM --> E: form
+    Deactivate FM
     
-    "CatERingAppManager.EventManager: event" -> "CatERingAppManager.EventManager: event": setForm(form)
+    E -> E: setForm(form)
 
-    "CatERingAppManager.EventManager: event" --> "CatERingAppManager.EventManager": event
-    Deactivate "CatERingAppManager.EventManager: event"
+    E --> EM: event
+    Deactivate E
 end
-"CatERingAppManager.EventManager" --> User: event
-Deactivate "CatERingAppManager.EventManager"
+EM --> User: event
+Deactivate EM
 
 
 ```
