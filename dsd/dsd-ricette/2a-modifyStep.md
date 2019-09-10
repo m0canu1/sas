@@ -1,30 +1,30 @@
 ```plantuml
 Actor User
-Participant "CatERingAppManager.RecipeManager"
-Participant "CatERingAppManager.RecipeManager: \ncurrentRecipe"
-Participant "currentRecipe.currentStep: \ns"
+Participant "CatERingAppManager.RecipeManager" as RM 
+Participant "CatERingAppManager.RecipeManager: \ncurrentRecipe" as CR
+Participant "currentRecipe.currentStep: \ns" as CS 
 opt
-    User -> "CatERingAppManager.RecipeManager": modifyStep(recipe, step)
-    Activate "CatERingAppManager.RecipeManager"
+    User -> RM: modifyStep(recipe, step, details)
+    Activate RM
     alt ["currentRecipe == null"]
-        "CatERingAppManager.RecipeManager" --> User: throw UseCaseLogicException
+        RM --> User: throw UseCaseLogicException
     
     else
-        "CatERingAppManager.RecipeManager" -> "CatERingAppManager.RecipeManager: \ncurrentRecipe": modifyStep(step)
-        Activate "CatERingAppManager.RecipeManager: \ncurrentRecipe"
+        RM -> CR: modifyStep(step, details)
+        Activate CR
         
-        "CatERingAppManager.RecipeManager: \ncurrentRecipe" -> "currentRecipe.currentStep: \ns": modifyStep(step)
-        Activate "currentRecipe.currentStep: \ns"
+        CR -> CS: modifyStep(step, details)
+        Activate CS
     
-        "currentRecipe.currentStep: \ns" -> "currentRecipe.currentStep: \ns": setDetails(details)
+        CS -> CS: setDetails(details)
        
        
-        "CatERingAppManager.RecipeManager: \ncurrentRecipe" --> "CatERingAppManager.RecipeManager": recipe
-        Deactivate "currentRecipe.currentStep: \ns"
-        Deactivate "CatERingAppManager.RecipeManager: \ncurrentRecipe"
+        CR --> RM: recipe
+        Deactivate CS
+        Deactivate CR
     
-        "CatERingAppManager.RecipeManager" --> User: recipe
-        Deactivate "CatERingAppManager.RecipeManager"
+        RM --> User: recipe
+        Deactivate RM
     end
 end
 ```
