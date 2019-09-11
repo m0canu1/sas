@@ -1,21 +1,24 @@
 ```plantuml
 
 Class RecipeManager {
-
 	createRecipe(): Recipe
 	createRecipe(title: String): Recipe
-	
 	setCurrentRecipe(recipe: Recipe)
-
+    setAlternativeRecipe()
 	writeRecipeStep(recipe: Recipe)
 	modifyStep(step: Step, details: String)
 	deleteStep(step: Step)
 	groupRecipeSteps(stepsToGroup: list<Step>)
 	addVariant(original_step: Step)
-
-	setIngredientDose()
+	setStepDetails()
+    setIngredientDose()
 	addPreparationIngredient(preparation: Preparation)
 	modifyDose()
+    addClassification()
+    lookUpOriginalRecipe(): Recipe
+    publishRecipe()
+    insertTitle()
+    dontPublish()
 }
 
 Class Recipe {
@@ -24,14 +27,14 @@ Class Recipe {
 	ingredients: list<String>
 	doses: list<Number>
 	original: Recipe
-
 	setTitle(title: String)
 	setOwner(user: User)
 	setPublished(pub: Boolean)
+    setClass(className: String)
+    getSteps(): list<Step>
 	createIngredients(): list<String>
 	createListDoses(): list<Number>
 	createListSteps(): list<Step> 
-
 	writeStep(): Step
 	writeStep(originalStep: Step): Step
 	addIngredient(ingredient: String)
@@ -40,29 +43,30 @@ Class Recipe {
 	modifyStep(step: Step, details: String)
 	groupSteps(stepsToGroup: list<Step>): Step
 	removeStep(step: Step)
-
 	addIngredientDose()
 	addIngredient(ingredient: String)
 	addDose(ingredient: String, dose: Number)
 	addPreparationIngredient(preparation: Preparation)
 	modifyDose(ingredient: String, dose: Number)
+    setStepDetails()
+    setOriginal(recipe: Recipe)
+    exitWithoutPublishing()
 }
 
 Class Step {
 	details: String
 	original: Step
-
 	step()
 	step(details: String)
 	aggregateSteps(steps: list<Step>): Step
 	setDetails(details: String)
+    getDetails(): String
 	remove(step: Step)
 	setOriginal(original_step: Step)
 }
 
 Class Preparation {
 	name: String
-
 	getName(): String
 }
 
@@ -75,7 +79,22 @@ Class User {
 	isChef(): boolean
 }
 
+Class Classification {
+    className: String
+    getClassName(): String
+}
+
 
 RecipeManager -- "0..n" Recipe: currentRecipe >
+
+Recipe "1..n" -- "0..n" Classification: contains <
+
+Recipe "1..n" -- "1" Step: contains >
+
+User -- UserManager
+
+Preparation "0..n" -- Recipe: contains <
+
+User -- RecipeManager
 
 ```
