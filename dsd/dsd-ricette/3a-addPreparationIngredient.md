@@ -6,18 +6,22 @@ Participant "RecipeManager.currentRecipe:  \nr" as CR
 
 opt 
 
-	User -> RM: addPreparationIngredient(recipe, preparation)
+	User -> RM: addPreparationIngredient(preparation)
 	Activate RM
 
 	alt ["currentRecipe == null"]
 		RM --> User: throw UseCaseLogicException
 	else 
-		RM -> CR: addPreparationIngredient(preparation)
+		RM -> CR:  addPreparationIngredient(preparation)
 		Activate CR
-		CR -> CR: addIngredient(preparation)
-		CR --> RM: r
+		CR -> "preparation: Preparation": getName()
+		Activate "preparation: Preparation"
+		"preparation: Preparation" -> CR: name
+		Deactivate "preparation: Preparation"
+		CR -> "ingredients: list<String>": addIngredient(name)
+		Activate "ingredients: list<String>"
+		Deactivate "ingredients: list<String>"
 		Deactivate CR
-		RM -> User: r
 		Deactivate RM
 	end
 

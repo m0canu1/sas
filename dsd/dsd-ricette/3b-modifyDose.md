@@ -3,20 +3,22 @@ Actor User
 Participant "CatERingAppManager.RecipeManager:  \nRecipeManager" as RM
 Participant "RecipeManager.currentRecipe:  \nr" as CR
 
-User -> RM: modifyDose(recipe)
+User -> RM: modifyDose()
 Activate RM
 opt
 	alt ["currentRecipe == null"]
 		RM --> User: throw UseCaseLogicException
 	else 
-		RM -> CR: modifyDose()
-		Activate CR
 		loop ["fino a soddisfacimento"]
-			CR -> CR: modifyDose(ingredient, dose)
+
+		RM -> CR: modifyDose(ingredient, dose)
+		Activate CR
+			CR -> "doses: list<Dose>": setDose(ingredient, dose)
+			Activate "doses: list<Dose>"
+			Deactivate "doses: list<Dose>"
 		end
-		CR -> RM: r
+
 		Deactivate CR
-		RM -> User: r
 		Deactivate RM
 	end
 end
