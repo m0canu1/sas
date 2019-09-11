@@ -8,6 +8,7 @@ Class menu {
     Richiede cucina: si/no
     Buffet: si/no
     Finger food: si/no
+    
 }
 
 Class Sezione {
@@ -36,8 +37,9 @@ Class Ricetta {
 }
 
 Class Passo {
-    Titolo: testo
     Dettagli: testo
+    Originale: Passo
+
 }
 
 Class Classe {
