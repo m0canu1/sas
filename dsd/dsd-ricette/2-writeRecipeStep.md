@@ -16,21 +16,19 @@ alt ["currentRecipe == null"]
             CR -> CR: addDose(ingredient, dose)
         end
         create "s: Step"
-        CR -> "s: Step":createStep(details?)
+        CR -> "s: Step": step(details?)
         Activate "s: Step"
         opt ["details != null"]
-            "s: Step" -> "s: Step":setDetails(details)
+            "s: Step" -> "s: Step": setDetails(details)
         end
+        CR -> "s: Step": setOriginal(null)
         Deactivate "s: Step"
-        CR -> "currentRecipe.currentStep:  \ns": addStep(s)
-        Activate "currentRecipe.currentStep:  \ns"
-        Deactivate "currentRecipe.currentStep:  \ns"
+        CR -> "Steps: list<Step>": addStep(s)
+        Activate "Steps: list<Step>"
+        Deactivate "Steps: list<Step>"
     end
-    CR -> RM: r
     deactivate CR
-    RM --> User: r
-    Deactivate RM
-    
+    Deactivate RM    
 end
 
 ```

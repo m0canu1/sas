@@ -2,30 +2,26 @@
 Actor User
 Participant "CatERingAppManager.RecipeManager" as RM
 Participant "CatERingAppManager.RecipeManager: \ncurrentRecipe" as CR
-Participant "CatERingAppManager.currentRecipe.currentStep: \ns" as CS
+Participant "steps: list<Step>" as CS
 
 opt
-    User -> RM: deleteStep(recipe, step)
+    User -> RM: deleteStep(step)
     Activate RM
 
     alt ["currentRecipe == null"]
         RM --> User: throw UseCaseLogicException
     else
-        RM -> CR: deleteStep(step)
+        RM -> CR: removeStep(step)
         Activate CR
     
-        CR -> CS: deleteStep(step)
+        CR -> CS: remove(step)
         Activate CS
-        CS -> CS: delete()
-        Destroy CS
-
-        CR --> RM: recipe
+        Deactivate CS
         Deactivate CR
 
-        RM --> User: recipe
-        Deactivate RM
 
     end
+    Deactivate RM
 end
 
 ```
