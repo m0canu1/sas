@@ -22,11 +22,19 @@ Class Event {
     setCancelled(cancelled: Boolean)
     createNotes()
     addNote(text: String)
+    cancelEvent()
 }
 
 Class EventManager {
+    currentEvent: Event
     createEvent(owner: Manager)
     setCurrentEvent(e: Event)
+    selectEvent()
+    getStaffList(): list<StaffMember>
+    removeStaff()
+    removeEvent()
+    modifyInfo()
+    getEvent(): Event
     createForm()
     setForm(form: Form)
     addChef()
@@ -43,6 +51,7 @@ Class Form {
     setDate(date: Data)
     setLocation(place: String)
     setParticipants(n_part: Number)
+    modifyForm()
 }
 
 
