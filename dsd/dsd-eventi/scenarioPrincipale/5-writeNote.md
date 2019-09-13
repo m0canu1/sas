@@ -1,25 +1,19 @@
 ```plantuml
 Actor User
 Participant "CatERingAppManager.EventManager: \nEventManager" as EM 
-Participant "CatERingAppManager.EventManager: \nevent" as E
 
 opt
-    User -> EM: writeNote(event)
+    User -> EM: writeNote()
     Activate EM  
     alt [currentEvent==null]
         EM --> User: throw UseCaseLogicException
     else
-        EM -> E: writeNote(event)
-        Activate E
-
-        E -> E: setNote(text)
-        
-        E --> EM: event
-
+    loop ["fino a soddisfacimento"]
+        EM -> "Notes: list<String>": addNote(note)
+        Activate "Notes: list<String>"
+        Deactivate "Notes: list<String>"        
     end
-    Deactivate E
-
-    EM --> User: event
+    end
     Deactivate EM
 end
 

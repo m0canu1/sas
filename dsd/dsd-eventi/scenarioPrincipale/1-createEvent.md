@@ -13,23 +13,22 @@ Activate UM
 UM --> EM: user
 Deactivate UM
 
-alt [!user.isOrganizzatore()]
+alt [!user.isManager()]
     EM --> User : throw UseCaseLogicException
 else
-    create "e: Evento"
-    EM -> "e: Evento": create(user)
-    Activate "e: Evento"
-    "e: Evento" -> "e: Evento": setOwner(user)
-    "e: Evento" -> "e: Evento": setAnnullato(false)
-    "e: Evento" -> "e: Evento": setPenale(false)
-    create "Note:List<Notes>"
-    "e: Evento" -> "Note:List<Notes>": create()
-    "e: Evento" --> EM : e
-    Deactivate "e: Evento"
+    create "e: Event"
+    EM -> "e: Event": createEvent(user)
+    Activate "e: Event"
+        "e: Event" -> "e: Event": setOwner(user)
+        "e: Event" -> "e: Event": setCancelled(false)
+        "e: Event" -> "e: Event": setFine(false)
+        create "Notes: list<String>"
+        "e: Event" -> "Notes: list<String>": createNotes()
+    "e: Event" --> EM : e
+    Deactivate "e: Event"
     EM -> EM : setCurrentEvent(e)
-    EM --> User: e
-Deactivate EM
 end
+Deactivate EM
 
 
 

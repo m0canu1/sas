@@ -1,39 +1,33 @@
 ```plantuml
 Actor User
 Participant "CatERingAppManager.EventManager: \nEventManager" as EM
-Participant "CatERingAppManager.EventManager: \nevent" as E
 Participant "CatERingAppManager.StaffManager" as SM
 
-User -> EM: addStaff(event)
+User -> EM: addStaff()
 Activate EM
+
 alt [currentEvent==null]
     EM --> User: throw UseCaseLogicException
 else
-    EM -> E: addStaff(event, staff:List<StaffMember>)
-    Activate E
+    Create "staff: list<StaffMember>"
+    EM -> "staff: list<StaffMember>": createStaffList()
+    Activate "staff: list<StaffMember>"
+    "staff: list<StaffMember>" -> EM: staff_list
     
-    loop n volte
-        E -> SM: selectStaffMember(staffMember)
+    loop ["fino a soddisfacimento"]
+        EM -> SM: selectStaffMember(staff_list)
         Activate SM
         
-        SM -> SM: checkAvailability()
-        alt staffmember.available() == true
-            SM -> SM: add(staffmember, staff:List<StaffMember>)
-        else
-            
+        alt ["staffmember.isAvailable() == true"]
+            SM -> "staff: list<StaffMember>": add(staffmember)
+        else 
         end
-        SM --> E: staff:List<StaffMember>
-        Deactivate SM
-    end
-    E -> E: addStaff(event, staff:List<StaffMember>)
-    
-    E --> EM: event
-    Deactivate E
-    EM --> User: event
-    Deactivate EM
+        SM --> EM: staff_list
+    end    
+    Deactivate "staff: list<StaffMember>"
+    Deactivate SM
 end
 Deactivate EM
-Deactivate E
 
 
 

@@ -1,28 +1,23 @@
 ```plantuml
 Actor User
 Participant "CatERingAppManager.EventManager: \nEventManager" as EM
-Participant "CatERingAppManager.EventManager: \nevent" as E
-Participant "CatERingAppManager.ChefManager" as CM
+Participant "CatERingAppManager.StaffManager" as SM
+Participant "e: Event" as E
 
-User -> EM: addChef(event) 
+User -> EM: addChef() 
 Activate EM
 alt [currentEvent==null]
     EM --> User: throw UseCaseLogicException
 else
-    EM -> E: addChef(event)
-    Activate E
-    loop ["while chef.available != true"]
-        E -> CM: selectChef(chef)
-        Activate CM
-
-        CM --> E: c
-        Deactivate CM
+    loop ["while chef.isAvailable() != true"]
+        EM -> SM: selectChef()
+        Activate SM
+        SM --> EM: chef
+        Deactivate SM
     end
-    E -> E: setChef(c)
-
-    E --> EM: event
+    EM -> E: setChef(chef)
+    Activate E
     Deactivate E
-    EM --> User: event
 end
 Deactivate EM
 

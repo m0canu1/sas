@@ -1,35 +1,25 @@
 ```plantuml
 Actor User
 Participant "CatERingAppManager.EventManager:  \neventManager" as EM
-Participant "EventManager.currentEvent:  \ne" as CE
 
-
-User -> EM: defineForm(event)
+User -> EM: createForm()
 Activate EM
-alt [currentEvent==null]
+alt ["currentEvent == null"]
     EM --> User: throw UseCaseLogicException
 else
-EM -> CE: defineForm(event)
-    Activate CE   
     create "f: Form"
-    CE -> "f: Form": createForm(event)
+    EM -> "f: Form": Form()
     Activate "f: Form"
 
-    "f: Form" -> "f: Form": setDate(date)
-    "f: Form" -> "f: Form": setLuogo(String)
-    "f: Form" -> "f: Form": setPartecipants(Int)
+    "f: Form" -> "f: Form": setDate(Date)
+    "f: Form" -> "f: Form": setLocation(String)
+    "f: Form" -> "f: Form": setParticipants(Number)
 
-    "f: Form" --> CE: f
-    Deactivate
-     CE ->  CE: setForm(f)
-
-    CE --> EM: e
-    Deactivate CE   
-    
-    EM --> User: e
-    Deactivate EM
+    "f: Form" --> EM: f
+    Deactivate "f: Form"
+    EM -> EM: setForm(f)
 end
-    deactivate "f: Form"
+Deactivate EM
 
 
 
