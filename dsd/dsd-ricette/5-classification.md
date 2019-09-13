@@ -2,9 +2,8 @@
 Actor User
 Participant "CatERing.AppManager.RecipeManager: \nrecipeManager" as RM
 Participant "RecipeManager.currentRecipe: \nr" as CR
-Participant "CatERing.AppManager.ClassManager: \nclassManager" as CM
 
-User -> RM: addClassification(recipe)
+User -> RM: addClassification()
 Activate RM
 
 alt ["currentRecipe == null"]
@@ -13,21 +12,16 @@ else
 	RM -> CR: addClassification()
 	Activate CR
 
-	CR -> CM: getClass()
-	Activate CM
-
-	CM --> CR: class
-	Deactivate CM
+	CR -> "class: Class": getClassName()
+	Activate "class: Class"
+	"class: Class" -> CR: className
+	Deactivate "class: Class"
 
 	CR -> CR: setClass(class)
 	
-	CR --> RM: r
-	Deactivate CR
-
-	RM --> User: r
-	Deactivate RM
-
 end
+Deactivate CR
+Deactivate RM
 
 
 ```

@@ -2,26 +2,26 @@
 Actor User
 Participant "CatERingAppManager.RecipeManager:  \nRecipeManager" as RM
 Participant "RecipeManager.currentRecipe:  \nr" as CR
-Participant "currentRecipe.currentStep:  \ns" as CS
 
 
-User -> RM:setStepDetails(recipe, step)
+User -> RM:setStepDetails()
 Activate RM
-alt currentRecipe == null\n!currentMenu.hasRecipe(recipe)
-	CR --> User: throw UseCaseLogicException
+alt ["currentRecipe == null"]
+	RM --> User: throw UseCaseLogicException
 else
-    RM -> CR:setDetails(step)
+    RM -> CR: setStepDetails()
     Activate CR
-    loop
-            CR -> CS:setDetails(details)        
-            Activate CS
-            CS -> CS:setDetail(details)
-            CS --> CR: s
-            Deactivate CS
+    CR -> "steps: list<Step>": getSteps()
+    Activate "steps: list<Step>"
+    "steps: list<Step>" --> CR: steps
+    loop ["for each step in steps"]
+        alt ["step.getDetails() == null"]
+            CR -> "steps: list<Step>": setDetails(details)
+            Deactivate "steps: list<Step>"
+        else
+        end
     end
 end
-CR -> RM: r
 Deactivate CR
-RM -> User: r
 Deactivate RM
 ```

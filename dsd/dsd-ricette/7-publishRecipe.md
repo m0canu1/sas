@@ -3,20 +3,17 @@ Actor User
 Participant "CatERingAppManager.RecipeManager:  \nRecipeManager" as RM
 Participant "RecipeManager.currentRecipe:  \nr" as CR
 
-User -> RM: publishRecipe(recipe)
+User -> RM: publishRecipe()
 Activate RM
 
 alt ["currentRecipe == null"]
 	RM --> User: throw UseCaseLogicException
 else 
-	RM -> CR: publishRecipe()
+	RM -> CR: setPublished(true)
 	Activate CR
-	CR -> CR: setPublished(true)
-	CR -> RM: r
 	Deactivate CR
-	RM -> User: r
-	Deactivate RM
 end
+Deactivate RM
 
 
 ```
