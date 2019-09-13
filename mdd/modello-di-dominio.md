@@ -52,7 +52,8 @@ Class Scheda{
 	Numero partecipanti: numero
 }
 Class Evento {
-	Note: testo
+    Proprietario: Organizzatore
+    Note: testo
 	Penale: sì/no
 	Annullato: sì/no
 }
