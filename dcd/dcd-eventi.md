@@ -12,36 +12,51 @@ Class Event {
     owner: Manager
     fine: boolean
     cancelled: boolean
-    note: String
+    notes: List<String>
     form: Form
-    
+    chef: Chef
+    staff: list<StaffMember>
+    setChef(chef: Chef)
     setOwner(manager: Manager)
     setFine(fine: Boolean)
     setCancelled(cancelled: Boolean)
-    setNote(note: String)
+    createNotes()
+    addNote(text: String)
 }
 
 Class EventManager {
-
+    createEvent(owner: Manager)
+    setCurrentEvent(e: Event)
+    createForm()
+    setForm(form: Form)
+    addChef()
+    addStaff()
+    writeNote()
 }
 
+
 Class Form {
-    data: Date
-    place: String
+    date: Data
+    location: String
     n_participants: Number
+    Form()
+    setDate(date: Data)
+    setLocation(place: String)
+    setParticipants(n_part: Number)
 }
 
 
 Class Chef {
-
+    isAvailable(): boolean
 }
-
+    
 Class StaffMember {
-
+    isAvailable(): Boolean
 }
 
 Class StaffManager {
-
+    selectChef(): Chef
+    selectStaffMember(staff_list: list<StaffMember>): StaffMember
 }
 
 
@@ -52,7 +67,7 @@ User -- "0..n" UserManager
 Form "1" -- "1" Event
 StaffMember -- "0..n" StaffManager
 Chef -- "0..n" StaffManager
-Chef "0..n" -- "1..n" Event
+Chef "1" -- "0..n" Event
 StaffMember "0..n" -- "1..n" Event
 
 

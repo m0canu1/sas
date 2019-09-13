@@ -63,7 +63,6 @@ Class Preparazione{
 }
 
 Chef "1" -- "0..n" menu: è proprietario di >
-Evento "0..n" -- "1" Chef
 Chef "1" -- "0..n" Ricetta: Scrive >
 Cuoco "1" -- "0..n" Ricetta: Scrive >
 Evento "0..n" -- "1..n" Membro_del_Personale
@@ -89,6 +88,7 @@ Ricettario "1" -- "0...n" Procedura_in_Cucina: si trova in >
 Preparazione "0...n" -- "0...n" Procedura_in_Cucina: e ingrediente in >
 Ricetta "0..n" -- "0..n" Preparazione: e ingrediente in <
 Ricetta --> Procedura_in_Cucina
-
+Membro_del_Personale -- Cuoco
+Membro_del_Personale -- Chef
 
 ```
