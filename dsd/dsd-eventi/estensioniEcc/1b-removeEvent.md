@@ -1,27 +1,33 @@
 ```plantuml
-Actor User
-Participant "CatERingAppManager.EventManager: \nEventManager" as EM 
-Participant "CatERingAppManager.EventManager: \nevent" as E
+Actor  User
+Participant "CatERingAppManager.EventManager: \nEventManager"  as EM
+Participant "CatERingAppManager.UserManager" as UM
 
-User -> EM: removeEvent(event)
-Activate EM
-alt [currentEvent==null]
-    EM --> User: throw UseCaseLogicException
-else
-    EM -> E: removeEvent(event)
-    Activate E
+opt
+	User -> EM: selectEvent()
+	Activate EM
 
-    E -> E: setCancelled(event, true)
-    opt 
-        E -> E: setFine(event, true)
-    end
+	EM -> UM: getCurrentUser()
+	Activate UM
+	    
+	UM --> EM: user
+	Deactivate UM
+
+	EM -> "e: Event": getEvent()
+	Activate "e: Event"
+	"e: Event" -> EM: e
+
+	alt [!user.isManager()]
+	    EM --> User: throw UseCaseLogicException
+	else
+	    EM -> "e: Event": cancelEvent()
+	    "e: Event" -> "e: Event": setCancelled(true)
+	    opt 
+	    	"e: Event" -> "e: Event": setFine(true)
+	    end
+		Deactivate "e: Event"
+	end
+	Deactivate EM
 end
-E --> EM: event
-Deactivate E
-
-EM --> User: event
-Deactivate EM
-
-
 ```
 
