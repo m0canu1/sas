@@ -1,5 +1,23 @@
 ```plantuml
 
+Interface RecipeEventReceiver {
+    notifyRecipeCreated(r: Recipe)
+    notifyRecipeSelected(r: Recipe)
+    notifyStepAdded(r: Recipe, s: Step)
+    notifyStepModified(r: Recipe, s: Step)
+    notifyStepDeleted(r: Recipe, s: Step)
+    notifyStepsGrouped(r: Recipe, s: List<Step>)
+    notifyVariantAdded(r: Recipe, s: Step, s_variant: Step)
+    notifyStepDetailsAdded(r: Recipe, s: Step)
+    notifyPreparationAdded(r: Recipe, p: Preparation)
+    notifyDoseModified(r: Recipe)
+    notifyClassAdded(r: Recipe)
+    notifyRecipePublished(r: Recipe, b: Boolean)
+
+
+}
+
+
 Class RecipeManager {
 	createRecipe(): Recipe
 	createRecipe(title: String): Recipe
@@ -84,6 +102,8 @@ Class Classification {
     getClassName(): String
 }
 
+
+RecipeManager "0..n" <-- RecipeEventReceiver
 
 RecipeManager -- "0..n" Recipe: currentRecipe >
 
