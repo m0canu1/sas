@@ -25,6 +25,18 @@ Class Event {
     cancelEvent()
 }
 
+Interface EventEvReceiver{
+    notifyEventCreated(e: Event)
+    notifyEventSelected(e: Event)
+    notifyStaffRemoved(e: Event s: List<StaffMember>)
+    notifyEventCancelled(e: Event)
+    notifyInfoModified(e: Event)
+    notifyFormCreated(e: Event, f: Form)
+    notifyChefAdded(e: Event, c: Chef)
+    notifyStaffAdded(e: Event, s: List<Staff>)
+    notifyNotesWritten(e: Event)
+}
+
 Class EventManager {
     currentEvent: Event
     createEvent(owner: Manager)
@@ -68,7 +80,7 @@ Class StaffManager {
     selectStaffMember(staff_list: list<StaffMember>): StaffMember
 }
 
-
+EventEvReceiver "0..n" <-- EventManager
 
 User "1" -- "0.n" Event
 Event "1" -- "0..n" EventManager
