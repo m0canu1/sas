@@ -50,7 +50,7 @@ L'utente dev'essere registrato come una istanza \textbf{org} di Organizzatore
 \end{itemize}
 
 
-\subsection*{2. compilaScheda(evento: Evento, data: data, luogo:testo, numero-partecipanti?: numero)}
+\subsection*{2. compilaScheda(evento: Evento, data: data, luogo:testo, numero\_partecipanti?: numero)}
 
 \textbf{Pre-condizione}
 \begin{itemize}
@@ -61,7 +61,7 @@ L'utente dev'essere registrato come una istanza \textbf{org} di Organizzatore
   \item è stata creata un'istanza \textbf{s} di $Scheda$
   \item \textbf{s}.data = data
   \item \textbf{s}.luogo = luogo
-  \item \textbf{s}.numero-partecipanti = numero-partecipanti
+  \item \textbf{s}.numero\_partecipanti = numero\_partecipanti
   \item \textbf{e} contiene \textbf{s}
 \end{itemize}
 
@@ -124,7 +124,7 @@ L'utente dev'essere registrato come una istanza \textbf{org} di Organizzatore
 \textbf{Pre-condizione}
 \begin{itemize}
   \item è in corso la creazione di un $Evento$ \textbf{e}
-  \item esiste una istanza \textbf{m} di *\textit{Membro\_del\_Personale}*
+  \item esiste una istanza \textbf{m} di \textit{Membro\_del\_Personale}
 \end{itemize}
 \textbf{Post-condizione}
 \begin{itemize}
@@ -145,7 +145,7 @@ L'utente dev'essere registrato come una istanza \textbf{org} di Organizzatore
 \end{itemize}
 
 
-\subsection*{scriviNote(evento: Evento, nota: testo)}
+\subsection*{5. scriviNote(evento: Evento, nota: testo)}
 
 \textbf{Pre-condizione}
 \begin{itemize}
@@ -171,7 +171,7 @@ L'utente dev'essere registrato come una istanza \textbf{org} di Organizzatore
 \end{itemize}  
 
 
-\section{Contratti "Gestire Menù"}
+\section{Contratti "Gestire Ricette"}
 
 \subsection*{Pre-condizione generale}
 \begin{itemize}
@@ -309,7 +309,7 @@ L'utente dev'essere registrato come una istanza \textbf{org} di Organizzatore
 \textbf{Post-condizioni}
 \begin{itemize}
   \item La ricetta  \textbf{r} è stata associata ad una classe class
-  \item class.nome != null
+  \item class.nome $\neq$ null
 \end{itemize}
 
 \subsection*{6. segnaAlternativa(ricetta: Ricetta)}
