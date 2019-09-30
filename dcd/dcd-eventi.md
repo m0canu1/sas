@@ -1,13 +1,4 @@
 ```plantuml
-title: DCD per "Gestire eventi"
-Class User {
-    isManager(): boolean
-}
-
-Class UserManager {
-    getCurrentUser(): User
-}
-
 Class Event {
     owner: Manager
     fine: boolean
