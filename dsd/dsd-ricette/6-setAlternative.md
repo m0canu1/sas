@@ -1,4 +1,7 @@
 ```plantuml
+
+title: 6. setAlternative
+
 Actor User
 Participant "CatERingAppManager.RecipeManager:  \nRecipeManager" as RM
 Participant "RecipeManager.currentRecipe:  \nr" as CR

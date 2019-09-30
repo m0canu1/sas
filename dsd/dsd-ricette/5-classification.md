@@ -1,4 +1,7 @@
 ```plantuml
+
+title: 5. addClassification
+
 Actor User
 Participant "CatERing.AppManager.RecipeManager: \nrecipeManager" as RM
 Participant "RecipeManager.currentRecipe: \nr" as CR
