@@ -1,4 +1,7 @@
 ```plantuml
+
+title: 26a. insertTitle
+
 Actor User
 Participant "CatERingAppManager.RecipeManager:  \nRecipeManager" as RM
 Participant "RecipeManager.currentRecipe:  \nr" as CR

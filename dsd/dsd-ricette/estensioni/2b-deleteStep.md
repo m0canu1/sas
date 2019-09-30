@@ -1,4 +1,7 @@
 ```plantuml
+
+title: 2b. deleteStep
+
 Actor User
 Participant "CatERingAppManager.RecipeManager" as RM
 Participant "CatERingAppManager.RecipeManager: \ncurrentRecipe" as CR

@@ -1,5 +1,7 @@
 ```plantuml
 
+title: 3a. addPreparationAsIngredient
+
 Actor User
 Participant "CatERingAppManager.RecipeManager:  \nRecipeManager" as RM
 Participant "RecipeManager.currentRecipe:  \nr" as CR
