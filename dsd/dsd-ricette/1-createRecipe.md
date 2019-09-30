@@ -1,5 +1,7 @@
 ```plantuml
 
+title: DSD per "Gestire ricette"
+
 Actor User
 Participant "CatERingAppManager.RecipeManager:  \nRecipeManager" as RM
 Participant "CatERingAppManager.UserManager:  \nUserManager" as UM

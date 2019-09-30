@@ -8,7 +8,7 @@ alt
 Cuoco -> Sistema : 1. creaRicetta(titolo?)
 	Sistema --> Cuoco : ricetta
 else eccezione 1.1a
-Cuoco -> Sistema : 1. creaRicetta(titolo?)
+Cuoco -> Sistema : 1.1a.1 creaRicetta(titolo?)
 	
 	Sistema --> Cuoco : errore titolo già presente
 	destroy Sistema
@@ -41,10 +41,10 @@ loop
 			Cuoco -> Sistema : 3. segnaIndicazioni(ingredienti?, dosi?)
 			Sistema --> Cuoco : indicazioni salvate
 			alt estensione 3a
-				Cuoco -> Sistema : segnalaPreparazioneEsistente(preparazione)
+				Cuoco -> Sistema : 3a.1 segnalaPreparazioneEsistente(preparazione)
 				Sistema --> Cuoco : preparazione registrata tra gli ingredienti della ricetta
 			else Estensione 3b
-				Cuoco -> Sistema : modificaDose(ingrediente, dose)
+				Cuoco -> Sistema : 3b.1 modificaDose(ingrediente, dose)
 				Sistema --> Cuoco: modifica salvata
 			end
 	end
@@ -54,7 +54,7 @@ loop
 	Sistema --> Cuoco : salva dettagli
 
 end
-Cuoco -> Sistema : 5. classificaRicetta(nome)
+Cuoco -> Sistema : 5. classificaRicetta()
 Sistema --> Cuoco : classificazione salvata
 
 opt

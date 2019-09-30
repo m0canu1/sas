@@ -9,11 +9,12 @@ alt
 		else Estensione 1a
 			Organizzatore -> Sistema : 1a.1. scegliEvento(evento)
 			Sistema --> Organizzatore : evento
-		else Eccezione 1a.1
-			'Organizzatore -> Sistema : 1a.1 scegliEvento(evento)
-			Sistema --> Organizzatore : 1a.1a errore evento terminato
+		else Eccezione 1a.1a
+			'Organizzatore -> Sistema : 1a.1a scegliEvento(evento)
+			Sistema --> Organizzatore : 1a.1a.1 errore evento terminato
 			destroy Sistema
-			Sistema --> Organizzatore : 1a.1b errore evento non di proprietà
+        else Eccezione 1a.1b
+			Sistema --> Organizzatore : 1a.1b.1 errore evento non di proprietà
 			destroy Sistema
 	end
 	else Estensione 1b 
@@ -21,7 +22,7 @@ alt
 		Sistema --> Organizzatore: evento
 		destroy Sistema
 	else Eccezione 1b.1a
-		Sistema --> Organizzatore : 1b.1a errore evento non di proprietà
+		Sistema --> Organizzatore : 1b.1a.1 errore evento non di proprietà
 		destroy Sistema
 
 end
@@ -31,7 +32,7 @@ loop n volte
 		Sistema --> Organizzatore : scheda salvata
 	loop n volte
 		alt Estensione 2a
-			Organizzatore -> Sistema : 2a. modificaScheda(scheda)
+			Organizzatore -> Sistema : 2a.1 modificaScheda(scheda)
 			Sistema --> Organizzatore : scheda aggiornata
 		end
 	end
@@ -44,7 +45,7 @@ loop n volte
 			Organizzatore -> Sistema: 3a.1 modificaChef(chef)
 			Sistema --> Organizzatore: chef modificato
 		end
-		else Eccezione 3a.1a 
+		else Eccezione 3.1a 
 			Sistema --> Organizzatore : chef non disponibile
 			destroy Sistema
 	end
@@ -58,8 +59,8 @@ loop n volte
 		else Eccezione 4a.1a
 			Sistema --> Organizzatore : personale non disponibile
 			destroy Sistema
-		else Estensione 4b.1
-			Organizzatore -> Sistema : eliminaPersonale(personale)
+		else Estensione 4b
+			Organizzatore -> Sistema : 4b.1 eliminaPersonale(personale)
 			Sistema --> Organizzatore : personale aggiornato
 		end
 	end

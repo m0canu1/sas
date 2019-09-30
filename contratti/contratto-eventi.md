@@ -1,5 +1,5 @@
 ---
-title: Contratti per Gestire Eventi
+title: Contratti per "Gestire Eventi" e "Gestire ricette"
 ---
 
 ## Pre-condizione generale:
@@ -23,21 +23,21 @@ title: Contratti per Gestire Eventi
 **Pre-condizione:**
 
 + Pre-condizione generale.
++ *org* **è proprietario** di **e**
 
 **Post-condizione:**
 
 + viene restituita una istanza **e** di un *Evento* preesistente
-+ *org* **è proprietario** di **e**
 
 #### 1b. eliminaEvento(evento: e)
 
 **Pre-condizione:**
 
-+ L'evento e esiste
++ L'evento **e** esiste
 
 **Post-condizione:**
 
-+ L'evento e è annullato
++ L'evento **e** è annullato
 
 #### 2. compilaScheda(evento: Evento, data: data, luogo:testo, numero-partecipanti?: numero)
 
@@ -74,18 +74,19 @@ title: Contratti per Gestire Eventi
 
 **Post-condizione:**
 
-+ è stata creata un'istanza ch di  *Chef*
++ è stata creata un'istanza **c** di  *Chef*
++ **c** è associato all'evento **e**
 
-#### 3a. modificaChef(chef: Chef, chef_new: Chef)
+#### 3a. modificaChef(c: Chef, chef_new: Chef)
 
 **Pre-condizione:**
 
-+ lo chef c esiste
++ lo chef **c** esiste
 + è in corso la creazione di un *Evento* **e**
 
 **Post-condizione:**
 
-+ lo chef chef_new è associato all'evento
++ lo chef **chef_new** è associato all'evento
 
 #### 4. assegnaPersonale()
 
@@ -96,7 +97,7 @@ title: Contratti per Gestire Eventi
 **Post-condizione:**
 
 + è stata creata una istanza **m** di *Membro_del_Personale*
-+ m è associato all'evento
++ **m** è associato all'evento
 
 #### 4a. aggiungiPersonale(membro: Membro_del_Personale)
 
@@ -128,7 +129,7 @@ title: Contratti per Gestire Eventi
 
 **Post-condizione:**
 
-+ **evento**.note = testo
++ **evento**.note = nota
 
 #### (2-5)a. eliminaEvento(evento: Evento, penale: si/no)
 
@@ -141,6 +142,8 @@ title: Contratti per Gestire Eventi
 + e.annullato = sì
 + e.penale = penale
 + la compilazione è interrotta
+
+
 
 
 
