@@ -1,0 +1,367 @@
+\documentclass[14pt]{extarticle}
+
+\usepackage{mathtools}
+\usepackage{tikz}
+\usepackage{listings}
+\usepackage{amsmath}
+\usepackage{graphicx}
+% \usepackage[landscape]{geometry}
+
+
+\begin{document}
+
+\section{Contratti "Gestire Eventi"}
+\subsection*{Pre-condizione generale}
+
+L'utente dev'essere registrato come una istanza \textbf{org} di Organizzatore
+
+\subsection*{1. creaEvento()}
+
+\textbf{Pre-condizione}
+\begin{itemize}
+  \item Pre-condizione generale.
+\end{itemize}
+\textbf{Post-condizione}
+\begin{itemize}
+  \item è stata creata un'istanza \textbf{e} di $Evento$
+  \item \textit{org} \textbf{è proprietario} di \textbf{e}
+\end{itemize}
+
+\subsubsection*{1a. scegliEventoPreesistente()}
+\textbf{Pre-condizione}
+\begin{itemize}
+  \item Pre-condizione generale.
+  \item \textit{org} \textbf{è proprietario} di \textbf{e}
+\end{itemize}
+\textbf{Post-condizione}
+\begin{itemize}
+  \item viene restituita una istanza \textbf{e} di un \textit{Evento} preesistente
+\end{itemize}
+
+\subsubsection*{1b. eliminaEvento(evento: e)}
+
+\textbf{Pre-condizione}
+\begin{itemize}
+  \item L'evento \textbf{e} esiste
+\end{itemize}
+\textbf{Post-condizione}
+\begin{itemize}
+  \item L'evento \textbf{e} è annullato
+\end{itemize}
+
+
+\subsection*{2. compilaScheda(evento: Evento, data: data, luogo:testo, numero-partecipanti?: numero)}
+
+\textbf{Pre-condizione}
+\begin{itemize}
+  \item è in corso la creazione di un $Evento$ \textbf{e}
+\end{itemize} 
+\textbf{Post-condizione} 
+\begin{itemize}
+  \item è stata creata un'istanza \textbf{s} di $Scheda$
+  \item \textbf{s}.data = data
+  \item \textbf{s}.luogo = luogo
+  \item \textbf{s}.numero-partecipanti = numero-partecipanti
+  \item \textbf{e} contiene \textbf{s}
+\end{itemize}
+
+\subsubsection*{2a. modificaScheda(scheda: Scheda, data?: data, luogo: testo, numero\_partecipanti?: numero)}
+
+\textbf{Pre-condizione}
+\begin{itemize}
+  \item è in corso la creazione di un $Evento$ \textbf{e}
+\end{itemize} 
+\textbf{Post-condizione}
+\begin{itemize}
+  \item una istanza \textbf{s} di $Scheda$ è modificata
+  \item (se presente) \textbf{s}.data = data
+  \item (se presente) \textbf{s}.luogo = luogo
+  \item (se presente) \textbf{s}.numero\_partecipanti = numero\_partecipanti
+\end{itemize} 
+
+
+\subsection*{3. assegnaChef(evento: Evento, chef: Chef)}
+
+\textbf{Pre-condizione}
+\begin{itemize}
+  \item è in corso la creazione di un $Evento$ \textbf{e}
+\end{itemize}
+\textbf{Post-condizione}
+\begin{itemize}
+  \item è stata creata un'istanza \textbf{c} di  $Chef$
+  \item \textbf{c} è associato all'evento \textbf{e}
+\end{itemize}
+
+
+\subsubsection*{3a. modificaChef(c: Chef, \textit{chef\_new}: Chef)}
+
+\textbf{Pre-condizione}
+\begin{itemize}
+  \item lo chef \textbf{c} esiste
+  \item è in corso la creazione di un $Evento$ \textbf{e}
+\end{itemize}
+\textbf{Post-condizione}
+\begin{itemize}
+  \item lo chef \textbf{chef\_new} è associato all'evento
+\end{itemize}
+
+
+\subsection*{4. assegnaPersonale()}
+
+\textbf{Pre-condizione}
+\begin{itemize}
+  \item è in corso la creazione di un $Evento$ \textbf{e}
+\end{itemize}
+\textbf{Post-condizione}
+\begin{itemize}
+  \item è stata creata una istanza \textbf{m} di \textit{Membro\_del\_Personale}
+  \item \textbf{m} è associato all'evento
+\end{itemize}
+
+
+\subsubsection*{4a. aggiungiPersonale(membro: \textit{Membro\_del\_Personale})}
+
+\textbf{Pre-condizione}
+\begin{itemize}
+  \item è in corso la creazione di un $Evento$ \textbf{e}
+  \item esiste una istanza \textbf{m} di *\textit{Membro\_del\_Personale}*
+\end{itemize}
+\textbf{Post-condizione}
+\begin{itemize}
+  \item il membro del personale è aggiunto all'evento
+\end{itemize}
+
+
+\subsubsection*{4b. eliminaPersonale(membro: \textit{Membro\_del\_Personale})}
+
+\textbf{Pre-condizione}
+\begin{itemize}
+  \item è in corso la creazione di un $Evento$ \textbf{e}
+  \item membro è parte del personale dell'evento
+\end{itemize}
+\textbf{Post-condizione}
+\begin{itemize}
+  \item membro è eliminato dal personale dell'evento
+\end{itemize}
+
+
+\subsection*{scriviNote(evento: Evento, nota: testo)}
+
+\textbf{Pre-condizione}
+\begin{itemize}
+  \item l'\textbf{evento} è terminato
+\end{itemize}
+\textbf{Post-condizione}
+\begin{itemize}
+  \item \textbf{evento}.note = nota
+\end{itemize}
+
+
+\subsubsection*{(2-5)a. eliminaEvento(evento: Evento, penale: si/no)}
+
+\textbf{Pre-condizione}
+\begin{itemize}
+  \item è in corso la creazione di un $Evento$ \textbf{e}
+\end{itemize}
+\textbf{Post-condizione}
+\begin{itemize}
+  \item \textbf{e}.annullato = sì
+  \item \textbf{e}.penale = penale
+  \item la compilazione è interrotta
+\end{itemize}  
+
+
+\section{Contratti "Gestire Menù"}
+
+\subsection*{Pre-condizione generale}
+\begin{itemize}
+  \item L'utente deve essere registrato con una istanza c di cuoco o chef
+\end{itemize}
+
+\subsection*{1. creaRicetta(titolo?: testo)}
+\textbf{Pre-condizioni}
+\begin{itemize}
+  \item Pre-condizione generale
+\end{itemize}
+\textbf{Post-condizioni}
+\begin{itemize}
+  \item è stata creata una istanza \textbf{r} di ricetta
+  \item (se è specificato un titolo) \textbf{r}.titolo = titolo
+  \item \textbf{c} è proprietario di \textbf{r}
+  \item \textbf{r}.pubblicata = no
+  \item \textbf{r}.alternativa = no
+\end{itemize}
+
+\subsection*{2. scriviPassoRicetta(ricetta: Ricetta)}
+
+\textbf{Pre-condizioni} 	
+\begin{itemize}
+  \item è in corso la creazione di una ricetta  \textbf{r}
+\end{itemize}
+\textbf{Post-condizioni}
+\begin{itemize}
+  \item è stato aggiunto un passo  \textbf{p} alla ricetta
+  \item  \textbf{r} contiene  \textbf{p}
+\end{itemize}
+
+\subsubsection*{2a. modificaPasso(passo: Passo)}
+
+\textbf{Pre-condizioni}
+\begin{itemize}
+  \item è in corso la creazione di una ricetta  \textbf{r}
+  \item il passo  \textbf{p} esiste
+\end{itemize}
+\textbf{Post-condizioni}
+\begin{itemize}
+  \item un passo  \textbf{p} della ricetta è stato modificato
+  \item  \textbf{r} contiene  \textbf{p}
+\end{itemize}
+
+\subsubsection*{2b. eliminaPasso(passo: Passo)}
+
+\textbf{Pre-condizioni}
+\begin{itemize}
+  \item è in corso la creazione di una ricetta  \textbf{r}
+  \item il passo  \textbf{p} esiste
+\end{itemize}
+\textbf{Post-condizioni}
+\begin{itemize}
+  \item un passo  \textbf{p} è rimosso dalla lista di passi della ricetta
+\end{itemize}
+
+\subsubsection*{2c. selezionaPassiDaRaggruppare(lista\_p: Passo)}
+
+\textbf{Pre-condizioni}
+\begin{itemize}
+  \item è in corso la creazione di una ricetta  \textbf{r}
+\end{itemize}
+\textbf{Post-condizioni}
+\begin{itemize}
+  \item i passi  \textbf{lista\_p} selezionati della ricetta  \textbf{r} sono stati raggruppati in  \textbf{p1}
+  \item  \textbf{r} contiene  \textbf{p1}
+\end{itemize}
+
+\subsubsection*{2d. aggiungiVariante(passo: Passo)}
+
+\textbf{Pre-condizioni}
+\begin{itemize}
+  \item è in corso la creazione di una ricetta  \textbf{r}
+\end{itemize}
+\textbf{Post-condizioni}
+\begin{itemize}
+  \item un passo  \textbf{p1} variante del passo  \textbf{p} è stato aggiunto alla ricetta  \textbf{r}
+\end{itemize}
+
+\subsection*{3. segnaIndicazioni(ingredienti?: testo, dosi?: numero)}
+
+\textbf{Pre-condizioni}
+\begin{itemize}
+  \item è in corso la creazione di una ricetta  \textbf{r}
+\end{itemize}
+\textbf{Post-condizioni}
+\begin{itemize}
+  \item sono aggiunti gli ingredienti  \textbf{ingredienti} e le dosi  \textbf{dosi}
+  \item \textbf{r}.ingredienti = ingredienti
+  \item \textbf{r}.dosi = dosi
+\end{itemize}
+
+\subsubsection*{3a. segnalaPreparazioneEsistente(preparazione: Preparazione)}
+
+\textbf{Pre-condizioni}
+\begin{itemize}
+  \item è in corso la creazione di una ricetta  \textbf{r}
+\end{itemize}
+\textbf{Post-condizioni}
+\begin{itemize}
+  \item la preparazione  \textbf{preparazione} è aggiunta agli ingredienti della ricetta  \textbf{r}
+  \item \textbf{r}.ingredienti = preparazione
+\end{itemize}
+
+\subsubsection*{3b. modificaDose(ingrediente: testo, dose: numero)}
+
+\textbf{Pre-condizioni}
+\begin{itemize}
+  \item è in corso la creazione di una ricetta  \textbf{r}
+\end{itemize}
+\textbf{Post-condizioni}
+\begin{itemize}
+  \item ad  \textbf{ingrediente} viene modificata la dose
+  \item \textbf{r}.dose = dose
+\end{itemize}
+
+\subsection*{4. dettagliaPasso(passo: Passo)}
+
+\textbf{Pre-condizioni}
+\begin{itemize}
+  \item è in corso la creazione di una ricetta  \textbf{r}
+\end{itemize}
+\textbf{Post-condizioni}
+\begin{itemize}
+  \item sono stati aggiunti i dettagli al passo  \textbf{p}
+\end{itemize}
+
+\subsection*{5. classificaRicetta()}
+
+\textbf{Pre-condizioni}
+\begin{itemize}
+  \item è in corso la creazione di una ricetta  \textbf{r}
+\end{itemize}
+\textbf{Post-condizioni}
+\begin{itemize}
+  \item La ricetta  \textbf{r} è stata associata ad una classe class
+  \item class.nome != null
+\end{itemize}
+
+\subsection*{6. segnaAlternativa(ricetta: Ricetta)}
+
+\textbf{Pre-condizioni}
+\begin{itemize}
+  \item è in corso la creazione di una ricetta  \textbf{r}
+\end{itemize}
+\textbf{Post-condizioni}
+\begin{itemize}
+  \item La ricetta  \textbf{r} è stata segnalata come alternativa della Ricetta  \textbf{ricetta}
+  \item \textbf{r}.originale = ricetta
+\end{itemize}
+
+\subsubsection*{(2-6)a. inserisciTitolo(titolo: testo)}
+
+\textbf{Pre-condizioni}
+\begin{itemize}
+  \item è in corso la creazione di una ricetta  \textbf{r}
+\end{itemize}
+\textbf{Post-condizioni}
+\begin{itemize}
+  \item \textbf{r}.titolo = titolo
+\end{itemize}
+
+\subsubsection*{(2-6)b. interrompiCompilazione()}
+
+\textbf{Pre-condizioni}
+\begin{itemize}
+  \item è in corso la creazione di una ricetta  \textbf{r}
+\end{itemize}
+\textbf{Post-condizioni}
+\begin{itemize}
+  \item la ricetta  \textbf{r} viene salvata
+  \item la compilazione è interrotta
+  \item \textbf{r}.pubblicato = no
+\end{itemize}
+
+\subsection*{7. pubblicaRicetta(ricetta: Ricetta)}
+
+\textbf{Pre-condizioni}
+\begin{itemize}
+  \item è in corso la creazione di una ricetta  \textbf{r}
+\end{itemize}
+\textbf{Post-condizioni}
+\begin{itemize}
+  \item \textbf{r}.pubblicato = si
+\end{itemize}
+
+
+
+
+\end{document}
+
+
