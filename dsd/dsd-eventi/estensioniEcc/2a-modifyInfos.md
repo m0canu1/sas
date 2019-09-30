@@ -1,4 +1,7 @@
 ```plantuml
+
+title: 2a. modifyInfos
+
 Actor User
 Participant "CatERingAppManager.EventManager: \nEventManager" as EM
 Participant "f: Form" as FM

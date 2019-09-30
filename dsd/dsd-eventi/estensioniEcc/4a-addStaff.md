@@ -1,4 +1,7 @@
 ```plantuml
+
+title: 4a. addStaff
+
 Actor User
 Participant "CatERingAppManager.EventManager: \nEventManager" as EM
 Participant "CatERingAppManager.StaffManager" as SM

@@ -1,4 +1,7 @@
 ```plantuml
+
+title: 5. writeNote
+
 Actor User
 Participant "CatERingAppManager.EventManager: \nEventManager" as EM 
 

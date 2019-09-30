@@ -1,4 +1,7 @@
 ```plantuml
+
+title: 1a. selectEvent
+
 Actor  User
 Participant "CatERingAppManager.EventManager: \nEventManager"  as EM
 Participant "CatERingAppManager.UserManager" as UM

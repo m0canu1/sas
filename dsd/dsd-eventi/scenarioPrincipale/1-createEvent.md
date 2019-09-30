@@ -12,6 +12,8 @@ Activate EM
 EM -> UM: getCurrentUser()
 Activate UM
 
+title: 1. createEvent
+
 UM --> EM: user
 Deactivate UM
 
