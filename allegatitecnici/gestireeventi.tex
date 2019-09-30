@@ -1,19 +1,10 @@
-\documentclass[14pt]{extarticle}
 
-
-\begin{document}
-
-\title{Contratti}
-\date{}
-\maketitle
-
+\section{Contratti "Gestire Eventi"}
 \subsection*{Pre-condizione generale}
 
-\begin{itemize}
-  \item L'utente dev'essere registrato come una istanza \textbf{org} di Organizzatore
-\end{itemize}
+L'utente dev'essere registrato come una istanza \textbf{org} di Organizzatore
 
-\section*{1. creaEvento()}
+\subsection*{1. creaEvento()}
 
 \textbf{Pre-condizione}
 \begin{itemize}
@@ -25,7 +16,7 @@
   \item \textit{org} \textbf{è proprietario} di \textbf{e}
 \end{itemize}
 
-\subsection*{1a. scegliEventoPreesistente()}
+\subsubsection*{1a. scegliEventoPreesistente()}
 \textbf{Pre-condizione}
 \begin{itemize}
   \item Pre-condizione generale.
@@ -36,7 +27,7 @@
   \item viene restituita una istanza \textbf{e} di un \textit{Evento} preesistente
 \end{itemize}
 
-\subsection*{1b. eliminaEvento(evento: e)}
+\subsubsection*{1b. eliminaEvento(evento: e)}
 
 \textbf{Pre-condizione}
 \begin{itemize}
@@ -48,7 +39,7 @@
 \end{itemize}
 
 
-\section*{2. compilaScheda(evento: Evento, data: data, luogo:testo, numero\_partecipanti?: numero)}
+\subsection*{2. compilaScheda(evento: Evento, data: data, luogo:testo, numero\_partecipanti?: numero)}
 
 \textbf{Pre-condizione}
 \begin{itemize}
@@ -63,7 +54,7 @@
   \item \textbf{e} contiene \textbf{s}
 \end{itemize}
 
-\subsection*{2a. modificaScheda(scheda: Scheda, data?: data, luogo: testo, numero\_partecipanti?: numero)}
+\subsubsection*{2a. modificaScheda(scheda: Scheda, data?: data, luogo: testo, numero\_partecipanti?: numero)}
 
 \textbf{Pre-condizione}
 \begin{itemize}
@@ -78,7 +69,7 @@
 \end{itemize} 
 
 
-\section*{3. assegnaChef(evento: Evento, chef: Chef)}
+\subsection*{3. assegnaChef(evento: Evento, chef: Chef)}
 
 \textbf{Pre-condizione}
 \begin{itemize}
@@ -91,7 +82,7 @@
 \end{itemize}
 
 
-\subsection*{3a. modificaChef(c: Chef, \textit{chef\_new}: Chef)}
+\subsubsection*{3a. modificaChef(c: Chef, \textit{chef\_new}: Chef)}
 
 \textbf{Pre-condizione}
 \begin{itemize}
@@ -104,7 +95,7 @@
 \end{itemize}
 
 
-\section*{4. assegnaPersonale()}
+\subsection*{4. assegnaPersonale()}
 
 \textbf{Pre-condizione}
 \begin{itemize}
@@ -117,7 +108,7 @@
 \end{itemize}
 
 
-\subsection*{4a. aggiungiPersonale(membro: \textit{Membro\_del\_Personale})}
+\subsubsection*{4a. aggiungiPersonale(membro: \textit{Membro\_del\_Personale})}
 
 \textbf{Pre-condizione}
 \begin{itemize}
@@ -130,7 +121,7 @@
 \end{itemize}
 
 
-\subsection*{4b. eliminaPersonale(membro: \textit{Membro\_del\_Personale})}
+\subsubsection*{4b. eliminaPersonale(membro: \textit{Membro\_del\_Personale})}
 
 \textbf{Pre-condizione}
 \begin{itemize}
@@ -143,7 +134,7 @@
 \end{itemize}
 
 
-\section*{5. scriviNote(evento: Evento, nota: testo)}
+\subsection*{5. scriviNote(evento: Evento, nota: testo)}
 
 \textbf{Pre-condizione}
 \begin{itemize}
@@ -155,7 +146,7 @@
 \end{itemize}
 
 
-\subsection*{(2-5)a. eliminaEvento(evento: Evento, penale: si/no)}
+\subsubsection*{(2-5)a. eliminaEvento(evento: Evento, penale: si/no)}
 
 \textbf{Pre-condizione}
 \begin{itemize}
@@ -167,7 +158,5 @@
   \item \textbf{e}.penale = penale
   \item la compilazione è interrotta
 \end{itemize}  
-
-\end{document}
 
 
