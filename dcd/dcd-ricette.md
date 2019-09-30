@@ -1,5 +1,5 @@
 ```plantuml
-
+title: DCD per "Gestire ricette"
 Interface RecipeEventReceiver {
     notifyRecipeCreated(r: Recipe)
     notifyRecipeSelected(r: Recipe)

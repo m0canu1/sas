@@ -1,5 +1,5 @@
 ```plantuml
-
+title: DCD per "Gestire eventi"
 Class User {
     isManager(): boolean
 }
