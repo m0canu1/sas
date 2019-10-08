@@ -12,8 +12,6 @@ Interface RecipeEventReceiver {
     notifyDoseModified(r: Recipe)
     notifyClassAdded(r: Recipe)
     notifyRecipePublished(r: Recipe, b: Boolean)
-
-
 }
 
 
