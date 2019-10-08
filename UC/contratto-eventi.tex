@@ -10,10 +10,10 @@
 \subsection*{Pre-condizione generale}
 
 \begin{itemize}
-  \item L'utente dev'essere registrato come una istanza \textbf{org} di Organizzatore
+  \item L'attore dev'essere identificato come un'istanza \textbf{org} di Organizzatore
 \end{itemize}
 
-\section*{1. creaEvento()}
+\section*{1. creaEvento(\underline{titolo}? : testo)}
 
 \textbf{Pre-condizione}
 \begin{itemize}
@@ -22,29 +22,37 @@
 \textbf{Post-condizione}
 \begin{itemize}
   \item è stata creata un'istanza \textbf{e} di $Evento$
+  \item (se è stato specificato un \textbf{\underline{titolo}}) \textit{e.titolo} = \textbf{\underline{titolo}}
   \item \textit{org} \textbf{è proprietario} di \textbf{e}
+  \item \textit{e.pubblicato} = no
 \end{itemize}
 
-\subsection*{1a. scegliEventoPreesistente()}
+\subsection*{1a. scegliEvento(\underline{evento}: Evento)}
 \textbf{Pre-condizione}
 \begin{itemize}
   \item Pre-condizione generale.
+  % \item l'evento \textbf{e} è gia esistente
   \item \textit{org} \textbf{è proprietario} di \textbf{e}
 \end{itemize}
 \textbf{Post-condizione}
 \begin{itemize}
-  \item viene restituita una istanza \textbf{e} di un \textit{Evento} preesistente
+  \item viene restituita l'istanza \textbf{e} dell'\textit{Evento}
 \end{itemize}
 
-\subsection*{1b. eliminaEvento(evento: e)}
+NdR: Attenzione: gli errori che può dare un’operazione non sono pre-condizioni. Se una pre-condizione è falsa l’operazione non può avvenire. Nel nostro caso l’operazione avviene ma può dare errore. Se avessimo delle post-condizioni potremmo dire che in alcuni casi quelle post-condizioni non si verificano, ma in questo caso non ci sono nemmeno post-condizioni.
+
+% \subsection*{1b. eliminaEvento(\underline{evento}: Evento)}
+\subsection*{1b. anullaEvento(\underline{evento}: Evento)}
 
 \textbf{Pre-condizione}
 \begin{itemize}
-  \item L'evento \textbf{e} esiste
+%   \item L'evento \textbf{e} esiste
+  \item Pre-condizione generale
+  \item \textit{org} è proprietario di \textbf{e}
 \end{itemize}
 \textbf{Post-condizione}
 \begin{itemize}
-  \item L'evento \textbf{e} è annullato
+  \item \textit{e.annullato} = sì (non viene eliminato completamente perché si vogliono tenere i dati??)
 \end{itemize}
 
 
