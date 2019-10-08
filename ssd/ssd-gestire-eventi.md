@@ -28,45 +28,42 @@ alt
 end
 note right: Le estensioni del passo 1 possono\nessere delle alternative al passo.
 loop n volte
-	Organizzatore -> Sistema : 2. compilaScheda(scheda)
+        alt
+	    Organizzatore -> Sistema : 2. compilaScheda(scheda, data, luogo, n_partecipanti, chef, staff)
 		Sistema --> Organizzatore : scheda salvata
-	loop n volte
-		alt Estensione 2a
-			Organizzatore -> Sistema : 2a.1 modificaScheda(scheda)
+        else Estensione 2a
+			Organizzatore -> Sistema : 2a.1 modificaData(scheda, data)
 			Sistema --> Organizzatore : scheda aggiornata
-		end
-	end
-		note right: La scheda può essere modificata n\nvolte (n potrebbe essere anche 0)
-
-	loop n volte
-		Organizzatore -> Sistema : 3. assegnaChef(chef)
-			Sistema --> Organizzatore : chef aggiunto	
-		alt Estensione 3a
-			Organizzatore -> Sistema: 3a.1 modificaChef(chef)
-			Sistema --> Organizzatore: chef modificato
-		end
-		else Eccezione 3.1a 
+		else Estensione 2b 
+            Organizzatore -> Sistema : 2b.1 modificaChef(scheda, chef)
+            Sistema --> Organizzatore : scheda aggiornata
+		else Eccezione 2b.1a 
 			Sistema --> Organizzatore : chef non disponibile
-			destroy Sistema
-	end
-	note right: Il loop riesegue se uno chef\nnon è disponibile
-	loop n volte
-		Organizzatore -> Sistema : 4. assegnaPersonale(personale)
-		Sistema --> Organizzatore : personale aggiornato
-		alt Estensione 4a
-			Organizzatore -> Sistema : 4a.1 aggiungiPersonale(personale)
-			Sistema --> Organizzatore : personale aggiornato
-		else Eccezione 4a.1a
+        else Estensione 2c
+            Organizzatore -> Sistema : 2c.1 modificaLuogo(scheda, luogo)
+            Sistema --> Organizzatore: scheda aggiornata
+        else Estensione 2d
+            Sistema -> Organizzatore : 2d.1 modificaNPartecipanti(scheda, n_partecipanti)
+            Organizzatore -> Sistema : scheda aggiornata
+        else Estensione 2e
+            Organizzatore -> Sistema : 2e.1 modificaStaff(scheda, staff)
+            Sistema --> Organizzatore : scheda aggiornata
+	    else Eccezione 2e.1a
 			Sistema --> Organizzatore : personale non disponibile
-			destroy Sistema
-		else Estensione 4b
-			Organizzatore -> Sistema : 4b.1 eliminaPersonale(personale)
-			Sistema --> Organizzatore : personale aggiornato
-		end
-	end
-	note right: Il loop riesegue se il membro\ndel personale non è disponibile
+        end
+            
+		note right: La scheda può essere modificata n\nvolte
+
 end
-note right: Il loop esterno rappresenta la possibilità di ripetere i passi\n2, 3 e 4 come indicato dopo il passo 4 nello UC: "Se\ndesidera torna al passo 2, altrimenti prosegue"
+
+Organizzatore -> Sistema : 3. salvaEvento(evento)
+Sistema --> Organizzatore: evento salvato
+
+opt
+Organizzatore -> Sistema : 4. pubblicaEvento(evento)
+Sistema --> Organizzatore: evento pubblicato
+end
+
 opt
 	Organizzatore -> Sistema : 5. scriviNota(nota)
 	Sistema --> Organizzatore : nota evento salvata
