@@ -4,7 +4,7 @@
 
 ' skinparam linetype ortho
 ' skinparam linetype ortho
-skinparam dpi 400
+skinparam dpi 200
 
 
 object Menu {

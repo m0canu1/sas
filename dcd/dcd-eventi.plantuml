@@ -1,6 +1,6 @@
-@startuml
+@startuml dcd-eventi
 
-skinparam Dpi 400 dcd-eventi
+skinparam dpi 200 
 
 
 

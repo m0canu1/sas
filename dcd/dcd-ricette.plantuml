@@ -1,6 +1,6 @@
 @startuml
 
-skinparam Dpi 400 dcd-ricette
+skinparam dpi 200
 
 Interface RecipeEventReceiver {
     notifyRecipeCreated(r: Recipe)

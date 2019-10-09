@@ -1,6 +1,6 @@
 @startuml
 
-skinparam Dpi 400
+skinparam dpi 200
 
 title: DSD per "Gestire ricette"
 title: 1. createRecipe
