@@ -7,8 +7,6 @@ alt
 Cuoco -> Sistema : 1. creaRicetta(titolo?)
 	Sistema --> Cuoco : ricetta
 else eccezione 1.1a
-Cuoco -> Sistema : 1.1a.1 creaRicetta(titolo?)
-	
 	Sistema --> Cuoco : errore titolo già presente
 	destroy Sistema
 end
@@ -31,7 +29,7 @@ loop fino a soddisfacimento
             Cuoco -> Sistema : 2d.1 aggiungiVariante(passo, passo_variante)
             Sistema --> Cuoco: passo_variante associato a passo
         else Estensione 2e
-            Cuoco -> Sistema : 2e.1 aggiungiRipetizione(passo)
+            Cuoco -> Sistema : 2e.1 aggiungiRipetizione(passo, passo_ripetuto)
             Sistema --> Cuoco: passo ripetuto aggiunto
         end
 		note right: Le estensioni del passo due possono\nessere delle alternative al passo.
