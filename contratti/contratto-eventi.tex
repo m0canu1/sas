@@ -41,7 +41,6 @@
 
 %%NdR: Attenzione: gli errori che può dare un’operazione non sono pre-condizioni. Se una pre-condizione è falsa l’operazione non può avvenire. Nel nostro caso l’operazione avviene ma può dare errore. Se avessimo delle post-condizioni potremmo dire che in alcuni casi quelle post-condizioni non si verificano, ma in questo caso non ci sono nemmeno post-condizioni.
 
-% \subsection*{1b. eliminaEvento(evento: Evento)}
 \subsection*{1b.1 eliminaEvento(evento: Evento)}
 
 \textbf{Pre-condizione}
@@ -60,7 +59,7 @@
 \end{itemize}
 
 
-\section*{2. compilaScheda(evento: Evento, data: Data, luogo:testo, numero\_partecipanti: numero, chef: Chef, personale Membro\_del\_Personale)}
+\section*{2. compilaScheda(evento: Evento, data: Data, luogo:testo, numero\_partecipanti: numero)}
 
 \textbf{Pre-condizione}
 \begin{itemize}
@@ -73,11 +72,9 @@
   \item \textbf{s}.luogo = luogo
   \item \textbf{s}.numero\_partecipanti = numero\_partecipanti
   \item \textbf{e} contiene \textbf{s}
-  \item chef è associato a \textbf{e}
-  \item \textbf{e} contiene \textbf{personale}
 \end{itemize}
 
-\subsection*{2a.1 modificaData(s: Scheda, data: data)}
+\subsection*{(2-4)a.1 modificaData(s: Scheda, data: data)}
 
 \textbf{Pre-condizione}
 \begin{itemize}
@@ -91,9 +88,74 @@
   %\item (se presente) \textbf{s}.numero\_partecipanti = numero\_partecipanti
 \end{itemize} 
 
+\subsection*{(2-4)b.1 modificaLuogo(s: Scheda, luogo: Testo)}
+
+\textbf{Pre-condizione}
+\begin{itemize}
+  \item è in corso la creazione di un $Evento$ \textbf{e}
+\end{itemize} 
+\textbf{Post-condizione}
+\begin{itemize}
+  \item \textbf{s}, associata all'evento \textbf{e} di $Scheda$ è modificata
+  %\item (se presente) \textbf{s}.data = data
+  %\item Lo chef chef è assegnato a \textbf{s}
+  \item \textbf{s}.luogo = luogo
+  %\item (se presente) \textbf{s}.numero\_partecipanti = numero\_partecipanti
+\end{itemize} 
+
+\subsection*{(2-4)c.1 modificaNPartecipanti(s: Scheda, numero\_partecipanti: numero)}
+
+\textbf{Pre-condizione}
+\begin{itemize}
+  \item è in corso la creazione di un $Evento$ \textbf{e}
+\end{itemize} 
+\textbf{Post-condizione}
+\begin{itemize}
+  \item \textbf{s}, associata all'evento \textbf{e} è modificata
+  %\item (se presente) \textbf{s}.data = data
+  %\item Lo chef chef è assegnato a \textbf{s}
+  %\item \textbf{s}.luogo = luogo
+  \item \textbf{s}.numero\_partecipanti = numero\_partecipanti
+\end{itemize}
+
+\subsection*{(2-5)a. eliminaEvento(e: Evento)}
+
+\textbf{Pre-condizione}
+\begin{itemize}
+  \item è in corso la creazione di un $Evento$ \textbf{e}
+\end{itemize}
+\textbf{Post-condizione}
+\begin{itemize}
+  \item l'evento \textbf{e} è eliminato
+  \item la compilazione è interrotta
+\end{itemize}  
 
 
-\subsection*{2b.1 modificaChef(s: Scheda, c: Chef)}
+\subsection*{(2-5)b.1 annullaEvento(e: Evento)}
+
+\textbf{Pre-condizione}
+\begin{itemize}
+  \item è in corso la creazione di un $Evento$ \textbf{e}
+\end{itemize}
+\textbf{Post-condizione}
+\begin{itemize}
+  \item \textbf{e}.annullato = si;
+\end{itemize}  
+
+
+\subsection*{(2-5)b.2 impostaPenale(e: Evento, p: si/no)}
+\textbf{Pre-condizione}
+\begin{itemize}
+  \item è in corso la creazione di un $Evento$ \textbf{e}
+  \item \textbf{e} è stato annullato
+\end{itemize}
+\textbf{Post-condizione}
+\begin{itemize}
+  \item \textbf{e}.penale = p;
+  \item la compilazione è interrotta
+\end{itemize}  
+
+\subsection*{(3-4)a.1 modificaChef(s: Scheda, c: Chef)}
 
 \textbf{Pre-condizione}
 \begin{itemize}
@@ -133,37 +195,9 @@
 %  \item lo chef \textbf{chef\_new} è associato all'evento
 %\end{itemize}
 
-\subsection*{2c.1 modificaLuogo(s: Scheda, luogo: Testo)}
+ 
 
-\textbf{Pre-condizione}
-\begin{itemize}
-  \item è in corso la creazione di un $Evento$ \textbf{e}
-\end{itemize} 
-\textbf{Post-condizione}
-\begin{itemize}
-  \item \textbf{s}, associata all'evento \textbf{e} di $Scheda$ è modificata
-  %\item (se presente) \textbf{s}.data = data
-  %\item Lo chef chef è assegnato a \textbf{s}
-  \item \textbf{s}.luogo = luogo
-  %\item (se presente) \textbf{s}.numero\_partecipanti = numero\_partecipanti
-\end{itemize} 
-
-\subsection*{2d.1 modificaNPartecipanti(s: Scheda, numero\_partecipanti: numero)}
-
-\textbf{Pre-condizione}
-\begin{itemize}
-  \item è in corso la creazione di un $Evento$ \textbf{e}
-\end{itemize} 
-\textbf{Post-condizione}
-\begin{itemize}
-  \item \textbf{s}, associata all'evento \textbf{e} è modificata
-  %\item (se presente) \textbf{s}.data = data
-  %\item Lo chef chef è assegnato a \textbf{s}
-  %\item \textbf{s}.luogo = luogo
-  \item \textbf{s}.numero\_partecipanti = numero\_partecipanti
-\end{itemize} 
-
-\section*{2e.1 aggiungiPersonale(s: Scheda, m: Membro\_del\_personale)}
+\section*{4.1 assegnaPersonale(s: Scheda, m: Membro del personale)}
 
 \textbf{Pre-condizione}
 \begin{itemize}
@@ -175,8 +209,18 @@
   \item \textbf{m} è associato a $s$
 \end{itemize}
 
-\subsection*{2f.1 eliminaPersonale(m: \textit{Membro\_del\_Personale})}
+\subsection*{4a.1 aggiungiRuoloPersonale(m: \textit{Membro del Personale},\\ ruolo: Ruolo)}
+\textbf{Pre-condizione}
+\begin{itemize}
+  \item è in corso la creazione di un $Evento$ \textbf{e}
+  \item m è parte del personale dell'evento
+\end{itemize}
+\textbf{Post-condizione}
+\begin{itemize}
+  \item (DA FARE)
+\end{itemize}
 
+\subsection*{4b.1 rimuoviPersonale(m: \textit{Membro del Personale})}
 \textbf{Pre-condizione}
 \begin{itemize}
   \item è in corso la creazione di un $Evento$ \textbf{e}
@@ -187,18 +231,18 @@
   \item m è eliminato dal personale dell'evento
 \end{itemize}
 
-\section*{3. salvaEvento(e: Evento)}
+\subsection*{4c.1 aggiungiRuoloPersonale(m: \textit{Membro del Personale})}
 \textbf{Pre-condizione}
 \begin{itemize}
   \item è in corso la creazione di un $Evento$ \textbf{e}
+  \item m è parte del personale dell'evento
 \end{itemize}
 \textbf{Post-condizione}
 \begin{itemize}
-    \item l'evento è memorizzato
+  \item (DA FARE)
 \end{itemize}
 
-
-\section*{4. pubblicaEvento(e: Evento)}
+\section*{5. pubblicaEvento(e: Evento)}
 \textbf{Pre-condizione}
 \begin{itemize}
   \item è in corso la creazione di un $Evento$ \textbf{e}
@@ -208,7 +252,7 @@
     \item \textbf{e}.pubblicato = si
 \end{itemize}
 
-\section*{5. scriviNota(e: Evento, nota: testo)}
+\section*{6. scriviNota(e: Evento, nota: testo)}
 
 \textbf{Pre-condizione}
 \begin{itemize}
@@ -220,42 +264,4 @@
 \end{itemize}
 
 
-\subsection*{(2-5)a. eliminaEvento(e: Evento)}
-
-\textbf{Pre-condizione}
-\begin{itemize}
-  \item è in corso la creazione di un $Evento$ \textbf{e}
-\end{itemize}
-\textbf{Post-condizione}
-\begin{itemize}
-  \item l'evento \textbf{e} è eliminato
-  \item la compilazione è interrotta
-\end{itemize}  
-
-
-\subsection*{(2-5)b.1 annullaEvento(e: Evento)}
-
-\textbf{Pre-condizione}
-\begin{itemize}
-  \item è in corso la creazione di un $Evento$ \textbf{e}
-\end{itemize}
-\textbf{Post-condizione}
-\begin{itemize}
-  \item \textbf{e}.annullato = si;
-\end{itemize}  
-
-
-\subsection*{(2-5)b.2 impostaPenale(e: Evento, p: si/no)}
-\textbf{Pre-condizione}
-\begin{itemize}
-  \item è in corso la creazione di un $Evento$ \textbf{e}
-  \item \textbf{e} è stato annullato
-\end{itemize}
-\textbf{Post-condizione}
-\begin{itemize}
-  \item \textbf{e}.penale = p;
-  \item la compilazione è interrotta
-\end{itemize}  
 \end{document}
-
-
