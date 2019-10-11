@@ -7,18 +7,16 @@ alt
 Cuoco -> Sistema : 1. creaRicetta(titolo?)
 	Sistema --> Cuoco : ricetta
 else eccezione 1.1a
-Cuoco -> Sistema : 1.1a.1 creaRicetta(titolo?)
-	
 	Sistema --> Cuoco : errore titolo già presente
 	destroy Sistema
 end
 note right: inizialmente una ricetta può essere creata senza titolo\nche può essere inserito successivamente.
 loop fino a soddisfacimento 
 		alt 
-		Cuoco -> Sistema : 2. scriviPassoRicetta(ricetta)
+		Cuoco -> Sistema : 2. scriviPassoRicetta(ricetta, dettagli)
 		Sistema --> Cuoco : passo registrato
 		else Estensione 2a
-			Cuoco -> Sistema: 2a.1 modificaDettagliPasso(passo)
+			Cuoco -> Sistema: 2a.1 modificaDettagliPasso(passo, dettagli)
 			Sistema --> Cuoco: passo registrato 
 		else Estensione 2b
 			Cuoco -> Sistema: 2b.1 eliminaPasso(passo)
@@ -28,11 +26,11 @@ loop fino a soddisfacimento
             Cuoco -> Sistema: 2c.1 selezionaPassiDaRaggruppare()
             Sistema --> Cuoco: passi raggruppati
         else Estensione 2d
-            Cuoco -> Sistema : 2d.1 aggiungiVariante(passo)
-            Sistema --> Cuoco: passo (variante) registrato
+            Cuoco -> Sistema : 2d.1 aggiungiVariante(passo, passo_variante)
+            Sistema --> Cuoco: passo_variante associato a passo
         else Estensione 2e
-            Cuoco -> Sistema : 2e.1 aggiungiNRipetizioni(n_ripetizioni)
-            Sistema --> Cuoco: numero varianti registrato
+            Cuoco -> Sistema : 2e.1 aggiungiRipetizione(passo, passo_ripetuto)
+            Sistema --> Cuoco: passo ripetuto aggiunto
         end
 		note right: Le estensioni del passo due possono\nessere delle alternative al passo.
 end
@@ -52,8 +50,8 @@ loop
 	note right: Segnare note su ingredienti/dosi e segnalare una\npreparazione come base di una ricetta è opzionale\ne può essere ripetuto n volte.
 
 end
-Cuoco -> Sistema : 4. classificaRicetta()
-Sistema --> Cuoco : classificazione salvata
+Cuoco -> Sistema : 4. inserisciTagRicetta(tag)
+Sistema --> Cuoco : tag associato alla ricetta
 
 opt
     Cuoco -> Sistema : 5. segnaAlternativa(ricetta)

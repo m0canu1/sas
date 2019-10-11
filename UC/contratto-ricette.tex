@@ -6,9 +6,11 @@
 \date{}
 \maketitle
 
+\section*{Contratti per lo scenario principale di successo per "Gestire Ricette"}
+
 \subsection*{Pre-condizione generale}
 \begin{itemize}
-  \item L'utente deve essere registrato con una istanza c di cuoco o chef
+  \item L'utente deve essere registrato con una istanza \textbf{c} di cuoco o di chef
 \end{itemize}
 
 \section*{1. creaRicetta(titolo?: testo)}
@@ -18,6 +20,7 @@
 \end{itemize}
 \textbf{Post-condizioni}
 \begin{itemize}
+  \item l'istanza \textbf{c} di cuoco o chef è associata alla ricetta creata
   \item è stata creata una istanza \textbf{r} di ricetta
   \item (se è specificato un titolo) \textbf{r}.titolo = titolo
   \item \textbf{c} è proprietario di \textbf{r}
@@ -25,7 +28,7 @@
   \item \textbf{r}.alternativa = no
 \end{itemize}
 
-\section*{2. scriviPassoRicetta(ricetta: Ricetta)}
+\section*{2. scriviPassoRicetta(r: Ricetta, dettagli: Testo)}
 
 \textbf{Pre-condizioni} 	
 \begin{itemize}
@@ -34,71 +37,126 @@
 \textbf{Post-condizioni}
 \begin{itemize}
   \item è stato aggiunto un passo  \textbf{p} alla ricetta
+  \item p.dettagli = dettagli
   \item  \textbf{r} contiene  \textbf{p}
 \end{itemize}
 
-\subsection*{2a. modificaPasso(passo: Passo)}
+
+\section*{3. segnaIndicazioni(r:Ricetta, ingredienti?: testo, dosi?: numero)}
 
 \textbf{Pre-condizioni}
 \begin{itemize}
   \item è in corso la creazione di una ricetta  \textbf{r}
-  \item il passo  \textbf{p} esiste
 \end{itemize}
 \textbf{Post-condizioni}
 \begin{itemize}
-  \item un passo  \textbf{p} della ricetta è stato modificato
+  \item sono aggiunti gli ingredienti  \textbf{ingredienti} e le dosi  \textbf{dosi} alla ricetta \textbf{r}
+  \item (se specificati) \textbf{r}.ingredienti = ingredienti
+  \item (se specificate) \textbf{r}.dosi = dosi
+\end{itemize}
+
+
+
+\section*{4. inserisciTagRicetta(r: Ricetta, t:Tag)}
+
+\textbf{Pre-condizioni}
+\begin{itemize}
+  \item è in corso la creazione di una ricetta  \textbf{r}
+  \item il tag \textbf{t} esiste
+\end{itemize}
+\textbf{Post-condizioni}
+\begin{itemize}
+  \item La ricetta  \textbf{r} è stata associata al tag \textbf{t} 
+\end{itemize}
+
+\section*{5. segnaAlternativa(r: Ricetta, r\_originale:Ricetta)}
+
+\textbf{Pre-condizioni}
+\begin{itemize}
+  \item è in corso la creazione di una ricetta  \textbf{r}
+  \item la ricetta \textbf{r\_originale} esiste
+\end{itemize}
+\textbf{Post-condizioni}
+\begin{itemize}
+  \item La ricetta  \textbf{r} è stata segnalata come alternativa della Ricetta  \textbf{r\_originale}
+\end{itemize}
+
+\section*{6. pubblicaRicetta(r: Ricetta)}
+
+\textbf{Pre-condizioni}
+\begin{itemize}
+  \item è in corso la creazione di una ricetta  \textbf{r}
+\end{itemize}
+\textbf{Post-condizioni}
+\begin{itemize}
+  \item \textbf{r}.pubblicata = si
+\end{itemize}
+
+\section*{Contratti per le estensioni per "Gestire Ricette"}
+
+\subsection*{2a. modificaDettagliPasso(r:Ricetta, p: Passo, d: Testo)}
+
+\textbf{Pre-condizioni}
+\begin{itemize}
+  \item è in corso la creazione di una ricetta  \textbf{r}
+  \item il passo  \textbf{p} esiste e appartiene alla ricetta \textbf{r}
+\end{itemize}
+\textbf{Post-condizioni}
+\begin{itemize}
+  \item i dettagli del passo \textbf{p} della ricetta \textbf{r} sono stati modificati
+  \item p.dettagli = d;
   \item  \textbf{r} contiene  \textbf{p}
 \end{itemize}
 
-\subsection*{2b. eliminaPasso(passo: Passo)}
+\subsection*{2b. eliminaPasso(r:Ricetta, p: Passo)}
 
 \textbf{Pre-condizioni}
 \begin{itemize}
   \item è in corso la creazione di una ricetta  \textbf{r}
-  \item il passo  \textbf{p} esiste
+  \item il passo  \textbf{p} esiste e appartiene alla ricetta \textbf{r}
 \end{itemize}
 \textbf{Post-condizioni}
 \begin{itemize}
-  \item un passo  \textbf{p} è rimosso dalla lista di passi della ricetta
+  \item il passo  \textbf{p} è rimosso dalla lista di passi della ricetta \textbf{r}
 \end{itemize}
 
-\subsection*{2c. selezionaPassiDaRaggruppare(lista\_p: Passo)}
+\subsection*{2c. selezionaPassiDaRaggruppare(r:Ricetta, lista\_lp: Passo)}
 
 \textbf{Pre-condizioni}
 \begin{itemize}
   \item è in corso la creazione di una ricetta  \textbf{r}
+  \item i passi contenuti in \textbf{lista\_lp} esistono e appartengono alla ricetta \textbf{r}
 \end{itemize}
 \textbf{Post-condizioni}
 \begin{itemize}
-  \item i passi  \textbf{lista\_p} selezionati della ricetta  \textbf{r} sono stati raggruppati in  \textbf{p1}
-  \item  \textbf{r} contiene  \textbf{p1}
+  \item \textbf{p1} è una istanza di Passo
+  \item i passi della \textbf{lista\_lp} selezionati della ricetta  \textbf{r} sono stati raggruppati in \textbf{p1}
+  \item  la ricetta \textbf{r} contiene  \textbf{p1}
 \end{itemize}
 
-\subsection*{2d. aggiungiVariante(passo: Passo)}
+\subsection*{2d. aggiungiVariante(r:Ricetta, p: Passo, pv: Passo)}
 
 \textbf{Pre-condizioni}
 \begin{itemize}
   \item è in corso la creazione di una ricetta  \textbf{r}
+  \item il passo \texbf{p} appartiene a \textbf{r}
 \end{itemize}
 \textbf{Post-condizioni}
 \begin{itemize}
-  \item un passo  \textbf{p1} variante del passo  \textbf{p} è stato aggiunto alla ricetta  \textbf{r}
+  \item un passo  \textbf{pv} variante del passo  \textbf{p} è stato aggiunto alla ricetta  \textbf{r}
 \end{itemize}
 
-\section*{3. segnaIndicazioni(ingredienti?: testo, dosi?: numero)}
-
-\textbf{Pre-condizioni}
+\subsection*{2e. aggiungiRipetizione(r:Ricetta, p: Passo, pr: Passo)}
 \begin{itemize}
   \item è in corso la creazione di una ricetta  \textbf{r}
+  \item il passo \texbf{p} appartiene a \textbf{r}
 \end{itemize}
 \textbf{Post-condizioni}
 \begin{itemize}
-  \item sono aggiunti gli ingredienti  \textbf{ingredienti} e le dosi  \textbf{dosi}
-  \item \textbf{r}.ingredienti = ingredienti
-  \item \textbf{r}.dosi = dosi
+  \item un passo  \textbf{pr} ripetizione del passo  \textbf{p} è stato aggiunto alla ricetta  \textbf{r}
 \end{itemize}
 
-\subsection*{3a. segnalaPreparazioneEsistente(preparazione: Preparazione)}
+\subsection*{3a. segnalaPreparazioneEsistente(r:Ricetta, preparazione: Preparazione)}
 
 \textbf{Pre-condizioni}
 \begin{itemize}
@@ -110,54 +168,20 @@
   \item \textbf{r}.ingredienti = preparazione
 \end{itemize}
 
-\subsection*{3b. modificaDose(ingrediente: testo, dose: numero)}
+\subsection*{3b. modificaDose(r:Ricetta, ingr: testo, dose: numero)}
 
 \textbf{Pre-condizioni}
 \begin{itemize}
   \item è in corso la creazione di una ricetta  \textbf{r}
+  \item l'ingrediente \textbf{ingr} di cui si vuole modificare la dose esiste in \textbf{r}
 \end{itemize}
 \textbf{Post-condizioni}
 \begin{itemize}
-  \item ad  \textbf{ingrediente} viene modificata la dose
+  \item La dose \textbf{dose} dell'ingrediente \textbf{ingr} nella ricetta \textbf{r} è modificata
   \item \textbf{r}.dose = dose
 \end{itemize}
 
-\section*{4. dettagliaPasso(passo: Passo)}
-
-\textbf{Pre-condizioni}
-\begin{itemize}
-  \item è in corso la creazione di una ricetta  \textbf{r}
-\end{itemize}
-\textbf{Post-condizioni}
-\begin{itemize}
-  \item sono stati aggiunti i dettagli al passo  \textbf{p}
-\end{itemize}
-
-\section*{5. classificaRicetta()}
-
-\textbf{Pre-condizioni}
-\begin{itemize}
-  \item è in corso la creazione di una ricetta  \textbf{r}
-\end{itemize}
-\textbf{Post-condizioni}
-\begin{itemize}
-  \item La ricetta  \textbf{r} è stata associata ad una classe class
-  \item class.nome $\neq$ null
-\end{itemize}
-
-\section*{6. segnaAlternativa(ricetta: Ricetta)}
-
-\textbf{Pre-condizioni}
-\begin{itemize}
-  \item è in corso la creazione di una ricetta  \textbf{r}
-\end{itemize}
-\textbf{Post-condizioni}
-\begin{itemize}
-  \item La ricetta  \textbf{r} è stata segnalata come alternativa della Ricetta  \textbf{ricetta}
-  \item \textbf{r}.originale = ricetta
-\end{itemize}
-
-\subsection*{(2-6)a. inserisciTitolo(titolo: testo)}
+\subsection*{(2-5)a. inserisciTitolo(r:Ricetta, titolo: testo)}
 
 \textbf{Pre-condizioni}
 \begin{itemize}
@@ -168,7 +192,7 @@
   \item \textbf{r}.titolo = titolo
 \end{itemize}
 
-\subsection*{(2-6)b. interrompiCompilazione()}
+\subsection*{(2-5)b. interrompiCompilazione(r:Ricetta)}
 
 \textbf{Pre-condizioni}
 \begin{itemize}
@@ -178,18 +202,7 @@
 \begin{itemize}
   \item la ricetta  \textbf{r} viene salvata
   \item la compilazione è interrotta
-  \item \textbf{r}.pubblicato = no
-\end{itemize}
-
-\section*{7. pubblicaRicetta(ricetta: Ricetta)}
-
-\textbf{Pre-condizioni}
-\begin{itemize}
-  \item è in corso la creazione di una ricetta  \textbf{r}
-\end{itemize}
-\textbf{Post-condizioni}
-\begin{itemize}
-  \item \textbf{r}.pubblicato = si
+  \item \textbf{r}.pubblicata = no
 \end{itemize}
 
 
