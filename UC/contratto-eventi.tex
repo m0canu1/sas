@@ -60,7 +60,7 @@
 \end{itemize}
 
 
-\section*{2. compilaScheda(evento: Evento, data: Data, luogo:testo, numero\_partecipanti: numero, chef: Chef, personale Membro\_del\_Personale)}
+\section*{2. compilaScheda(e: Evento, data: Data, luogo:testo, numero\_partecipanti: numero, chef: Chef, personale Membro\_del\_Personale)}
 
 \textbf{Pre-condizione}
 \begin{itemize}
@@ -77,7 +77,7 @@
   \item \textbf{e} contiene \textbf{personale}
 \end{itemize}
 
-\subsection*{2a.1 modificaData(s: Scheda, data: data)}
+\subsection*{2a.1 modificaData(e:Evento, s: Scheda, data: data)}
 
 \textbf{Pre-condizione}
 \begin{itemize}
@@ -93,7 +93,7 @@
 
 
 
-\subsection*{2b.1 modificaChef(s: Scheda, c: Chef)}
+\subsection*{2b.1 modificaChef(e:Evento, s: Scheda, c: Chef)}
 
 \textbf{Pre-condizione}
 \begin{itemize}
@@ -133,7 +133,7 @@
 %  \item lo chef \textbf{chef\_new} è associato all'evento
 %\end{itemize}
 
-\subsection*{2c.1 modificaLuogo(s: Scheda, luogo: Testo)}
+\subsection*{2c.1 modificaLuogo(e:Evento, s: Scheda, luogo: Testo)}
 
 \textbf{Pre-condizione}
 \begin{itemize}
@@ -148,7 +148,7 @@
   %\item (se presente) \textbf{s}.numero\_partecipanti = numero\_partecipanti
 \end{itemize} 
 
-\subsection*{2d.1 modificaNPartecipanti(s: Scheda, numero\_partecipanti: numero)}
+\subsection*{2d.1 modificaNPartecipanti(e:Evento, s: Scheda, numero\_partecipanti: numero)}
 
 \textbf{Pre-condizione}
 \begin{itemize}
@@ -163,7 +163,7 @@
   \item \textbf{s}.numero\_partecipanti = numero\_partecipanti
 \end{itemize} 
 
-\section*{2e.1 modificaStaff(s: Scheda, m: Membro\_del\_personale)}
+\section*{2e.1 modificaStaff(e:Evento, s: Scheda, m: Membro\_del\_personale)}
 
 \textbf{Pre-condizione}
 \begin{itemize}
@@ -175,7 +175,7 @@
   \item \textbf{m} è associato a $s$
 \end{itemize}
 
-\subsection*{2f.1 eliminaPersonale(m: \textit{Membro\_del\_Personale})}
+\subsection*{2f.1 eliminaPersonale(e:Evento, m: \textit{Membro\_del\_Personale})}
 
 \textbf{Pre-condizione}
 \begin{itemize}
