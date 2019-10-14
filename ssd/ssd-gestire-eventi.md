@@ -22,69 +22,70 @@ alt
 		Sistema --> Organizzatore: evento
 		destroy Sistema
 	else Eccezione 1b.1a
-		Sistema --> Organizzatore : 1b.1a.1 errore evento non di proprietà
+		Sistema --> Organizzatore : 1b.1a.1 errore evento non di proprietà dell'utente
 		destroy Sistema
 
 end
-note right: Le estensioni del passo 1 possono\nessere delle alternative al passo.
-    loop 
-            alt
-    	    Organizzatore -> Sistema : 2. compilaScheda(scheda, data, luogo, n_partecipanti, chef, staff)
-    		Sistema --> Organizzatore : scheda salvata
-            else Estensione 2a
-    			Organizzatore -> Sistema : 2a.1 modificaData(scheda, data)
-    			Sistema --> Organizzatore : scheda aggiornata
-    		else Estensione 2b 
-                Organizzatore -> Sistema : 2b.1 modificaChef(scheda, chef)
-                Sistema --> Organizzatore : scheda aggiornata
-    		else Eccezione 2b.1a 
-    			Sistema --> Organizzatore : chef non disponibile
-            else Estensione 2c
-                Organizzatore -> Sistema : 2c.1 modificaLuogo(scheda, luogo)
-                Sistema --> Organizzatore: scheda aggiornata
-            else Estensione 2d
-                Organizzatore -> Sistema : 2d.1 modificaNPartecipanti(scheda, n_partecipanti)
-                Sistema --> Organizzatore : scheda aggiornata
-            else Estensione 2e
-                Organizzatore -> Sistema : 2e.1 modificaStaff(scheda, staff)
-                Sistema --> Organizzatore : scheda aggiornata
-    	    else Eccezione 2e.1a
-    			Sistema --> Organizzatore : personale non disponibile
-            else Estensione 2f
-                Organizzatore -> Sistema : eliminaPersonale(membro)
-                Sistema --> Organizzatore : personale aggiornato
-            end
-                
-    		note right: La scheda può essere modificata n\nvolte
-    
+note right: Le estensioni del passo 1 possono\nessere delle alternative al passo. 
+   	Organizzatore -> Sistema : 2. compilaScheda( data, luogo, n_partecipanti)
+ 	Sistema --> Organizzatore : scheda salvata
+    alt
+        Organizzatore -> Sistema : 3. assegnaChef(chef)
+        Sistema --> Organizzatore: chef assegnato
+    else Eccezione 3.1a
+        Sistema --> Organizzatore: chef non disponibile, ripeti passo 3
     end
-    
-    Organizzatore -> Sistema : 3. salvaEvento(evento)
-    Sistema --> Organizzatore: evento salvato
-    
+loop Fino a soddisfacimento
     opt
-    Organizzatore -> Sistema : 4. pubblicaEvento(evento)
-    Sistema --> Organizzatore: evento pubblicato
+        alt
+            Organizzatore -> Sistema : 4. assegnaMembroDelPersonale(membro_del_personale)
+            Sistema --> Organizzatore: membro del personale assegnato
+        else Estensione 4a
+            Organizzatore -> Sistema : 4a. aggiungiRuolo(ruolo, membro_del_personale)
+            Sistema --> Organizzatore: ruolo assegnato al membro del personale
+        else Estensione 4b 
+            Organizzatore -> Sistema : 4b. rimuoviMembro(membro_del_personale)
+            Sistema --> Organizzatore: membro rimosso
+        else Estensione 4c
+            Organizzatore -> Sistema : 4c. rimuoviRuolo(ruolo, membro_del_personale)
+            Sistema --> Organizzatore: assegnamento rimosso
+        else Eccezione 4.1a
+            Sistema --> Organizzatore: membro del personale non disponibile
+        end
     end
-    
-    opt
-    	Organizzatore -> Sistema : 5. scriviNota(nota)
-    	Sistema --> Organizzatore : nota evento salvata
-    end
-    note right: Non è obbligatorio aggiungere una nota all'evento\n
-    
-opt Estensione (2-5)a
+end
+
+alt Estensione (2-4)a
+    Organizzatore -> Sistema: (2-4)a.1 modificaDataEvento(scheda, data)
+    Sistema --> Organizzatore: data nella scheda cambiata
+else Estensione (2-4)b
+    Organizzatore -> Sistema: (2-4)b.1 modificaLuogoEvento(schedda, luogo)
+    Sistema --> Organizzatore: luogo nella scheda cambiato
+else Estensione (2-4)c
+    Organizzatore -> Sistema: (2-5)c.1 modificaNPartecipanti(scheda, n_partecipanti)
+    Sistema --> Organizzatore: numero partecipanti nella scheda cambiato
+end
+alt Estensione (3-4)a
+    Organizzatore -> Sistema: (3-4)a.1 modificaChef(chef)
+    Sistema --> Organizzatore: chef modificato
+else Eccezione (3-4)a.1
+    Sistema --> Organizzatore: chef non disponibile, errore
+end    
+alt Estensione (2-5)a
     	Organizzatore -> Sistema : (2-5)a.1 eliminaEvento(evento)
     	Sistema --> Organizzatore : evento
     	destroy Sistema
-end
-opt  Estensione (2-5)b
+else  Estensione (2-5)b
     	Organizzatore -> Sistema : (2-5)b.1 annullaEvento(evento)
     	Sistema --> Organizzatore : evento annullato
         opt
             Organizzatore -> Sistema : (2-5)b.2 impostaPenale(penale)
             Sistema --> Organizzatore : penale impostata
         end
+else  Estensione (2-5)c
+        Organizzatore -> Sistema : (2-5)c.1 scriviNote(testo)
+        Sistema --> Organizzatore : note salvate
 end
+
 note right: Non prevede l'errore di proprietà\nperché, se arrivato a questo punto,\nl'utente è il proprietario.
 ```
