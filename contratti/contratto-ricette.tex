@@ -6,7 +6,7 @@
 \date{}
 \maketitle
 
-\section*{Contratti per lo scenario principale di successo per "Gestire Ricette"}
+\subsection*{Contratti per lo scenario principale di successo per "Gestire Ricette"}
 
 \subsection*{Pre-condizione generale}
 \begin{itemize}
@@ -69,19 +69,7 @@
   \item La ricetta  \textbf{r} è stata associata al tag \textbf{t} 
 \end{itemize}
 
-\section*{5. segnaAlternativa(r: Ricetta, r\_originale:Ricetta)}
-
-\textbf{Pre-condizioni}
-\begin{itemize}
-  \item è in corso la creazione di una ricetta  \textbf{r}
-  \item la ricetta \textbf{r\_originale} esiste
-\end{itemize}
-\textbf{Post-condizioni}
-\begin{itemize}
-  \item La ricetta  \textbf{r} è stata segnalata come alternativa della Ricetta  \textbf{r\_originale}
-\end{itemize}
-
-\section*{6. pubblicaRicetta(r: Ricetta)}
+\section*{5. pubblicaRicetta(r: Ricetta)}
 
 \textbf{Pre-condizioni}
 \begin{itemize}
@@ -139,7 +127,7 @@
 \textbf{Pre-condizioni}
 \begin{itemize}
   \item è in corso la creazione di una ricetta  \textbf{r}
-  \item il passo \texbf{p} appartiene a \textbf{r}
+  \item il passo \textbf{p} appartiene a \textbf{r}
 \end{itemize}
 \textbf{Post-condizioni}
 \begin{itemize}
@@ -149,7 +137,7 @@
 \subsection*{2e. aggiungiRipetizione(r:Ricetta, p: Passo, pr: Passo)}
 \begin{itemize}
   \item è in corso la creazione di una ricetta  \textbf{r}
-  \item il passo \texbf{p} appartiene a \textbf{r}
+  \item il passo \textbf{p} appartiene a \textbf{r}
 \end{itemize}
 \textbf{Post-condizioni}
 \begin{itemize}
@@ -181,7 +169,7 @@
   \item \textbf{r}.dose = dose
 \end{itemize}
 
-\subsection*{(2-5)a. inserisciTitolo(r:Ricetta, titolo: testo)}
+\subsection*{(2-4)a. inserisciTitolo(r:Ricetta, titolo: testo)}
 
 \textbf{Pre-condizioni}
 \begin{itemize}
@@ -192,7 +180,19 @@
   \item \textbf{r}.titolo = titolo
 \end{itemize}
 
-\subsection*{(2-5)b. interrompiCompilazione(r:Ricetta)}
+\section*{(2-4)b. segnaAlternativa(r: Ricetta, r\_originale:Ricetta)}
+
+\textbf{Pre-condizioni}
+\begin{itemize}
+  \item è in corso la creazione di una ricetta  \textbf{r}
+  \item la ricetta \textbf{r\_originale} esiste
+\end{itemize}
+\textbf{Post-condizioni}
+\begin{itemize}
+  \item La ricetta  \textbf{r} è stata segnalata come alternativa della Ricetta  \textbf{r\_originale}
+\end{itemize}
+
+\subsection*{(2-5)aW. interrompiCompilazione(r:Ricetta)}
 
 \textbf{Pre-condizioni}
 \begin{itemize}
@@ -204,6 +204,8 @@
   \item la compilazione è interrotta
   \item \textbf{r}.pubblicata = no
 \end{itemize}
+
+
 
 
 \end{document}
