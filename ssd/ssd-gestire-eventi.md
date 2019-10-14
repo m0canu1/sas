@@ -71,6 +71,10 @@ alt Estensione (3-4)a
 else Eccezione (3-4)a.1
     Sistema --> Organizzatore: chef non disponibile, errore
 end    
+opt
+    Organizzatore -> Sistema: 5. pubblicaEvento(evento)
+    Sistema --> Organizzatore: evento pubblicato
+end
 alt Estensione (2-5)a
     	Organizzatore -> Sistema : (2-5)a.1 eliminaEvento(evento)
     	Sistema --> Organizzatore : evento

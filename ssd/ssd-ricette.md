@@ -68,8 +68,8 @@ end
 Cuoco -> Sistema : 5. pubblicaRicetta(ricetta)
 Sistema --> Cuoco : ricetta pubblicata
 
-alt Estensione (2-5)b
-	Cuoco -> Sistema :(2-5)b.1 interrompiCompilazione(ricetta)
+alt Estensione (2-5)a
+	Cuoco -> Sistema :(2-5)a.1 interrompiCompilazione(ricetta)
 	Sistema --> Cuoco : modifiche salvate e interruzione
 end
 note right: Si può interrompere la compilazione e salvare\nle modifiche in qualunque momento.
