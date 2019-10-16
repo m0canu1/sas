@@ -62,7 +62,7 @@ else Estensione (2-4)b
     Organizzatore -> Sistema: (2-4)b.1 modificaLuogoEvento(schedda, luogo)
     Sistema --> Organizzatore: luogo nella scheda cambiato
 else Estensione (2-4)c
-    Organizzatore -> Sistema: (2-5)c.1 modificaNPartecipanti(scheda, n_partecipanti)
+    Organizzatore -> Sistema: (2-4)c.1 modificaNPartecipanti(scheda, n_partecipanti)
     Sistema --> Organizzatore: numero partecipanti nella scheda cambiato
 end
 alt Estensione (3-4)a
