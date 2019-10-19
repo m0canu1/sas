@@ -3,9 +3,14 @@
 
 \begin{document}
 
-\title{Contratti}
+\title{Contratti "Gestire Eventi"}
 \date{}
 \maketitle
+
+
+\begin{center}
+  \section*{Contratti scenario principale di successo}
+\end{center}
 
 \subsection*{Pre-condizione generale}
 
@@ -26,37 +31,6 @@
   \item \textit{e.pubblicato} = no
 \end{itemize}
 
-\subsection*{1a.1 scegliEvento(evento: Evento)}
-\textbf{Pre-condizione}
-\begin{itemize}
-  % \item Pre-condizione generale.
-  \item ---
-  % \item \textit{org} \textbf{è proprietario} di \textbf{e}
-\end{itemize}
-\textbf{Post-condizione}
-\begin{itemize}
-  % \item viene restituita l'istanza \textbf{e} dell'\textit{Evento}
-  \item ---
-\end{itemize}
-
-%%NdR: Attenzione: gli errori che può dare un’operazione non sono pre-condizioni. Se una pre-condizione è falsa l’operazione non può avvenire. Nel nostro caso l’operazione avviene ma può dare errore. Se avessimo delle post-condizioni potremmo dire che in alcuni casi quelle post-condizioni non si verificano, ma in questo caso non ci sono nemmeno post-condizioni.
-
-\subsection*{1b.1 eliminaEvento(evento: Evento)}
-
-\textbf{Pre-condizione}
-\begin{itemize}
-  % \item Pre-condizione generale
-  \item ---
-  % \item \textit{org} è proprietario di \textbf{e}
-\end{itemize}
-\textbf{Post-condizione} Se \textit{org} è \textbf{proprietario} di evento
-\begin{itemize}
-  % \item \textit{e.annullato} = sì (non viene eliminato completamente perché si vogliono tenere i dati??)
-  \item il Foglio Riepilogativo \textit{foglio\_riepilogativo} che si riferisce a evento è eliminato
-  \item la Scheda \textit{scheda} associata a evento è eliminata
-  \item lo Chef \textit{chef} incaricato dell'evento non è più assegnato all'evento
-  \item Ogni istanza di Membro\_del\_Personale \textit{personale} previsto per evento non è più associata all'evento
-\end{itemize}
 
 \section*{2. compilaScheda(e: Evento, data: Data, luogo:testo, numero\_partecipanti: numero)}
 
@@ -101,39 +75,99 @@
   \item \textbf{s}.numero\_partecipanti = numero\_partecipanti
 \end{itemize} 
 
-\subsection*{4a.1 aggiungiRuoloPersonale(m: \textit{Membro del Personale}, ruolo: Ruolo)}
+
+\section*{5. pubblicaEvento(e: Evento)}
 \textbf{Pre-condizione}
 \begin{itemize}
   \item è in corso la creazione di un $Evento$ \textbf{e}
-  \item m è parte del personale dell'evento
 \end{itemize}
 \textbf{Post-condizione}
 \begin{itemize}
-  \item il membro del personale \textbf{m} dell'evento \textbf{e} è associato al ruolo \textbf{r} per l'evento
+    \item \textbf{e}.pubblicato = si
 \end{itemize}
 
+\newpage
+\begin{center}
+  \section*{Contratti per le estensioni}
+\end{center}
 
-\subsection*{4b.1 rimuoviPersonale(m: \textit{Membro del Personale})}
+\subsection*{1a.1 scegliEvento(evento: Evento)}
+\textbf{Pre-condizione}
+\begin{itemize}
+  % \item Pre-condizione generale.
+  \item ---
+  % \item \textit{org} \textbf{è proprietario} di \textbf{e}
+\end{itemize}
+\textbf{Post-condizione}
+\begin{itemize}
+  % \item viene restituita l'istanza \textbf{e} dell'\textit{Evento}
+  \item ---
+\end{itemize}
+
+%%NdR: Attenzione: gli errori che può dare un’operazione non sono pre-condizioni. Se una pre-condizione è falsa l’operazione non può avvenire. Nel nostro caso l’operazione avviene ma può dare errore. Se avessimo delle post-condizioni potremmo dire che in alcuni casi quelle post-condizioni non si verificano, ma in questo caso non ci sono nemmeno post-condizioni.
+
+\subsection*{1b.1 eliminaEvento(evento: Evento)}
+
+\textbf{Pre-condizione}
+\begin{itemize}
+  % \item Pre-condizione generale
+  \item ---
+  % \item \textit{org} è proprietario di \textbf{e}
+\end{itemize}
+\textbf{Post-condizione} Se \textit{org} è \textbf{proprietario} di evento
+\begin{itemize}
+  % \item \textit{e.annullato} = sì (non viene eliminato completamente perché si vogliono tenere i dati??)
+  \item il Foglio Riepilogativo \textit{foglio\_riepilogativo} che si riferisce a evento è eliminato
+  \item la Scheda \textit{scheda} associata a evento è eliminata
+  \item lo Chef \textit{chef} incaricato dell'evento non è più assegnato all'evento
+  \item Ogni istanza di Membro\_del\_Personale \textit{personale} previsto per evento non è più associata all'evento
+\end{itemize}
+
+\subsection*{(2-5)a.1 eliminaEvento(e: Evento)}
+
 \textbf{Pre-condizione}
 \begin{itemize}
   \item è in corso la creazione di un $Evento$ \textbf{e}
-  \item m è parte del personale dell'evento
 \end{itemize}
 \textbf{Post-condizione}
 \begin{itemize}
-  \item m è eliminato dal personale dell'evento
-\end{itemize}
+  \item l'evento \textbf{e} è eliminato
+  \item la compilazione è interrotta
+\end{itemize}  
 
-\subsection*{4c.1 rimuoviRuoloPersonale(m: \textit{Membro del Personale})}
+
+\subsection*{(2-5)b.1 annullaEvento(e: Evento)}
+
 \textbf{Pre-condizione}
 \begin{itemize}
   \item è in corso la creazione di un $Evento$ \textbf{e}
-  \item m è parte del personale dell'evento
-  \item m è associato ad un ruolo \textbf{r} per l'evento
 \end{itemize}
 \textbf{Post-condizione}
 \begin{itemize}
-  \item il membro del personale \textbf{m} non è più associato al ruolo \textbf{r} per l'evento \textbf{e} 
+  \item \textbf{e}.annullato = si;
+\end{itemize}  
+
+
+\subsection*{(2-5)b.2 impostaPenale(e: Evento, p: si/no)}
+\textbf{Pre-condizione}
+\begin{itemize}
+  \item è in corso la creazione di un $Evento$ \textbf{e}
+  \item \textbf{e} è stato annullato
+\end{itemize}
+\textbf{Post-condizione}
+\begin{itemize}
+  \item \textbf{e}.penale = p;
+  \item la compilazione è interrotta
+\end{itemize}  
+
+\section*{(2-5)c.1 scriviNota(e: Evento, nota: testo)}
+\textbf{Pre-condizione}
+\begin{itemize}
+  \item L'evento \textbf{e} è terminato
+\end{itemize}
+\textbf{Post-condizione}
+\begin{itemize}
+  \item \textbf{e}.note = nota
 \end{itemize}
 
 \subsection*{(2-4)a.1 modificaData(s: Scheda, data: data)}
@@ -183,61 +217,40 @@
   \item Lo chef c è assegnato a \textbf{s}
 \end{itemize}
 
-\section*{5. pubblicaEvento(e: Evento)}
+
+\subsection*{4a.1 aggiungiRuoloPersonale(m: \textit{Membro del Personale}, ruolo: Ruolo)}
 \textbf{Pre-condizione}
 \begin{itemize}
   \item è in corso la creazione di un $Evento$ \textbf{e}
+  \item m è parte del personale dell'evento
 \end{itemize}
 \textbf{Post-condizione}
 \begin{itemize}
-    \item \textbf{e}.pubblicato = si
+  \item il membro del personale \textbf{m} dell'evento \textbf{e} è associato al ruolo \textbf{r} per l'evento
 \end{itemize}
 
-\subsection*{(2-5)a.1 eliminaEvento(e: Evento)}
 
+\subsection*{4b.1 rimuoviPersonale(m: \textit{Membro del Personale})}
 \textbf{Pre-condizione}
 \begin{itemize}
   \item è in corso la creazione di un $Evento$ \textbf{e}
+  \item m è parte del personale dell'evento
 \end{itemize}
 \textbf{Post-condizione}
 \begin{itemize}
-  \item l'evento \textbf{e} è eliminato
-  \item la compilazione è interrotta
-\end{itemize}  
+  \item m è eliminato dal personale dell'evento
+\end{itemize}
 
-
-\subsection*{(2-5)b.1 annullaEvento(e: Evento)}
-
+\subsection*{4c.1 rimuoviRuoloPersonale(m: \textit{Membro del Personale})}
 \textbf{Pre-condizione}
 \begin{itemize}
   \item è in corso la creazione di un $Evento$ \textbf{e}
+  \item m è parte del personale dell'evento
+  \item m è associato ad un ruolo \textbf{r} per l'evento
 \end{itemize}
 \textbf{Post-condizione}
 \begin{itemize}
-  \item \textbf{e}.annullato = si;
-\end{itemize}  
-
-
-\subsection*{(2-5)b.2 impostaPenale(e: Evento, p: si/no)}
-\textbf{Pre-condizione}
-\begin{itemize}
-  \item è in corso la creazione di un $Evento$ \textbf{e}
-  \item \textbf{e} è stato annullato
-\end{itemize}
-\textbf{Post-condizione}
-\begin{itemize}
-  \item \textbf{e}.penale = p;
-  \item la compilazione è interrotta
-\end{itemize}  
-
-\section*{(2-5)c.1 scriviNota(e: Evento, nota: testo)}
-\textbf{Pre-condizione}
-\begin{itemize}
-  \item L'evento \textbf{e} è terminato
-\end{itemize}
-\textbf{Post-condizione}
-\begin{itemize}
-  \item \textbf{e}.note = nota
+  \item il membro del personale \textbf{m} non è più associato al ruolo \textbf{r} per l'evento \textbf{e} 
 \end{itemize}
 
 
