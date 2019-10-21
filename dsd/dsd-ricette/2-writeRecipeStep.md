@@ -6,29 +6,24 @@ Actor User
 Participant "CatERingAppManager.RecipeManager:  \nRecipeManager" as RM
 Participant "RecipeManager.currentRecipe:  \nr" as CR
 
-User -> RM: writeRecipeStep(recipe)
+User -> RM: writeRecipeStep(details?)
 Activate RM
-RM -> CR: writeStep()
+RM -> CR: writeStep(details?)
 activate CR
 alt ["currentRecipe == null"]
     CR --> User: throw UseCaseLogicException
-    loop forever
-        CR -> CR: addIngredients(ingredient)
-        opt
-            CR -> CR: addDose(ingredient, dose)
-        end
         create "s: Step"
         CR -> "s: Step": step(details?)
         Activate "s: Step"
         opt ["details != null"]
             "s: Step" -> "s: Step": setDetails(details)
         end
-        CR -> "s: Step": setOriginal(null)
+        "s: Step" --> CR: s
         Deactivate "s: Step"
         CR -> "Steps: list<Step>": addStep(s)
         Activate "Steps: list<Step>"
         Deactivate "Steps: list<Step>"
-    end
+        CR --> RM: notifyRecipeUpdated(r)
     deactivate CR
     Deactivate RM    
 end

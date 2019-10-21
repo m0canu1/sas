@@ -6,7 +6,7 @@ Actor User
 Participant "CatERingAppManager.RecipeManager:  \nRecipeManager" as RM
 Participant "RecipeManager.currentRecipe:  \nr" as CR
 
-User -> RM: publishRecipe()
+User -> RM: publishRecipe(r)
 Activate RM
 
 alt ["currentRecipe == null"]
@@ -14,6 +14,7 @@ alt ["currentRecipe == null"]
 else 
 	RM -> CR: setPublished(true)
 	Activate CR
+    CR --> RM: notifyRecipeUpdated(r)
 	Deactivate CR
 end
 Deactivate RM

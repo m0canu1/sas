@@ -13,7 +13,7 @@ activate UM
 UM -> RM :user
 deactivate UM
 
-alt [!user.isChef()]
+alt [!user.isChef() or !user.isCuoco()]
     RM --> User:throw UseCaseLogicException
 else 
     create "r: Recipe"

@@ -6,22 +6,21 @@ Actor User
 Participant "CatERing.AppManager.RecipeManager: \nrecipeManager" as RM
 Participant "RecipeManager.currentRecipe: \nr" as CR
 
-User -> RM: addClassification()
+User -> RM: addTag(r, tag)
 Activate RM
 
 alt ["currentRecipe == null"]
 	RM --> User: throw UseCaseLogicException
 else
-	RM -> CR: addClassification()
+	RM -> CR: addClassification(tag)
 	Activate CR
 
-	CR -> "class: Class": getClassName()
-	Activate "class: Class"
-	"class: Class" -> CR: className
-	Deactivate "class: Class"
-
-	CR -> CR: setClass(class)
-	
+	CR -> "class: Tag": getTagName()
+	Activate "class: Tag"
+	"class: Tag" -> CR: tagname REMEMBER TO CHECK MDD
+	Deactivate "class: Tag"
+	CR -> CR: setTag(tagname)
+	CR --> RM: notifyRecipeUpdated(r)
 end
 Deactivate CR
 Deactivate RM
