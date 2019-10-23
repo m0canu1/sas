@@ -14,14 +14,14 @@ opt
     alt ["currentRecipe == null"]
         RM --> User: throw UseCaseLogicException
     else
-        RM -> CR: removeStep(step)
+        RM -> CR: getStepList()
         Activate CR
     
-        CR -> CS: remove(step)
-        Activate CS
-        Deactivate CS
+        CR --> RM: steps: list<Step>
         Deactivate CR
-
+        Activate CS
+        RM -> CS: removeStep(step)
+        Deactivate CS
 
     end
     Deactivate RM

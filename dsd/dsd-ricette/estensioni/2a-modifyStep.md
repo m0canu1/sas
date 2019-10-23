@@ -1,25 +1,28 @@
 ```plantuml
 
-title: 2a. modifyStep
+title: 2a. modifyStepDetails
 
 Actor User
 Participant "CatERingAppManager.RecipeManager" as RM 
 Participant "CatERingAppManager.RecipeManager: \ncurrentRecipe" as CR
 Participant "steps: list<Step>" as CS 
 opt
-    User -> RM: modifyStep(step, details)
+    User -> RM: modifyStepDetails(step, details)
     Activate RM
     alt ["currentRecipe == null"]
         RM --> User: throw UseCaseLogicException
     
     else
-        RM -> CR: modifyStep(step, details)
+        RM -> CR: getStepList()
         Activate CR
-        
-        CR -> CS: setDetails(details)
+        CR --> RM: steps: list<Step>
+
+       
+        Deactivate CR
+
         Activate CS
+        RM -> CS: setDetails(step, details)
         Deactivate CS       
-        Deactivate CR    
     end
     Deactivate RM
 end

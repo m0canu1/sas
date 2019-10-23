@@ -14,16 +14,17 @@ opt
 	alt ["currentRecipe == null"]
 		RM --> User: throw UseCaseLogicException
 	else 
-		RM -> CR:  addPreparationIngredient(preparation)
+		RM -> CR:  getIngredientsList()
 		Activate CR
-		CR -> "preparation: Preparation": getName()
+        CR --> RM: ingredients: list<String>
+        Deactivate CR
+		RM -> "preparation: Preparation": getPrepName()
 		Activate "preparation: Preparation"
-		"preparation: Preparation" -> CR: name
+		"preparation: Preparation" -> RM: prep_name
 		Deactivate "preparation: Preparation"
-		CR -> "ingredients: list<String>": addIngredient(name)
-		Activate "ingredients: list<String>"
+        RM -> "ingredients: list<String>": addIngredient(prep_name)
+        Activate "ingredients: list<String>"
 		Deactivate "ingredients: list<String>"
-		Deactivate CR
 		Deactivate RM
 	end
 

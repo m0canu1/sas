@@ -15,10 +15,10 @@ else
 	RM -> CR: addClassification(tag)
 	Activate CR
 
-	CR -> "class: Tag": getTagName()
-	Activate "class: Tag"
+	CR -> "Tag: tag": getTagName()
+	Activate "Tag: tag"
 	"class: Tag" -> CR: tagname REMEMBER TO CHECK MDD
-	Deactivate "class: Tag"
+	Deactivate "Tag: tag"
 	CR -> CR: setTag(tagname)
 	CR --> RM: notifyRecipeUpdated(r)
 end

@@ -1,6 +1,6 @@
 ```plantuml
 
-title: 2d. addVariant
+title: 2e. addRepetition
 
 Actor User
 Participant "CatERingAppManager.RecipeManager" as RM 
@@ -8,7 +8,7 @@ Participant "CatERingAppManager.RecipeManager: \ncurrentRecipe" as CR
 
 
 opt
-	User -> RM: addVariant(original_step, details)
+	User -> RM: addRepetition(original_step)
 	Activate RM
 
 	alt ["currentRecipe == null"]
@@ -20,17 +20,16 @@ opt
         CR --> RM: steps: list<Step>
         Deactivate CR
 
-    	create "s_alt: VariantStep"
+    	create "s_rep: Step"
 
-            RM -> "s_alt: VariantStep": step(original_step, details)
-        Activate "s_alt: VariantStep"
-            "s_alt: VariantStep" -> "s_alt: VariantStep": setDetails(details)
-           	"s_alt: VariantStep" -> "s_alt: VariantStep": setOriginal(original_step)
-            "s_alt: VariantStep" --> RM: s_alt
+            RM -> "s_rep: Step": step(original_step)
+        Activate "s_rep: Step"
+            "s_rep: Step" -> "s_rep: Step": setDetails(original_step.getDetails())
+            "s_rep: Step" --> RM: s_rep
           
-        Deactivate "s_alt: VariantStep"
+        Deactivate "s_rep: Step"
 
-        RM -> "steps: list<Step>": addStep(s_alt)
+        RM -> "steps: list<Step>": addStep(s_rep)
         Activate "steps: list<Step>"
         Deactivate "steps: list<Step>"
     	Deactivate CR

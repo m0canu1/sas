@@ -37,7 +37,7 @@ note right: inizialmente una ricetta può essere creata senza titolo\nche può e
     
     loop
     	opt	
-    			Cuoco -> Sistema : 3. segnaIndicazioni(ingredienti?, dosi?)
+    			Cuoco -> Sistema : 3. segnaIndicazioni(ingredienti, dosi?)
     			Sistema --> Cuoco : indicazioni salvate
     			alt estensione 3a 
                     Cuoco -> Sistema : 3a.1 segnalaPreparazioneEsistente(preparazione)
