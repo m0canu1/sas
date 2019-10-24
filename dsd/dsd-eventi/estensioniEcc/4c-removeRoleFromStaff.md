@@ -1,38 +1,26 @@
 ```plantuml
 
-title: 4a. addStaff
+title: 4a. removeRoleToStaff
 
 Actor User
 Participant "CatERingAppManager.EventManager: \nEventManager" as EM
-Participant "CatERingAppManager.StaffManager" as SM
-Participant "e: Event" as E
-
-User -> EM: addStaff()
+Participant "EventManager.currentEvent: \nEvent" as E
+Participant "currentEvent.staff: \nList<StaffMember>" as SM
+Participant "rec: EventEventReceiver" as EER
+User -> EM: removeRole (staff_member)
 Activate EM
-
-alt [currentEvent==null]
-    EM --> User: throw UseCaseLogicException
-else
-    EM -> E: getStaffList()
+    EM -> E: removeRoleToMember(staff_member)
     Activate E
-    E -> EM: staff_list
+       E -> SM: removeRoleStaffMember(staff_member)
+       Activate SM
+       Deactivate SM
+       E --> EM: staff
     Deactivate E
-    
-    loop ["fino a soddisfacimento"]
-        EM -> SM: selectStaffMember(staff_list)
-        Activate SM
-        
-        alt ["staffmember.isAvailable() == true"]
-            SM -> "staff_list: list<StaffMember>": add(staffmember)
-            Activate "staff_list: list<StaffMember>"
-            "staff_list: list<StaffMember>" -> SM: staff_list
-            Deactivate "staff_list: list<StaffMember>"
-        else 
-        end
-        SM --> EM: staff_list
-        Deactivate SM
-    end    
-end
+    loop for each rec in receiver
+       EM -> EER: notifyRoleRemovedforEvent(event)
+       Activate EER
+       Deactivate EER
+    end
 Deactivate EM
 
 ```
