@@ -4,7 +4,12 @@ title: 4. assignStaff
 
 Actor User
 Participant "CatERingAppManager.EventManager: \nEventManager" as EM
-Participant "CatERingAppManager.StaffManager" as SM
+Participant "EventManager.currentEvent: \nEvent" as CE
+Participant "CatERingAppManager.StaffManager: \nStaffManager" as SM
+Participant "currentEvent.staff: \nList<StaffMember>" as SL
+
+Participant "rec: EventEventReceiver" as EER
+Participant "rec: StaffEventReceiver" as SER
 
 User -> EM: addStaff()
 Activate EM
@@ -12,23 +17,30 @@ Activate EM
 alt [currentEvent==null]
     EM --> User: throw UseCaseLogicException
 else
-    Create "staff: list<StaffMember>"
-    EM -> "staff: list<StaffMember>": createStaffList()
-    Activate "staff: list<StaffMember>"
-    "staff: list<StaffMember>" -> EM: staff_list
-    
-    loop ["fino a soddisfacimento"]
-        EM -> SM: selectStaffMember(staff_list)
+    EM -> CE: addStaffToEvent()
+    Activate CE
+        CE -> SM: selectStaffMember()
         Activate SM
-        
-        alt ["staffmember.isAvailable() == true"]
-            SM -> "staff: list<StaffMember>": add(staffmember)
-        else 
+        SM --> CE: staff_member
+        Deactivate SM
+        alt ["staff_member.isAvailable() == true"]
+            CE -> SL: add(staffmember)
+            Activate SL
+            Deactivate SL
+        else
         end
-        SM --> EM: staff_list
-    end    
-    Deactivate "staff: list<StaffMember>"
-    Deactivate SM
+        CE --> EM: staff_member
+    Deactivate CE
+
+    loop for each rec in receiver
+        EM -> EER: notifyEventStaffUpdated(currentEvent, staff_member)
+        Activate EER
+        Deactivate EER
+        EM -> SER: notifyStaffAssigned(staff_member)
+        Activate SER
+        Deactivate SER
+    end
+    
 end
 Deactivate EM
 

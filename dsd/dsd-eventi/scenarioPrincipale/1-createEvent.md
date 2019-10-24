@@ -5,7 +5,7 @@ title: DSD per "Gestire eventi"
 Actor User
 Participant "CatERingAppManager.EventManager:  \neventManager" as EM
 Participant "CatERingAppManager.UserManager:  \nuserManager" as UM
-
+Participant "rec: EventEventReciever" as EER
 User -> EM : createEvent()
 Activate EM
 
@@ -26,11 +26,18 @@ else
         "e: Event" -> "e: Event": setOwner(user)
         "e: Event" -> "e: Event": setCancelled(false)
         "e: Event" -> "e: Event": setFine(false)
-        create "Notes: list<String>"
-        "e: Event" -> "Notes: list<String>": createNotes()
+        create "stafflist: List<StaffMember>"
+        "e: Event" -> "staff: List<StaffMember>"
+        create "notes: List<String>"
+        "e: Event" -> "notes: List<String>": createNotes()
     "e: Event" --> EM : e
     Deactivate "e: Event"
     EM -> EM : setCurrentEvent(e)
+    loop for each r in receiver
+        EM -> EER: notifyEventCreated(e)
+        Activate EER
+        Deactivate EER
+    end
 end
 Deactivate EM
 
