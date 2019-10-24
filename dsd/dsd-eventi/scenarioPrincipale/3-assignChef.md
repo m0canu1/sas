@@ -4,23 +4,36 @@ title: 3. assignChef
 
 Actor User
 Participant "CatERingAppManager.EventManager: \nEventManager" as EM
-Participant "CatERingAppManager.StaffManager" as SM
-Participant "e: Event" as E
+Participant "CatERingAppManager.StaffManager: \nStaffManager" as SM
+Participant "EventManager.currentEvent: Event" as CE
+Participant "rec: EventEventReceiver" as EER
+Participant "manag_rec: StaffManagerEventReciever" as SMER
 
-User -> EM: addChef() 
+User -> EM: addChef(chef)
 Activate EM
 alt [currentEvent==null]
     EM --> User: throw UseCaseLogicException
 else
+    EM -> CE: assignChef(chef)
+    Activate CE
+    CE -> CE: setChef(chef)
     loop ["while chef.isAvailable() != true"]
-        EM -> SM: selectChef()
+        CE -> SM: selectChef()
         Activate SM
-        SM --> EM: chef
+        SM --> CE: chef
+        Deactivate SM
+        CE -> CE: setChef(chef)
         Deactivate SM
     end
-    EM -> E: setChef(chef)
-    Activate E
-    Deactivate E
+    CE -> EM: chef
+    Deactivate CE
+    loop for rec in receivers
+      EM -> EER: notifyChefAssigned(chef)
+      EM -> SM: notifyChefAssigned(chef)
+      Activate EER
+      Activate SMER
+      Deactivate SMER
+      Deactivaate EER
 end
 Deactivate EM
 
