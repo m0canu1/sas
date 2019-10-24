@@ -21,7 +21,7 @@ opt
 	loop for each rec in reciever
 		RM -> RER: notifyRecipeTitleChanged(currentRecipe)
 		activate RER
-		activate RER
+		deactivate RER
 	end
 	Deactivate RM
 end
