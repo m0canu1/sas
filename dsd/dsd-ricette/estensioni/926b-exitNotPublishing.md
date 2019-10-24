@@ -5,6 +5,7 @@ title: 26b. dontPublish
 Actor User
 Participant "CatERingAppManager.RecipeManager:  \nRecipeManager" as RM
 Participant "RecipeManager.currentRecipe:  \nr" as CR
+Participant "rec: \nRecipeEventReceiver" as RER
 
 opt
 	User -> RM: dontPublish()
