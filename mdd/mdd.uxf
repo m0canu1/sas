@@ -47,8 +47,7 @@ Nome: testo</panel_attributes>
 --
 Titolo: testo
 Pubblicato: si/no
-Ingredienti: testo
-Dosi: numero
+
 
 
 
@@ -141,8 +140,8 @@ Porzioni già preparate: numero
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>889</x>
-      <y>56</y>
+      <x>987</x>
+      <y>147</y>
       <w>70</w>
       <h>49</h>
     </coordinates>
@@ -608,16 +607,16 @@ di ^
     <id>Relation</id>
     <coordinates>
       <x>672</x>
-      <y>84</y>
-      <w>231</w>
-      <h>77</h>
+      <y>105</y>
+      <w>378</w>
+      <h>56</h>
     </coordinates>
     <panel_attributes>lt=-
 m1=0...n
 ha &gt;
 m2=0...n
 </panel_attributes>
-    <additional_attributes>10.0;90.0;10.0;60.0;170.0;60.0;170.0;10.0;310.0;10.0</additional_attributes>
+    <additional_attributes>10.0;60.0;10.0;20.0;490.0;20.0;490.0;60.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
@@ -750,7 +749,7 @@ fg=magenta</panel_attributes>
       <h>182</h>
     </coordinates>
     <panel_attributes>lt=-
-m1=0...n
+m1=0...1
 m2=2...n
 fg=magenta</panel_attributes>
     <additional_attributes>180.0;230.0;220.0;230.0;220.0;10.0;10.0;10.0</additional_attributes>
@@ -788,9 +787,9 @@ fg=magenta</panel_attributes>
       <h>56</h>
     </coordinates>
     <panel_attributes>lt=-
-m1=0...n
+m1=0...1
 ripetizione di
-m2=1
+m2=0...1
 fg=magenta</panel_attributes>
     <additional_attributes>10.0;50.0;60.0;50.0;60.0;10.0;10.0;10.0</additional_attributes>
   </element>
@@ -800,7 +799,7 @@ fg=magenta</panel_attributes>
       <x>735</x>
       <y>7</y>
       <w>119</w>
-      <h>77</h>
+      <h>56</h>
     </coordinates>
     <panel_attributes>lt=-
 m1=0...1
@@ -808,7 +807,7 @@ m1=0...1
 &lt; variante di 
 m2=0...n
 </panel_attributes>
-    <additional_attributes>10.0;30.0;10.0;20.0;150.0;20.0;150.0;80.0;30.0;80.0</additional_attributes>
+    <additional_attributes>10.0;30.0;10.0;20.0;150.0;20.0;150.0;50.0;30.0;50.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
@@ -910,5 +909,64 @@ organizza &gt;
 m2=0...n
 </panel_attributes>
     <additional_attributes>10.0;10.0;10.0;100.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>854</x>
+      <y>14</y>
+      <w>70</w>
+      <h>35</h>
+    </coordinates>
+    <panel_attributes>Ingrediente
+--
+Nome: testo
+fg=red
+
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>980</x>
+      <y>63</y>
+      <w>84</w>
+      <h>35</h>
+    </coordinates>
+    <panel_attributes>Dose
+--
+Quantità: numero
+fg=red
+
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>749</x>
+      <y>42</y>
+      <w>168</w>
+      <h>56</h>
+    </coordinates>
+    <panel_attributes>lt=-
+ha &gt;
+m1=0...n
+m2=0...n
+</panel_attributes>
+    <additional_attributes>10.0;50.0;190.0;50.0;190.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>917</x>
+      <y>21</y>
+      <w>119</w>
+      <h>56</h>
+    </coordinates>
+    <panel_attributes>lt=-
+</panel_attributes>
+    <additional_attributes>10.0;20.0;150.0;20.0;150.0;60.0</additional_attributes>
   </element>
 </diagram>

@@ -5,35 +5,41 @@ title: 1. createRecipe
 Actor User
 Participant "CatERingAppManager.RecipeManager:  \nRecipeManager" as RM
 Participant "CatERingAppManager.UserManager:  \nUserManager" as UM
+Participant "rec: \nRecipeEventReceiver" as RER
+------
+"r: Recipe"
+"r.steps:\nList<Step>"
+"r.ingr_doses: HashMap<Ingredient, Dose>"
+-------
 
-User -> RM:createRecipe(title?)
+User -> RM: createRecipe(title?)
 activate RM
-RM -> UM:getCurrentUser()
+RM -> UM: getCurrentUser()
 activate UM
-UM -> RM :user
+UM -> RM: user
 deactivate UM
 
 alt [!user.isChef() or !user.isCuoco()]
-    RM --> User:throw UseCaseLogicException
-else 
+    RM --> User: throw UseCaseLogicException
+else
     create "r: Recipe"
-    RM -> "r: Recipe":create(user, title?)
+    RM -> "r: Recipe": create(user, title?)
     activate "r: Recipe"
     opt [title!=null]
-        "r: Recipe" -> "r: Recipe":setTitle(title)
+        "r: Recipe" -> "r: Recipe": setTitle(title)
     end
-    "r: Recipe" -> "r: Recipe":setOwner(user)
-    "r: Recipe" -> "r: Recipe":setPublished(false)
-    create "ingredients:\nList<Ingredient>"
-    "r: Recipe" -> "ingredients:\nList<Ingredient>":create()
-    create "doses:\nList<Float>"
-    "r: Recipe" -> "doses:\nList<Float>":create()
-    create "steps:\nList<Step>"
-    "r: Recipe" -> "steps:\nList<Step>":create()
-    "r: Recipe" --> RM : r
+    "r: Recipe" -> "r: Recipe": setOwner(user)
+    "r: Recipe" -> "r: Recipe": setPublished(false)
+    create "r.ingr_doses: HashMap<Ingredient, Dose>"
+    "r: Recipe" -> "r.ingr_doses: HashMap<Ingredient, Dose>":create()
+    create "r.steps:\nList<Step>"
+    "r: Recipe" -> "r.steps:\nList<Step>":create()
+    "r: Recipe" --> RM: r
     deactivate "r: Recipe"
-    RM -> RM :setCurrentRecipe(r)
-    RM --> User:r
+    RM -> RM : setCurrentRecipe(r)
+    loop for each rec in receivers
+      RM -> RER: notifyRecipeCreated(r)
+    end
 end
     deactivate RM
 
