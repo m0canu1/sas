@@ -1,6 +1,6 @@
 ```plantuml
 
-title: 7. publishRecipe
+title: 5. publishRecipe
 
 Actor User
 Participant "CatERingAppManager.RecipeManager:  \nRecipeManager" as RM
@@ -14,12 +14,16 @@ alt ["currentRecipe == null"]
 	RM --> User: throw UseCaseLogicException
 else
 	RM -> CR: publishRecipe()
+
 	Activate CR
-  CR --> CR: setPublished(true)
-	Deactivate CR
+    CR --> CR: setPublished(true)
+     Deactivate CR   
+  
+	
 	loop for each rec in receivers
 		RM -> RER: notifyRecipePublished(currentRecipe)
 	end
+
 end
 Deactivate RM
 

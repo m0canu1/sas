@@ -1,6 +1,6 @@
 ```plantuml
 
-title: 5. addClassification
+title: 4. Tagging
 
 Actor User
 Participant "CatERing.AppManager.RecipeManager: \nRecipeManager" as RM
@@ -16,11 +16,7 @@ else
 	RM -> CR: addClassification(tag)
 	Activate CR
 
-	CR -> "currentRecipe.tag: Tag": getTagName()
-	Activate "currentRecipe.tag: Tag"
-	"currentRecipe.tag: Tag" -> CR: tagName
-	Deactivate "currentRecipe.tag: Tag"
-	CR -> CR: setTag(tagName)
+	CR -> CR: setTag(tag)
 	loop for each rec in receivers
 		RM -> RER: notifyRecipeTagged(currentRecipe, tag)
 	end

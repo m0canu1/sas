@@ -6,11 +6,6 @@ Actor User
 Participant "CatERingAppManager.RecipeManager:  \nRecipeManager" as RM
 Participant "CatERingAppManager.UserManager:  \nUserManager" as UM
 Participant "rec: \nRecipeEventReceiver" as RER
-------
-"r: Recipe"
-"r.steps:\nList<Step>"
-"r.ingr_doses: HashMap<Ingredient, Dose>"
--------
 
 User -> RM: createRecipe(title?)
 activate RM
