@@ -5,9 +5,9 @@ title: 1a. selectEvent
 Actor  User
 Participant "CatERingAppManager.EventManager: \nEventManager"  as EM
 Participant "CatERingAppManager.UserManager" as UM
-
+Participant "rec: EventEventReceiver" as EER
 opt
-	User -> EM: selectEvent()
+	User -> EM: selectEvent(event)
 	Activate EM
 
 	EM -> UM: getCurrentUser()
@@ -16,16 +16,18 @@ opt
 	UM --> EM: user
 	Deactivate UM
 
-	EM -> "e: Event": getEvent()
-	Activate "e: Event"
-	"e: Event" -> EM: e
-	Deactivate "e: Event"
-
 	alt [!user.isManager()]
 	    EM --> User: throw UseCaseLogicException
 	else
 	    EM -> EM: setCurrentEvent(e)
 	end
+
+    loop for each rec in receiver
+        EM -> EER: notifyEventSelected(e)
+        Activate EER
+        Deactivate EER
+    end
+
 	Deactivate EM
 end
 ```
