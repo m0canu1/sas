@@ -27,9 +27,10 @@ else
             CE -> SL: add(staffmember)
             Activate SL
             Deactivate SL
+            CE --> EM: staff_member
         else
         end
-        CE --> EM: staff_member
+        
     Deactivate CE
 
     loop for each rec in receiver

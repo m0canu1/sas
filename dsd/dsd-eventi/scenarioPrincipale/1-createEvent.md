@@ -26,8 +26,9 @@ else
         "e: Event" -> "e: Event": setOwner(user)
         "e: Event" -> "e: Event": setCancelled(false)
         "e: Event" -> "e: Event": setFine(false)
-        create "stafflist: List<StaffMember>"
-        "e: Event" -> "staff: List<StaffMember>"
+        "e: Event" -> "e: Event": setPublished(false)
+        create "staff: List<StaffMember>"
+        "e: Event" -> "staff: List<StaffMember>": createStaffList()
         create "notes: List<String>"
         "e: Event" -> "notes: List<String>": createNotes()
     "e: Event" --> EM : e

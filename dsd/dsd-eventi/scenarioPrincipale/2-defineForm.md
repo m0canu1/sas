@@ -24,8 +24,10 @@ else
     "f: Form" -> "f: Form": setParticipants(n_part)
     CE --> EM: f
     Deactivate "f: Form"
-    EM -> EM: setForm(f)
+    CE -> CE: setForm(f)
+    
     loop for each rec in receiver
+        Deactivate CE
         EM -> EER: notifyFormCreated(currentEvent, f)
         activate EER
         deactivate EER
