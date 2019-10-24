@@ -11,7 +11,7 @@ opt
 
 	alt ["currentRecipe == null"]
 		RM --> User: throw UseCaseLogicException
-	else 
+	else
 		RM -> CR: setIngredientDose(ingredient, dose?)
 		Activate CR
 			CR -> "currentRecipe.ingr_doses: HashMap<Ingredient, Dose>": addIngredient(ingredient)
@@ -21,13 +21,15 @@ opt
 			    CR -> "currentRecipe.ingr_doses: HashMap<Ingredient, Dose>": addDose(ingredient, dose)
                 "currentRecipe.ingr_doses: HashMap<Ingredient, Dose>" --> CR: ingr_doses
             end
-        Deactivate "currentRecipe.ingr_doses: HashMap<Ingredient, Dose>" 
+        Deactivate "currentRecipe.ingr_doses: HashMap<Ingredient, Dose>"
         loop for each rec in reciever
-        RM -> RER: notifyIngrDosesAdded(currentRecipe, ingr_doses)
+	        RM -> RER: notifyIngrDosesAdded(currentRecipe, ingr_doses)
+					activate RER
+					activate RER
         end
 		Deactivate CR
 		Deactivate RM
-        
+
 	end
 end
 ```

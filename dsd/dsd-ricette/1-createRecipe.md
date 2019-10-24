@@ -34,6 +34,8 @@ else
     RM -> RM : setCurrentRecipe(r)
     loop for each rec in receivers
       RM -> RER: notifyRecipeCreated(r)
+      activate RER
+  		activate RER
     end
 end
     deactivate RM

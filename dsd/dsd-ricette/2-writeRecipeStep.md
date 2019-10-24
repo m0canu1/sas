@@ -24,7 +24,6 @@ alt ["currentRecipe == null"]
         Deactivate "currentRecipe.steps: \nList<Step>"
         CR --> RM: s
         loop for each rec in RecipeEventReciever
-
             RM --> RER: notifyRecipeUpdated(r)
             activate RER
             deactivate RER
