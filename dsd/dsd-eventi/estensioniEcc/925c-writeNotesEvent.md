@@ -1,36 +1,27 @@
 ```plantuml
 
-title: (2-5)a. removeEvent
+title: (2-5)b. writeNotesEvent
 
 Actor  User
 Participant "CatERingAppManager.EventManager: \nEventManager"  as EM
-Participant "CatERingAppManager.UserManager" as UM
+Participant "EventManager.currentEvent: \nEvent" as CE
+Participant "rec: EventEventReciever" as EER
+Participant "currentEvent.notes: \n List<String>" as NO
 
-opt
-    User -> EM: selectEvent()
-    Activate EM
+User -> EM: writeNotesEvent(nts)
+Activate EM
+EM -> CE: writeNotesEvent(nts)
+Activate CE
+      CE -> NO: add(nts)
+      Activate NO
+      Deactivate NO
+Deactivate CE
 
-    EM -> UM: getCurrentUser()
-    Activate UM
-        
-    UM --> EM: user
-    Deactivate UM
-
-    EM -> "e: Event": getEvent()
-    Activate "e: Event"
-    "e: Event" -> EM: e
-
-    alt [!user.isManager()]
-        EM --> User: throw UseCaseLogicException
-    else
-        EM -> "e: Event": cancelEvent()
-        "e: Event" -> "e: Event": setCancelled(true)
-        opt 
-            "e: Event" -> "e: Event": setFine(true)
-        end
-        Deactivate "e: Event"
-    end
-    Deactivate EM
+loop for each r in receiver
+    EM -> EER: notifyNewNotesEvent(event)
+    Activate EER
+    Deactivate EER
 end
-```
+Deactivate EM
 
+```
