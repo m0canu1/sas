@@ -1,5 +1,29 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <diagram program="umlet" version="14.3.0">
+  <help_text>// Uncomment the following line to change the fontsize and font:
+fontsize=10
+// fontfamily=SansSerif //possible: SansSerif,Serif,Monospaced
+
+
+//////////////////////////////////////////////////////////////////////////////////////////////
+// Welcome to UMLet!
+//
+// Double-click on elements to add them to the diagram, or to copy them
+// Edit elements by modifying the text in this panel
+// Hold Ctrl to select multiple elements
+// Use Ctrl+mouse to select via lasso
+//
+// Use +/- or Ctrl+mouse wheel to zoom
+// Drag a whole relation at its central square icon
+//
+// Press Ctrl+C to copy the whole diagram to the system clipboard (then just paste it to, eg, Word)
+// Edit the files in the "palettes" directory to create your own element palettes
+//
+// Select "Custom Elements &gt; New..." to create new element types
+//////////////////////////////////////////////////////////////////////////////////////////////
+
+
+// This text will be stored with each diagram;  use it for notes.</help_text>
   <zoom_level>7</zoom_level>
   <element>
     <id>UMLClass</id>
@@ -143,11 +167,11 @@ Porzioni già preparate: numero
       <x>987</x>
       <y>147</y>
       <w>70</w>
-      <h>49</h>
+      <h>42</h>
     </coordinates>
     <panel_attributes>Tag
 --
-Nome: testo
+tagName: testo
 fg=red
 
 </panel_attributes>
@@ -208,7 +232,7 @@ consiste in &gt;</panel_attributes>
     <coordinates>
       <x>315</x>
       <y>70</y>
-      <w>77</w>
+      <w>56</w>
       <h>91</h>
     </coordinates>
     <panel_attributes>lt=-
@@ -224,7 +248,7 @@ m2=0...n</panel_attributes>
     <coordinates>
       <x>154</x>
       <y>203</y>
-      <w>203</w>
+      <w>196</w>
       <h>91</h>
     </coordinates>
     <panel_attributes>lt=-
@@ -239,7 +263,7 @@ ha &gt;</panel_attributes>
       <x>42</x>
       <y>189</y>
       <w>105</w>
-      <h>357</h>
+      <h>350</h>
     </coordinates>
     <panel_attributes>lt=-
 m1=0...1
@@ -345,7 +369,7 @@ fg=blue</panel_attributes>
     <coordinates>
       <x>266</x>
       <y>385</y>
-      <w>91</w>
+      <w>70</w>
       <h>126</h>
     </coordinates>
     <panel_attributes>lt=-
@@ -378,7 +402,7 @@ fg=red</panel_attributes>
       <x>273</x>
       <y>539</y>
       <w>189</w>
-      <h>42</h>
+      <h>35</h>
     </coordinates>
     <panel_attributes>lt=-
 &lt; si riferisce a 
@@ -393,8 +417,8 @@ m2=1
     <coordinates>
       <x>560</x>
       <y>294</y>
-      <w>98</w>
-      <h>280</h>
+      <w>84</w>
+      <h>273</h>
     </coordinates>
     <panel_attributes>m1=0...n
    contiene
@@ -406,7 +430,7 @@ m2=1</panel_attributes>
     <coordinates>
       <x>644</x>
       <y>189</y>
-      <w>77</w>
+      <w>63</w>
       <h>98</h>
     </coordinates>
     <panel_attributes>lt=-
@@ -448,8 +472,8 @@ fg=red</panel_attributes>
     <coordinates>
       <x>504</x>
       <y>42</y>
-      <w>84</w>
-      <h>161</h>
+      <w>70</w>
+      <h>154</h>
     </coordinates>
     <panel_attributes>lt=-
 è ingrediente in
@@ -477,7 +501,7 @@ fg=red
       <x>707</x>
       <y>140</y>
       <w>189</w>
-      <h>42</h>
+      <h>35</h>
     </coordinates>
     <panel_attributes>lt=-
 m1=0...n
@@ -492,8 +516,8 @@ si trovano nel &gt;</panel_attributes>
     <coordinates>
       <x>364</x>
       <y>0</y>
-      <w>371</w>
-      <h>203</h>
+      <w>364</w>
+      <h>196</h>
     </coordinates>
     <panel_attributes>lt=-
 m1=1
@@ -533,7 +557,7 @@ m2=0...n
     <coordinates>
       <x>686</x>
       <y>350</y>
-      <w>70</w>
+      <w>56</w>
       <h>77</h>
     </coordinates>
     <panel_attributes>lt=-
@@ -548,7 +572,7 @@ m2=0...1
     <coordinates>
       <x>672</x>
       <y>441</y>
-      <w>70</w>
+      <w>56</w>
       <h>98</h>
     </coordinates>
     <panel_attributes>lt=-
@@ -577,7 +601,7 @@ m2=0...n </panel_attributes>
     <coordinates>
       <x>140</x>
       <y>245</y>
-      <w>322</w>
+      <w>315</w>
       <h>266</h>
     </coordinates>
     <panel_attributes>lt=-
@@ -608,7 +632,7 @@ di ^
     <coordinates>
       <x>672</x>
       <y>105</y>
-      <w>378</w>
+      <w>371</w>
       <h>56</h>
     </coordinates>
     <panel_attributes>lt=-
@@ -623,7 +647,7 @@ m2=0...n
     <coordinates>
       <x>707</x>
       <y>175</y>
-      <w>175</w>
+      <w>168</w>
       <h>105</h>
     </coordinates>
     <panel_attributes>lt=-
@@ -710,17 +734,17 @@ fg=magenta</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>763</x>
+      <x>770</x>
       <y>308</y>
-      <w>49</w>
-      <h>210</h>
+      <w>42</w>
+      <h>203</h>
     </coordinates>
     <panel_attributes>lt=-
 m1=1
 
 m2=0...n
 fg=magenta</panel_attributes>
-    <additional_attributes>50.0;10.0;20.0;10.0;20.0;270.0;50.0;270.0</additional_attributes>
+    <additional_attributes>40.0;10.0;10.0;10.0;10.0;270.0;40.0;270.0</additional_attributes>
   </element>
   <element>
     <id>UMLClass</id>
@@ -746,7 +770,7 @@ fg=magenta</panel_attributes>
       <x>896</x>
       <y>336</y>
       <w>168</w>
-      <h>182</h>
+      <h>175</h>
     </coordinates>
     <panel_attributes>lt=-
 m1=0...1
@@ -783,8 +807,8 @@ fg=magenta</panel_attributes>
     <coordinates>
       <x>896</x>
       <y>280</y>
-      <w>112</w>
-      <h>56</h>
+      <w>91</w>
+      <h>49</h>
     </coordinates>
     <panel_attributes>lt=-
 m1=0...1
@@ -799,7 +823,7 @@ fg=magenta</panel_attributes>
       <x>735</x>
       <y>7</y>
       <w>119</w>
-      <h>56</h>
+      <h>49</h>
     </coordinates>
     <panel_attributes>lt=-
 m1=0...1
@@ -814,8 +838,8 @@ m2=0...n
     <coordinates>
       <x>497</x>
       <y>189</y>
-      <w>112</w>
-      <h>63</h>
+      <w>105</w>
+      <h>56</h>
     </coordinates>
     <panel_attributes>lt=-
 fg=blue
@@ -843,7 +867,7 @@ fg=blue</panel_attributes>
     <coordinates>
       <x>364</x>
       <y>189</y>
-      <w>273</w>
+      <w>266</w>
       <h>210</h>
     </coordinates>
     <panel_attributes>lt=-
@@ -857,8 +881,8 @@ m2=0...n</panel_attributes>
     <coordinates>
       <x>511</x>
       <y>329</y>
-      <w>91</w>
-      <h>182</h>
+      <w>84</w>
+      <h>175</h>
     </coordinates>
     <panel_attributes>lt=.
 m1=1
@@ -872,8 +896,8 @@ m2=1
     <coordinates>
       <x>273</x>
       <y>434</y>
-      <w>280</w>
-      <h>91</h>
+      <w>273</w>
+      <h>84</h>
     </coordinates>
     <panel_attributes>lt=-
 ha &gt;
@@ -900,7 +924,7 @@ fg=blue</panel_attributes>
     <coordinates>
       <x>203</x>
       <y>427</y>
-      <w>77</w>
+      <w>56</w>
       <h>84</h>
     </coordinates>
     <panel_attributes>lt=-
@@ -947,8 +971,8 @@ fg=red
     <coordinates>
       <x>749</x>
       <y>42</y>
-      <w>168</w>
-      <h>56</h>
+      <w>161</w>
+      <h>49</h>
     </coordinates>
     <panel_attributes>lt=-
 ha &gt;

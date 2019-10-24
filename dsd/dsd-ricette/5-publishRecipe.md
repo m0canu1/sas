@@ -18,10 +18,12 @@ else
 	Activate CR
     CR --> CR: setPublished(true)
      Deactivate CR   
-  
-	
+
+
 	loop for each rec in receivers
 		RM -> RER: notifyRecipePublished(currentRecipe)
+		activate RER
+		activate RER
 	end
 
 end

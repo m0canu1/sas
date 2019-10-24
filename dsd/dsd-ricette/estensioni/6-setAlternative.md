@@ -1,26 +1,26 @@
 ```plantuml
 
-title: 6. setAlternative
+title: 2-4.a setAlternative
 
 Actor User
 Participant "CatERingAppManager.RecipeManager:  \nRecipeManager" as RM
-Participant "RecipeManager.currentRecipe:  \nr" as CR
+Participant "RecipeManager.currentRecipe:  \nRecipe" as CR
 
-User -> RM: setAlternativeRecipe()
+User -> RM: setAlternativeRecipe(original_recipe)
 Activate RM
 
 alt ["currentRecipe == null"]
 	RM --> User: throw UseCaseLogicException
-else 
-
-	RM -> "recipe: Recipe": lookupOriginalRecipe()
-	Activate "recipe: Recipe"
-	"recipe: Recipe" -> RM: original_recipe
-	Deactivate "recipe: Recipe"
-	
-	RM -> CR: setOriginal(original_recipe)
+else
+	RM -> CR: setAlternativeRecipe(original_recipe)
 	Activate CR
+	CR -> CR: setOriginal(original_recipe)
 	Deactivate CR
+	loop for each rec in reciever
+		RM -> RER: notifyNewAlternativeRecipe(currentRecipe)
+		activate RER
+		activate RER
+	end
 end
 Deactivate RM
 

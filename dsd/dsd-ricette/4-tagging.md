@@ -19,6 +19,8 @@ else
 	CR -> CR: setTag(tag)
 	loop for each rec in receivers
 		RM -> RER: notifyRecipeTagged(currentRecipe, tag)
+		activate RER
+		activate RER
 	end
 end
 Deactivate CR

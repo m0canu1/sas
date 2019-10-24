@@ -4,26 +4,27 @@ title: 2c. groupSteps
 
 Actor User
 Participant "CatERingAppManager.RecipeManager:  \nRecipeManager" as RM
-Participant "RecipeManager.currentRecipe:  \nr" as CR
+Participant "RecipeManager.currentRecipe:  \nRecipe" as CR
 Participant "steps: list<Step>" as CS
+Participant "rec: \nRecipeEventReciever" as RER
 
 User -> RM: groupRecipeSteps(<list>steps_to_group)
 activate RM
 alt ["currentRecipe == null"]
-    RM -> CR: getStepList()
+    RM -> CR: groupSteps(<list>steps_to_group)
     activate CR
-        CR --> RM: steps: list<Steps>
-    deactivate CR
-    
-    loop "for all Step:s in <list>steps_to_group"
-        RM -> CS: removeStep(s)
+    loop "for all s in <list>steps_to_group"
+        CR -> CS: removeStep(s)
     end
-    create "s_group: GroupedStep"
-
-    RM -> "s_group: GroupedStep": aggregateSteps(<list>Step) 
-    "s_group: GroupedStep" --> RM: s_group
-    
-    RM -> CS: addStep(s_group)
+    create "s_group: GroupedStep()"
+    CR -> "s_group: GroupedStep()": create(<list>steps_to_group)
+    "s_group: GroupedStep()" -> CR: s_group
+    CR -> CS: addStep(s_group)
+    loop for each rec in RecipeEventReciever
+        RM --> RER: notifyStepsGrouped(currentRecipe, steps)
+        activate RER
+        deactivate RER
+    end
 end
 deactivate CR
 deactivate RM
