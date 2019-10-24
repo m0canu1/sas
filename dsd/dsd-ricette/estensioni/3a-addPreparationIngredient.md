@@ -19,7 +19,6 @@ opt
 		Activate "preparation: Preparation"
 		"preparation: Preparation" -> RM: prep_name
 		Deactivate "preparation: Preparation"
-
 		RM -> CR: addPreparationIngredient(prep_name, dose?)
 		Activate CR
 			CR -> HM: addIngredient(prep_name)
