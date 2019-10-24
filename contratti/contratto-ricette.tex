@@ -30,7 +30,7 @@
   \item \textbf{r}.alternativa = no
 \end{itemize}
 
-\section*{2. scriviPassoRicetta(r: Ricetta, dettagli: Testo)}
+\section*{2. scriviPassoRicetta(dettagli: Testo)}
 
 \textbf{Pre-condizioni} 	
 \begin{itemize}
@@ -44,7 +44,7 @@
 \end{itemize}
 
 
-\section*{3. segnaIndicazioni(r:Ricetta, ingredienti: testo, dosi?: numero)}
+\section*{3. segnaIndicazioni(ingredienti: testo, dosi?: numero)}
 
 \textbf{Pre-condizioni}
 \begin{itemize}
@@ -59,19 +59,18 @@
 
 
 
-\section*{4. inserisciTagRicetta(r: Ricetta, t:Tag)}
+\section*{4. inserisciTagRicetta(t:Tag)}
 
 \textbf{Pre-condizioni}
 \begin{itemize}
   \item è in corso la creazione di una ricetta  \textbf{r}
-  \item il tag \textbf{t} esiste
 \end{itemize}
 \textbf{Post-condizioni}
 \begin{itemize}
   \item La ricetta  \textbf{r} è stata associata al tag \textbf{t} 
 \end{itemize}
 
-\section*{5. pubblicaRicetta(r: Ricetta)}
+\section*{5. pubblicaRicetta()}
 
 \textbf{Pre-condizioni}
 \begin{itemize}
@@ -87,7 +86,7 @@
   \section*{Contratti per le estensioni}
 \end{center}
 
-\subsection*{2a. modificaDettagliPasso(r:Ricetta, p: Passo, d: Testo)}
+\subsection*{2a. modificaDettagliPasso(p: Passo, d: Testo)}
 
 \textbf{Pre-condizioni}
 \begin{itemize}
@@ -101,7 +100,7 @@
   \item  \textbf{r} contiene  \textbf{p}
 \end{itemize}
 
-\subsection*{2b. eliminaPasso(r:Ricetta, p: Passo)}
+\subsection*{2b. eliminaPasso(p: Passo)}
 
 \textbf{Pre-condizioni}
 \begin{itemize}
@@ -113,7 +112,7 @@
   \item il passo  \textbf{p} è rimosso dalla lista di passi della ricetta \textbf{r}
 \end{itemize}
 
-\subsection*{2c. selezionaPassiDaRaggruppare(r:Ricetta, lista\_lp: Passo)}
+\subsection*{2c. selezionaPassiDaRaggruppare(lista\_lp: Passo)}
 
 \textbf{Pre-condizioni}
 \begin{itemize}
@@ -127,7 +126,7 @@
   \item  la ricetta \textbf{r} contiene  \textbf{p1}
 \end{itemize}
 
-\subsection*{2d. aggiungiVariante(r:Ricetta, p: Passo, pv: Passo)}
+\subsection*{2d. aggiungiVariante(p: Passo, pv: Passo)}
 
 \textbf{Pre-condizioni}
 \begin{itemize}
@@ -139,7 +138,7 @@
   \item un passo  \textbf{pv} variante del passo  \textbf{p} è stato aggiunto alla ricetta  \textbf{r}
 \end{itemize}
 
-\subsection*{2e. aggiungiRipetizione(r:Ricetta, p: Passo, pr: Passo)}
+\subsection*{2e. aggiungiRipetizione(p: Passo, pr: Passo)}
 \begin{itemize}
   \item è in corso la creazione di una ricetta  \textbf{r}
   \item il passo \textbf{p} appartiene a \textbf{r}
@@ -149,7 +148,7 @@
   \item un passo  \textbf{pr} ripetizione del passo  \textbf{p} è stato aggiunto alla ricetta  \textbf{r}
 \end{itemize}
 
-\subsection*{3a. segnalaPreparazioneEsistente(r:Ricetta, preparazione: Preparazione)}
+\subsection*{3a. segnalaPreparazioneEsistente(preparazione: Preparazione)}
 
 \textbf{Pre-condizioni}
 \begin{itemize}
@@ -157,11 +156,11 @@
 \end{itemize}
 \textbf{Post-condizioni}
 \begin{itemize}
-  \item la preparazione  \textbf{preparazione} è aggiunta agli ingredienti della ricetta  \textbf{r}
-  \item \textbf{r}.ingredienti = preparazione
+  \item il nome \textbf{n} della preparazione  \textbf{preparazione} è aggiunta agli ingredienti della ricetta  \textbf{r}
+  \item \textbf{r}.ingredienti = n
 \end{itemize}
 
-\subsection*{3b. modificaDose(r:Ricetta, ingr: testo, dose: numero)}
+\subsection*{3b. modificaDose(ingr: testo, dose: numero)}
 
 \textbf{Pre-condizioni}
 \begin{itemize}
@@ -174,7 +173,7 @@
   \item \textbf{r}.dose = dose
 \end{itemize}
 
-\subsection*{(2-4)a. inserisciTitolo(r:Ricetta, titolo: testo)}
+\subsection*{(2-4)a. inserisciTitolo(titolo: testo)}
 
 \textbf{Pre-condizioni}
 \begin{itemize}
@@ -185,19 +184,18 @@
   \item \textbf{r}.titolo = titolo
 \end{itemize}
 
-\section*{(2-4)b. segnaAlternativa(r: Ricetta, r\_originale:Ricetta)}
+\subsection*{(2-4)b. segnaAlternativa(r\_originale:Ricetta)}
 
 \textbf{Pre-condizioni}
 \begin{itemize}
   \item è in corso la creazione di una ricetta  \textbf{r}
-  \item la ricetta \textbf{r\_originale} esiste
 \end{itemize}
 \textbf{Post-condizioni}
 \begin{itemize}
   \item La ricetta  \textbf{r} è stata segnalata come alternativa della Ricetta  \textbf{r\_originale}
 \end{itemize}
 
-\subsection*{(2-5)a. interrompiCompilazione(r:Ricetta)}
+\subsection*{(2-5)a. interrompiCompilazione()}
 
 \textbf{Pre-condizioni}
 \begin{itemize}
