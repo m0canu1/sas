@@ -3,10 +3,10 @@ title: 3. setIngredientDose
 
 Actor User
 Participant "CatERingAppManager.RecipeManager: \nRecipeManager" as RM
-Participant "RecipeManager.currentRecipe:  \nr" as CR
-
+Participant "RecipeManager.currentRecipe:  \nRecipe" as CR
+Participant "rec: \nRecipeEventReciever" as RER
 opt
-	User -> RM: setIngredientDose(r, ingredient, dose?)
+	User -> RM: setIngredientDose(ingredient, dose?)
 	Activate RM
 
 	alt ["currentRecipe == null"]
@@ -14,21 +14,20 @@ opt
 	else 
 		RM -> CR: setIngredientDose(ingredient, dose?)
 		Activate CR
-		loop ["fino a soddisfacimento"]
-			CR -> "ingredients: list<String>": addIngredient(ingredient)
-			Activate "ingredients: list<String>"
-            "ingredients: list<String>" --> CR: ingredients
-			Deactivate "ingredients: list<String>"
+			CR -> "currentRecipe.ingr_doses: HashMap<Ingredient, Dose>": addIngredient(ingredient)
+			Activate "currentRecipe.ingr_doses: HashMap<Ingredient, Dose>"
+
             opt ["dose != null"]
-			    CR -> "doses: list<Number>": addDose(ingredient, dose)
-			    Activate "doses: list<Number>"
-                "doses: list<Number>" --> CR: doses
-			    Deactivate "doses: list<Number>"
+			    CR -> "currentRecipe.ingr_doses: HashMap<Ingredient, Dose>": addDose(ingredient, dose)
+                "currentRecipe.ingr_doses: HashMap<Ingredient, Dose>" --> CR: ingr_doses
             end
-		end
-        CR --> RM: notifyRecipeUpdated(r)
+        Deactivate "currentRecipe.ingr_doses: HashMap<Ingredient, Dose>" 
+        loop for each rec in reciever
+        RM -> RER: notifyIngrDosesAdded(currentRecipe, ingr_doses)
+        end
 		Deactivate CR
 		Deactivate RM
+        
 	end
 end
 ```
