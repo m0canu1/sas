@@ -22,13 +22,13 @@ opt
 
 		RM -> CR: addPreparationIngredient(prep_name, dose?)
 		Activate CR
-			CR -> "currentRecipe.ingr_doses: HashMap<Ingredient, Dose>": addIngredient(prep_name)
-			Activate "currentRecipe.ingr_doses: HashMap<Ingredient, Dose>"
+			CR -> HM: addIngredient(prep_name)
+			Activate HM
 				opt ["dose != null"]
-			    CR -> "currentRecipe.ingr_doses: HashMap<Ingredient, Dose>": addDose(prep_name, dose)
+			    CR -> HM: addDose(prep_name, dose)
 				end
-				"currentRecipe.ingr_doses: HashMap<Ingredient, Dose>" --> CR: ingr_doses
-      Deactivate "currentRecipe.ingr_doses: HashMap<Ingredient, Dose>"
+				HM --> CR: ingr_doses
+      Deactivate HM
 
 			loop for each rec in RecipeEventReciever
 					RM --> RER: notifyPreparationIngredientAdded(currentRecipe, preparation)

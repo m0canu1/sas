@@ -5,7 +5,8 @@ title: 2b. deleteStep
 Actor User
 Participant "CatERingAppManager.RecipeManager" as RM
 Participant "CatERingAppManager.RecipeManager.currentRecipe: \nRecipe" as CR
-Participant "steps: list<Step>" as CS
+Participant "currentRecipe.steps: list<Step>" as CS
+Participant "rec: \nRecipeEventReciever" as RER
 
 opt
     User -> RM: deleteStep(step)
@@ -16,6 +17,7 @@ opt
         RM -> CR: deleteStep(step)
         Activate CR
         CR -> CS: removeStep(step)
+        Activate CS
         Deactivate CS
         Deactivate CR
         loop for each rec in receivers
