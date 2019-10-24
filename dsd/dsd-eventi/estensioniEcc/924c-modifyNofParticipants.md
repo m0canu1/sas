@@ -1,32 +1,30 @@
 ```plantuml
 
-title: 2a. modifyInfos
+title: (2-4)c. modifyNofParticipants
 
 Actor User
 Participant "CatERingAppManager.EventManager: \nEventManager" as EM
-Participant "f: Form" as FM
+Participant "currentEvent.form: \nForm" as FM
+Participant "rec: EventEventReciever" as EER
 
-User -> EM: modifyInfo()
+User -> EM: modifyNofParticipants(nof_part)
 Activate EM
 
-alt [currentEvent==null]
-    EM --> User: throw UseCaseLogicException
-else
-    EM -> FM: modifyForm()
-    Activate FM
-    opt
-        FM -> FM: setDate(Date)
-    end
-    opt
-        FM -> FM: setLocation(String)
-    end
-    opt
-        FM -> FM: setParticipants(Number) 
-    end
-    FM --> EM: form
-    Deactivate FM
-    EM -> EM: setForm(form)
+EM -> CE: modifyNofParticipants(nof_part)
+Activate CE
+CE -> FM: modifyNofParticipants(nof_part)
+Activate FM
+FM -> FM: setNofParticipants(nof_part)
+Deactivate FM
+CE --> EM: form
+Deactivate CE
+
+loop for each r in receiver
+    EM -> EER: notifyFormModified(event)
+    Activate EER
+    Deactivate EER
 end
+
 Deactivate EM
 
 
