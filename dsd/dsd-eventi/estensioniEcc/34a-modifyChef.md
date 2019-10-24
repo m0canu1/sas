@@ -5,34 +5,30 @@ title: 4a. addStaff
 Actor User
 Participant "CatERingAppManager.EventManager: \nEventManager" as EM
 Participant "CatERingAppManager.StaffManager" as SM
-Participant "e: Event" as E
+Participant "EventManager.currentEvent: \nEvent" as CE
 
-User -> EM: addStaff()
+User -> EM: modifyChef(chef)
 Activate EM
-
-alt [currentEvent==null]
-    EM --> User: throw UseCaseLogicException
-else
-    EM -> E: getStaffList()
-    Activate E
-    E -> EM: staff_list
-    Deactivate E
-    
-    loop ["fino a soddisfacimento"]
-        EM -> SM: selectStaffMember(staff_list)
-        Activate SM
-        
-        alt ["staffmember.isAvailable() == true"]
-            SM -> "staff_list: list<StaffMember>": add(staffmember)
-            Activate "staff_list: list<StaffMember>"
-            "staff_list: list<StaffMember>" -> SM: staff_list
-            Deactivate "staff_list: list<StaffMember>"
-        else 
-        end
-        SM --> EM: staff_list
-        Deactivate SM
-    end    
+EM -> CE: assignChef(chef)
+Activate CE
+EM -> CE: assignChef(chef)
+Activate CE
+CE -> CE: setChef(chef)
+loop ["while chef.isAvailable() != true"]
+    CE -> SM: selectChef()
+    Activate SM
+    SM --> CE: chef
+    Deactivate SM
+    CE -> CE: setChef(chef)
 end
-Deactivate EM
-
+CE --> EM: chef
+Deactivate CE
+loop for rec in receivers
+  EM -> EER: notifyChefAssigned(chef)
+  Activate EER
+  Deactivate EER
+  EM -> SMER: notifyChefAssigned(chef)
+  Activate SMER
+  Deactivate SMER
+end
 ```

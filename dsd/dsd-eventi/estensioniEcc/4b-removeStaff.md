@@ -4,32 +4,25 @@ title: 4b. removeStaff
 
 Actor User
 Participant "CatERingAppManager.EventManager: \nEventManager" as EM
-Participant "CatERingAppManager.StaffManager" as SM
-Participant "e: Event" as E
+Participant "currentEvent.staff: \nList<StaffMember>" as SM
+Participant "EventManager.currentEvent: \nEvent" as CE
 
-User -> EM: removeStaff()
+User -> EM: removeStaff(staff_member)
 Activate EM
 
-alt [currentEvent==null]
-    EM --> User: throw UseCaseLogicException
-else
-    EM -> E: getStaffList()
-    Activate E
-    E -> EM: staff_list
-    Deactivate E
-    
-    loop ["fino a soddisfacimento"]
-        EM -> SM: selectStaffMember(staff_list)
-        Activate SM
-        
-            SM -> "staff_list: list<StaffMember>": remove(staffmember)
-            Activate "staff_list: list<StaffMember>"
-            "staff_list: list<StaffMember>" -> SM: staff_list
-            Deactivate "staff_list: list<StaffMember>"
-        SM --> EM: staff_list
-        Deactivate SM
-    end    
+EM -> CE: removeStaff(staff_member)
+Activate CE
+  CE -> SM: removeStaff(staff_member)
+  Activate SM
+  Deactivate SM
+Deactivate CE
+
+loop for each r in receiver
+    EM -> EER: notifyStaffMemberRemoved(event)
+    Activate EER
+    Deactivate EER
 end
+
 Deactivate EM
 
 ```
