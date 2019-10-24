@@ -4,7 +4,7 @@ title: 2e. addRepetition
 
 Actor User
 Participant "CatERingAppManager.RecipeManager" as RM 
-Participant "CatERingAppManager.RecipeManager: \ncurrentRecipe" as CR
+Participant "CatERingAppManager.RecipeManager.currentRecipe: \nRecipe" as CR
 
 
 opt
@@ -15,24 +15,30 @@ opt
         RM --> User: throw UseCaseLogicException
     else
     	
-    	RM -> CR: getStepList()
+    	RM -> CR: addRepetition(original_step)
         Activate CR
-        CR --> RM: steps: list<Step>
-        Deactivate CR
+        
 
     	create "s_rep: Step"
-
-            RM -> "s_rep: Step": step(original_step)
+        
+            CR -> "s_rep: Step": create(original_step)
         Activate "s_rep: Step"
             "s_rep: Step" -> "s_rep: Step": setDetails(original_step.getDetails())
-            "s_rep: Step" --> RM: s_rep
           
+        
+        
         Deactivate "s_rep: Step"
-
-        RM -> "steps: list<Step>": addStep(s_rep)
-        Activate "steps: list<Step>"
-        Deactivate "steps: list<Step>"
-    	Deactivate CR
+        CR --> RM: s_rep
+        CR -> "currentRecipe.steps: List<Step>": addStep(s_rep)
+        Activate "currentRecipe.steps: List<Step>"
+        Deactivate CR
+        Deactivate "currentRecipe.steps: List<Step>"
+        loop for each rec in reciever
+            RM -> RER: notifyRepetitionAdded(currentRecipe, original_step, s_rep)
+            Activate RER
+            Deactivate RER
+        end
+    	
     	Deactivate RM
    	end
 end

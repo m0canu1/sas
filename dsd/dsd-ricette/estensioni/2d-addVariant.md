@@ -5,7 +5,7 @@ title: 2d. addVariant
 Actor User
 Participant "CatERingAppManager.RecipeManager" as RM 
 Participant "CatERingAppManager.RecipeManager: \ncurrentRecipe" as CR
-
+Participant "rec: RecipeEventReciever" as RER
 
 opt
 	User -> RM: addVariant(original_step, details)
@@ -15,25 +15,29 @@ opt
         RM --> User: throw UseCaseLogicException
     else
     	
-    	RM -> CR: getStepList()
+    	RM -> CR: addVariant(original_step, details)
         Activate CR
-        CR --> RM: steps: list<Step>
-        Deactivate CR
+        
 
     	create "s_alt: VariantStep"
 
-            RM -> "s_alt: VariantStep": step(original_step, details)
+            CR -> "s_alt: VariantStep": create(original_step, details)
         Activate "s_alt: VariantStep"
             "s_alt: VariantStep" -> "s_alt: VariantStep": setDetails(details)
            	"s_alt: VariantStep" -> "s_alt: VariantStep": setOriginal(original_step)
-            "s_alt: VariantStep" --> RM: s_alt
-          
-        Deactivate "s_alt: VariantStep"
-
-        RM -> "steps: list<Step>": addStep(s_alt)
-        Activate "steps: list<Step>"
-        Deactivate "steps: list<Step>"
+            CR --> RM: s_alt
+            Deactivate "s_alt: VariantStep"
+            CR -> "currentRecipe.steps: List<Step>": addStep(s_alt)   
+            Deactivate CR
+            Activate "currentRecipe.steps: List<Step>"
+            Deactivate "currentRecipe.steps: List<Step>"
+       
+        
+       
     	Deactivate CR
+        loop for each rec in reciever
+        RM -> RER: notifyVariantAdded(currentRecipe, original_step, s_alt)
+        end
     	Deactivate RM
    	end
 end

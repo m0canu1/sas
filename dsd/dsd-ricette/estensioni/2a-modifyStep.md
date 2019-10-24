@@ -4,8 +4,9 @@ title: 2a. modifyStepDetails
 
 Actor User
 Participant "CatERingAppManager.RecipeManager" as RM 
-Participant "CatERingAppManager.RecipeManager: \ncurrentRecipe" as CR
-Participant "steps: list<Step>" as CS 
+Participant "CatERingAppManager.RecipeManager.currentRecipe: \nRecipe" as CR
+Participant "currentRecipe.steps: list<Step>" as CS 
+Participant "rec: RecipeEventReciever" as RER
 opt
     User -> RM: modifyStepDetails(step, details)
     Activate RM
@@ -13,16 +14,17 @@ opt
         RM --> User: throw UseCaseLogicException
     
     else
-        RM -> CR: getStepList()
+        RM -> CR: modifyStepDetails(step, details)
         Activate CR
-        CR --> RM: steps: list<Step>
 
        
-        Deactivate CR
-
+        CR -> CS: setDetails(step, details)
         Activate CS
-        RM -> CS: setDetails(step, details)
         Deactivate CS       
+        Deactivate CR
+        loop for each rec in recievers
+        RM -> RER: notifyDetailsModified(currentRecipe, step, details)
+        end
     end
     Deactivate RM
 end
