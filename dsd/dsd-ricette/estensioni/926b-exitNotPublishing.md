@@ -5,6 +5,7 @@ title: 25a. exiDontPublish
 Actor User
 Participant "CatERingAppManager.RecipeManager:  \nRecipeManager" as RM
 Participant "RecipeManager.currentRecipe:  \nr" as CR
+Participant "rec: \nRecipeEventReceiver" as RER
 
 opt
 	User -> RM: exitDontPublish()
@@ -20,7 +21,7 @@ opt
 	loop for each rec in reciever
 		RM -> RER: notifyExitWithoutPublishing(currentRecipe)
 		activate RER
-		activate RER
+		deactivate RER
 	end
 	Deactivate RM
 end

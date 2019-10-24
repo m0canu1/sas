@@ -20,17 +20,24 @@ opt
 		"preparation: Preparation" -> RM: prep_name
 		Deactivate "preparation: Preparation"
 		RM -> CR: addPreparationIngredient(prep_name, dose?)
+
+		create "i: Ingredient"
+		CR -> "i: Ingredient": create(prep_name)
+		Activate "i: Ingredient"
+			"i: Ingredient" -> "i: Ingredient": setName(prep_name)
+
 		Activate CR
-			CR -> HM: addIngredient(prep_name)
+			CR -> HM: addIngredient(i)
 			Activate HM
 				opt ["dose != null"]
-			    CR -> HM: addDose(prep_name, dose)
+			    CR -> HM: addDose(i, dose)
 				end
 				HM --> CR: ingr_doses
       Deactivate HM
-
+		CR --> RM: ingr_doses
+		deactivate CR
 			loop for each rec in RecipeEventReciever
-					RM --> RER: notifyPreparationIngredientAdded(currentRecipe, preparation)
+					RM --> RER: notifyPreparationIngredientAdded(currentRecipe, ingr_doses)
 					activate RER
 					deactivate RER
 			end
