@@ -6,7 +6,7 @@ Actor User
 Participant "CatERingAppManager.EventManager: \nEventManager" as EM
 Participant "currentEvent.staff: \nList<StaffMember>" as SM
 Participant "EventManager.currentEvent: \nEvent" as CE
-
+Participant "rec: EventEventReceiver" as EER
 User -> EM: removeStaff(staff_member)
 Activate EM
 
