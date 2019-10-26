@@ -16,15 +16,15 @@ alt [currentEvent==null]
 else
     EM -> CE: assignChef(chef)
     Activate CE
-    CE -> CE: setChef(chef)
-    loop ["while chef.isAvailable() != true"]
-        CE -> SM: selectChef()
-        Activate SM
+    CE -> SM: checkChefAvailability(chef)
+    Activate SM
+    alt ["chef.isAvailable() == true"]
         SM --> CE: chef
         Deactivate SM
         CE -> CE: setChef(chef)
+        CE --> EM: chef
     end
-    CE --> EM: chef
+
     Deactivate CE
     loop for rec in receivers
       EM -> EER: notifyChefAssigned(chef)
