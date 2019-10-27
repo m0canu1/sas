@@ -4,6 +4,7 @@ title: (2-4)b. modifyLocation
 
 Actor User
 Participant "CatERingAppManager.EventManager: \nEventManager" as EM
+Participant "EventManager.currentEvent: \nEvent" as CE
 Participant "currentEvent.form: \nForm" as FM
 Participant "rec: EventEventReciever" as EER
 
@@ -12,9 +13,8 @@ Activate EM
 
 EM -> CE: modifyLocation(loc)
 Activate CE
-CE -> FM: modifyLocation(loc)
+CE -> FM: setLocation(loc)
 Activate FM
-FM -> FM: setLocation(loc)
 Deactivate FM
 CE --> EM: form
 Deactivate CE

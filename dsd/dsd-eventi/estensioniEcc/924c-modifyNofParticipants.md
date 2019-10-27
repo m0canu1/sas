@@ -4,17 +4,17 @@ title: (2-4)c. modifyNofParticipants
 
 Actor User
 Participant "CatERingAppManager.EventManager: \nEventManager" as EM
+Participant "EventManager.currentEvent: \nEvent" as CE
 Participant "currentEvent.form: \nForm" as FM
 Participant "rec: EventEventReciever" as EER
 
-User -> EM: modifyNofParticipants(nof_part)
+User -> EM: modifyNParticipants(nof_part)
 Activate EM
 
-EM -> CE: modifyNofParticipants(nof_part)
+EM -> CE: modifyNParticipants(nof_part)
 Activate CE
-CE -> FM: modifyNofParticipants(nof_part)
+CE -> FM: setParticipants(nof_part)
 Activate FM
-FM -> FM: setNofParticipants(nof_part)
 Deactivate FM
 CE --> EM: form
 Deactivate CE

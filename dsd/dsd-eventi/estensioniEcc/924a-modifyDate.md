@@ -4,6 +4,7 @@ title: (2-4)a. modifyDate
 
 Actor User
 Participant "CatERingAppManager.EventManager: \nEventManager" as EM
+Participant "EventManager.currentEvent: \nEvent" as CE
 Participant "currentEvent.form: \nForm" as FM
 Participant "rec: EventEventReciever" as EER
 
@@ -12,9 +13,8 @@ Activate EM
 
 EM -> CE: modifyDate(d)
 Activate CE
-CE -> FM: modifyDate(d)
+CE -> FM: setDate(d)
 Activate FM
-FM -> FM: setDate(d)
 Deactivate FM
 CE --> EM: form
 Deactivate CE

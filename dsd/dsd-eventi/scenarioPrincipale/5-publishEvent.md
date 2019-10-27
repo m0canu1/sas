@@ -8,10 +8,8 @@ User -> EM : publishEvent()
 Activate EM
 
 
-    EM -> CE: publish()
+    EM -> CE: setPublished(true)
     activate CE
-   
-    CE -> CE: setPublished(true)
     deactivate CE    
    
     loop for each r in receiver

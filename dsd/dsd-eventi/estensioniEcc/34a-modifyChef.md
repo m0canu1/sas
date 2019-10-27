@@ -10,7 +10,7 @@ Participant "currentEvent.form: \nForm" as F
 Participant "rec: ChefEventReceiver" as CER
 Participant "rec: EventEventReceiver" as EER
 
-User -> EM: modifyChef(chef)
+User -> EM: addChef(chef)
 Activate EM
 EM -> CE: assignChef(chef)
 Activate CE
