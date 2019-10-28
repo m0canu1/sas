@@ -5,7 +5,6 @@ title: 2e. addRepetition
 Actor User
 Participant "CatERingAppManager.RecipeManager" as RM 
 Participant "CatERingAppManager.RecipeManager.currentRecipe: \nRecipe" as CR
-Participant "rec: RecipeEventReceiver" as RER
 
 
 opt
@@ -30,7 +29,7 @@ opt
         
         Deactivate "s_rep: Step"
         CR --> RM: s_rep
-        CR -> "currentRecipe.steps: List<Step>": add(s_rep)
+        CR -> "currentRecipe.steps: List<Step>": addStep(s_rep)
         Activate "currentRecipe.steps: List<Step>"
         Deactivate CR
         Deactivate "currentRecipe.steps: List<Step>"

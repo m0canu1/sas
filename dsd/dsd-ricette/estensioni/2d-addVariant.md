@@ -27,9 +27,8 @@ opt
            	"s_alt: VariantStep" -> "s_alt: VariantStep": setOriginal(original_step)
             CR --> RM: s_alt
             Deactivate "s_alt: VariantStep"
-
-            CR -> "currentRecipe.steps: List<Step>": add(s_alt)   
-            Deactivate CR           
+            CR -> "currentRecipe.steps: List<Step>": addStep(s_alt)   
+            Deactivate CR
             Activate "currentRecipe.steps: List<Step>"
             Deactivate "currentRecipe.steps: List<Step>"
        

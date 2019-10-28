@@ -14,16 +14,16 @@ alt ["currentRecipe == null"]
     RM -> CR: groupSteps(steps_to_group)
     activate CR
     loop "for all s in steps_to_group"
-        CR -> CS: remove(s)
+        CR -> CS: removeStep(s)
     end
     create "s_group: GroupedStep"
-    
+    activate "s_group: GroupedStep"
     CR -> "s_group: GroupedStep": create(steps_to_group)
-    CR -> CS: add(s_group)
+    deactivate "s_group: GroupedStep"
+    CR -> CS: addStep(s_group)
     activate CS
     deactivate CS
     CR --> RM: s_group
-    
     loop for each rec in RecipeEventReciever
         RM --> RER: notifyStepsGrouped(currentRecipe, s_group)
         activate RER

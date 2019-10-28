@@ -14,18 +14,18 @@ opt
 	else
 		RM -> CR: setIngredientDose(ingredient, dose?)
 		Activate CR
-			CR -> "currentRecipe.ingr_doses: HashMap<Ingredient, Dose>": add(ingredient)
+			CR -> "currentRecipe.ingr_doses: HashMap<Ingredient, Dose>": addIngredient(ingredient)
 			Activate "currentRecipe.ingr_doses: HashMap<Ingredient, Dose>"
 
             opt ["dose != null"]
-			    CR -> "currentRecipe.ingr_doses: HashMap<Ingredient, Dose>": add(ingredient, dose)
+			    CR -> "currentRecipe.ingr_doses: HashMap<Ingredient, Dose>": addDose(ingredient, dose)
                 "currentRecipe.ingr_doses: HashMap<Ingredient, Dose>" --> CR: ingr_doses
             end
         Deactivate "currentRecipe.ingr_doses: HashMap<Ingredient, Dose>"
         loop for each rec in reciever
 	        RM -> RER: notifyIngrDosesAdded(currentRecipe, ingr_doses)
 					activate RER
-					deactivate RER
+					activate RER
         end
 		Deactivate CR
 		Deactivate RM

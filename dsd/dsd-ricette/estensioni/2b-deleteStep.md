@@ -16,7 +16,7 @@ opt
     else
         RM -> CR: deleteStep(step)
         Activate CR
-        CR -> CS: remove(step)
+        CR -> CS: removeStep(step)
         Activate CS
         Deactivate CS
         Deactivate CR

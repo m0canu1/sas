@@ -24,9 +24,9 @@ else
         Activate F
         F --> CE: date
         Deactivate F
-        CE -> SM: checkStaffMemberAvailability(staff_member, date)
+        CE -> SM: checkStaffMemberAvailability(staff_member)
         Activate SM
-        alt ["staff_member.isAvailable(date) == true"]
+        alt ["staff_member.isAvailable() == true"]
             SM --> CE: staff_member
             Deactivate SM
             CE -> SL: add(staffmember)

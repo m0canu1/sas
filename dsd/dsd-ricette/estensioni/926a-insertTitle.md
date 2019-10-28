@@ -7,19 +7,22 @@ Participant "CatERingAppManager.RecipeManager:  \nRecipeManager" as RM
 Participant "RecipeManager.currentRecipe:  \nr" as CR
 Participant "rec: \nRecipeEventReceiver" as RER
 
-	User -> RM: insertTitle(title)
+opt
+	User -> RM: insertTitle()
 	Activate RM
 	alt ["currentRecipe == null"]
 		RM --> User: Throw UseCaseLogicException
 	else
-		RM -> CR: setTitle(title)
+		RM -> CR: changeTitle(title)
 		Activate CR
+		CR -> CR: setTitle(title)
 		Deactivate CR
 	end
 	loop for each rec in reciever
-		RM -> RER: notifyRecipeTitleChanged(currentRecipe, title)
+		RM -> RER: notifyRecipeTitleChanged(currentRecipe)
 		activate RER
 		deactivate RER
 	end
 	Deactivate RM
+end
 ```
