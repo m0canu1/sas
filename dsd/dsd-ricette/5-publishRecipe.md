@@ -13,17 +13,16 @@ Activate RM
 alt ["currentRecipe == null"]
 	RM --> User: throw UseCaseLogicException
 else
-	RM -> CR: publishRecipe()
-
-	Activate CR
-    CR --> CR: setPublished(true)
+    RM -> CR: setPublished(true)
+    Activate CR
+ 
      Deactivate CR   
 
 
 	loop for each rec in receivers
 		RM -> RER: notifyRecipePublished(currentRecipe)
 		activate RER
-		activate RER
+		deactivate RER
 	end
 
 end

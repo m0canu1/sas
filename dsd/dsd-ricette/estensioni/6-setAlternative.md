@@ -12,10 +12,9 @@ Activate RM
 alt ["currentRecipe == null"]
 	RM --> User: throw UseCaseLogicException
 else
-	RM -> CR: setAlternativeRecipe(original_recipe)
+	RM -> CR: setAlternative(original_recipe)
 	Activate CR
     
-	CR -> CR: setOriginal(original_recipe)
 
 
 	Deactivate CR

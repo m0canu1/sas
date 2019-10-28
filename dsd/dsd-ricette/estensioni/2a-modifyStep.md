@@ -23,7 +23,9 @@ opt
         Deactivate CS       
         Deactivate CR
         loop for each rec in recievers
-        RM -> RER: notifyDetailsModified(currentRecipe, step, details)
+        RM -> RER: notifyDetailsModified(currentRecipe, step)
+        Activate RER
+        Deactivate RER
         end
     end
     Deactivate RM

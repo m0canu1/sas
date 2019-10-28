@@ -14,20 +14,19 @@ opt
 		RM --> User: throw UseCaseLogicException
 	else 
 
-		RM -> CR: modifyDoseIngredient(ingredient, dose)
+		RM -> CR: setIngredientDose(ingredient, dose)
         Activate CR
-        CR -> HM: addDose(ingredient, dose)
+        CR -> HM: add(ingredient, dose)
         Deactivate CR		
         Activate HM
         
-        Deactivate HM
        	
         loop for each rec in receiver
             RM -> RER: notifyDoseModified(currentRecipe, ingredient, dose)
             activate RER 
             deactivate RER
 		end
-
+        Deactivate HM
 	
 		Deactivate RM
 	end
