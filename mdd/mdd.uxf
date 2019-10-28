@@ -28,17 +28,10 @@ fontsize=10
   <element>
     <id>UMLClass</id>
     <coordinates>
-<<<<<<< HEAD
       <x>84</x>
       <y>384</y>
       <w>180</w>
       <h>192</h>
-=======
-      <x>49</x>
-      <y>140</y>
-      <w>105</w>
-      <h>112</h>
->>>>>>> da32be0477c50da3fbbab56b5c30a03cea201342
     </coordinates>
     <panel_attributes>Menu
 --
@@ -56,17 +49,10 @@ Finger food: s/n
   <element>
     <id>UMLClass</id>
     <coordinates>
-<<<<<<< HEAD
       <x>396</x>
       <y>216</y>
       <w>168</w>
       <h>60</h>
-=======
-      <x>231</x>
-      <y>42</y>
-      <w>98</w>
-      <h>35</h>
->>>>>>> da32be0477c50da3fbbab56b5c30a03cea201342
     </coordinates>
     <panel_attributes>Sezione
 --
@@ -76,17 +62,10 @@ Nome: testo</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-<<<<<<< HEAD
       <x>1080</x>
       <y>192</y>
       <w>144</w>
       <h>120</h>
-=======
-      <x>630</x>
-      <y>28</y>
-      <w>84</w>
-      <h>70</h>
->>>>>>> da32be0477c50da3fbbab56b5c30a03cea201342
     </coordinates>
     <panel_attributes>Ricetta 
 --
@@ -103,17 +82,10 @@ fg=red</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-<<<<<<< HEAD
       <x>396</x>
       <y>396</y>
       <w>168</w>
       <h>108</h>
-=======
-      <x>231</x>
-      <y>147</y>
-      <w>98</w>
-      <h>63</h>
->>>>>>> da32be0477c50da3fbbab56b5c30a03cea201342
     </coordinates>
     <panel_attributes>Voce
 --
@@ -124,17 +96,10 @@ Descrizione: testo
   <element>
     <id>UMLClass</id>
     <coordinates>
-<<<<<<< HEAD
       <x>876</x>
       <y>396</y>
       <w>276</w>
       <h>84</h>
-=======
-      <x>511</x>
-      <y>147</y>
-      <w>161</w>
-      <h>49</h>
->>>>>>> da32be0477c50da3fbbab56b5c30a03cea201342
     </coordinates>
     <panel_attributes>Procedura_in_Cucina
 --
@@ -147,17 +112,10 @@ fg=red</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-<<<<<<< HEAD
       <x>156</x>
       <y>996</y>
       <w>252</w>
       <h>156</h>
-=======
-      <x>91</x>
-      <y>497</y>
-      <w>147</w>
-      <h>91</h>
->>>>>>> da32be0477c50da3fbbab56b5c30a03cea201342
     </coordinates>
     <panel_attributes>Evento
 --
@@ -176,17 +134,10 @@ In Corso: s/n
   <element>
     <id>UMLClass</id>
     <coordinates>
-<<<<<<< HEAD
       <x>996</x>
       <y>612</y>
       <w>216</w>
       <h>144</h>
-=======
-      <x>581</x>
-      <y>273</y>
-      <w>126</w>
-      <h>84</h>
->>>>>>> da32be0477c50da3fbbab56b5c30a03cea201342
     </coordinates>
     <panel_attributes>Compito
 --
@@ -199,17 +150,10 @@ Porzioni già preparate: numero
   <element>
     <id>UMLClass</id>
     <coordinates>
-<<<<<<< HEAD
       <x>696</x>
       <y>1056</y>
       <w>204</w>
       <h>72</h>
-=======
-      <x>406</x>
-      <y>532</y>
-      <w>119</w>
-      <h>42</h>
->>>>>>> da32be0477c50da3fbbab56b5c30a03cea201342
     </coordinates>
     <panel_attributes>Foglio_Riepilogativo
 --
@@ -220,17 +164,10 @@ Porzioni già preparate: numero
   <element>
     <id>UMLClass</id>
     <coordinates>
-<<<<<<< HEAD
       <x>1620</x>
       <y>396</y>
       <w>120</w>
       <h>72</h>
-=======
-      <x>945</x>
-      <y>147</y>
-      <w>70</w>
-      <h>42</h>
->>>>>>> da32be0477c50da3fbbab56b5c30a03cea201342
     </coordinates>
     <panel_attributes>Tag
 --
@@ -243,17 +180,10 @@ fg=red
   <element>
     <id>UMLClass</id>
     <coordinates>
-<<<<<<< HEAD
       <x>360</x>
       <y>696</y>
       <w>144</w>
       <h>120</h>
-=======
-      <x>210</x>
-      <y>322</y>
-      <w>84</w>
-      <h>70</h>
->>>>>>> da32be0477c50da3fbbab56b5c30a03cea201342
     </coordinates>
     <panel_attributes>Scheda
 --
@@ -269,17 +199,10 @@ nti: numero
   <element>
     <id>UMLClass</id>
     <coordinates>
-<<<<<<< HEAD
       <x>1296</x>
       <y>600</y>
       <w>180</w>
       <h>144</h>
-=======
-      <x>756</x>
-      <y>266</y>
-      <w>105</w>
-      <h>84</h>
->>>>>>> da32be0477c50da3fbbab56b5c30a03cea201342
     </coordinates>
     <panel_attributes>Passo
 --
@@ -293,17 +216,10 @@ fg=magenta</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-<<<<<<< HEAD
       <x>156</x>
       <y>216</y>
       <w>264</w>
       <h>192</h>
-=======
-      <x>91</x>
-      <y>42</y>
-      <w>154</w>
-      <h>112</h>
->>>>>>> da32be0477c50da3fbbab56b5c30a03cea201342
     </coordinates>
     <panel_attributes>lt=-
 m1=0...n
@@ -314,17 +230,10 @@ consiste in &gt;</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-<<<<<<< HEAD
       <x>468</x>
       <y>264</y>
       <w>108</w>
       <h>156</h>
-=======
-      <x>273</x>
-      <y>70</y>
-      <w>56</w>
-      <h>91</h>
->>>>>>> da32be0477c50da3fbbab56b5c30a03cea201342
     </coordinates>
     <panel_attributes>lt=-
 m1= 1
@@ -337,17 +246,10 @@ m2=0...n</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-<<<<<<< HEAD
       <x>192</x>
       <y>492</y>
       <w>336</w>
       <h>156</h>
-=======
-      <x>112</x>
-      <y>203</y>
-      <w>196</w>
-      <h>91</h>
->>>>>>> da32be0477c50da3fbbab56b5c30a03cea201342
     </coordinates>
     <panel_attributes>lt=-
 m1=1
@@ -359,15 +261,9 @@ ha &gt;</panel_attributes>
     <id>Relation</id>
     <coordinates>
       <x>0</x>
-<<<<<<< HEAD
       <y>468</y>
       <w>180</w>
       <h>600</h>
-=======
-      <y>189</y>
-      <w>105</w>
-      <h>350</h>
->>>>>>> da32be0477c50da3fbbab56b5c30a03cea201342
     </coordinates>
     <panel_attributes>lt=-
 m1=0...1
@@ -385,17 +281,10 @@ m2=1
   <element>
     <id>UMLClass</id>
     <coordinates>
-<<<<<<< HEAD
       <x>756</x>
       <y>660</y>
       <w>156</w>
       <h>60</h>
-=======
-      <x>441</x>
-      <y>301</y>
-      <w>91</w>
-      <h>35</h>
->>>>>>> da32be0477c50da3fbbab56b5c30a03cea201342
     </coordinates>
     <panel_attributes>Ruolo
 --
@@ -408,17 +297,10 @@ fg=blue</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-<<<<<<< HEAD
       <x>672</x>
       <y>516</y>
       <w>120</w>
       <h>60</h>
-=======
-      <x>392</x>
-      <y>217</y>
-      <w>70</w>
-      <h>35</h>
->>>>>>> da32be0477c50da3fbbab56b5c30a03cea201342
     </coordinates>
     <panel_attributes>Chef
 --
@@ -429,17 +311,10 @@ fg=blue</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-<<<<<<< HEAD
       <x>756</x>
       <y>816</y>
       <w>132</w>
       <h>84</h>
-=======
-      <x>441</x>
-      <y>392</y>
-      <w>77</w>
-      <h>49</h>
->>>>>>> da32be0477c50da3fbbab56b5c30a03cea201342
     </coordinates>
     <panel_attributes>Membro del
 Personale
@@ -451,17 +326,10 @@ fg=blue</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-<<<<<<< HEAD
       <x>528</x>
       <y>804</y>
       <w>180</w>
       <h>60</h>
-=======
-      <x>308</x>
-      <y>385</y>
-      <w>105</w>
-      <h>35</h>
->>>>>>> da32be0477c50da3fbbab56b5c30a03cea201342
     </coordinates>
     <panel_attributes>Cuoco
 --
@@ -473,17 +341,10 @@ fg=blue</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-<<<<<<< HEAD
       <x>696</x>
       <y>804</y>
       <w>60</w>
       <h>144</h>
-=======
-      <x>406</x>
-      <y>385</y>
-      <w>35</w>
-      <h>84</h>
->>>>>>> da32be0477c50da3fbbab56b5c30a03cea201342
     </coordinates>
     <panel_attributes>lt=-
 
@@ -493,17 +354,10 @@ fg=blue</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-<<<<<<< HEAD
       <x>720</x>
       <y>852</y>
       <w>60</w>
       <h>48</h>
-=======
-      <x>420</x>
-      <y>413</y>
-      <w>35</w>
-      <h>28</h>
->>>>>>> da32be0477c50da3fbbab56b5c30a03cea201342
     </coordinates>
     <panel_attributes>lt=&lt;&lt;-
 
@@ -513,17 +367,10 @@ fg=blue</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-<<<<<<< HEAD
       <x>384</x>
       <y>804</y>
       <w>132</w>
       <h>216</h>
-=======
-      <x>224</x>
-      <y>385</y>
-      <w>70</w>
-      <h>126</h>
->>>>>>> da32be0477c50da3fbbab56b5c30a03cea201342
     </coordinates>
     <panel_attributes>lt=-
 è associato a ^
@@ -535,17 +382,10 @@ m2=1
   <element>
     <id>UMLClass</id>
     <coordinates>
-<<<<<<< HEAD
       <x>864</x>
       <y>192</y>
       <w>144</w>
       <h>120</h>
-=======
-      <x>504</x>
-      <y>28</y>
-      <w>84</w>
-      <h>70</h>
->>>>>>> da32be0477c50da3fbbab56b5c30a03cea201342
     </coordinates>
     <panel_attributes>Preparazione
 --
@@ -559,17 +399,10 @@ fg=red</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-<<<<<<< HEAD
       <x>396</x>
       <y>1068</y>
       <w>324</w>
       <h>60</h>
-=======
-      <x>231</x>
-      <y>539</y>
-      <w>189</w>
-      <h>35</h>
->>>>>>> da32be0477c50da3fbbab56b5c30a03cea201342
     </coordinates>
     <panel_attributes>lt=-
 &lt; si riferisce a 
@@ -582,17 +415,10 @@ m2=1
   <element>
     <id>Relation</id>
     <coordinates>
-<<<<<<< HEAD
       <x>888</x>
       <y>648</y>
       <w>156</w>
       <h>468</h>
-=======
-      <x>518</x>
-      <y>294</y>
-      <w>84</w>
-      <h>273</h>
->>>>>>> da32be0477c50da3fbbab56b5c30a03cea201342
     </coordinates>
     <panel_attributes>m1=0...n
    contiene
@@ -602,17 +428,10 @@ m2=1</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-<<<<<<< HEAD
       <x>1032</x>
       <y>468</y>
       <w>108</w>
       <h>168</h>
-=======
-      <x>602</x>
-      <y>189</y>
-      <w>63</w>
-      <h>98</h>
->>>>>>> da32be0477c50da3fbbab56b5c30a03cea201342
     </coordinates>
     <panel_attributes>lt=-
 m1=1
@@ -624,17 +443,10 @@ m2=0...n
   <element>
     <id>Relation</id>
     <coordinates>
-<<<<<<< HEAD
       <x>924</x>
       <y>300</y>
       <w>228</w>
       <h>60</h>
-=======
-      <x>539</x>
-      <y>91</y>
-      <w>133</w>
-      <h>35</h>
->>>>>>> da32be0477c50da3fbbab56b5c30a03cea201342
     </coordinates>
     <panel_attributes>lt=-
 
@@ -645,17 +457,10 @@ fg=red</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-<<<<<<< HEAD
       <x>1020</x>
       <y>324</y>
       <w>36</w>
       <h>96</h>
-=======
-      <x>595</x>
-      <y>105</y>
-      <w>21</w>
-      <h>56</h>
->>>>>>> da32be0477c50da3fbbab56b5c30a03cea201342
     </coordinates>
     <panel_attributes>lt=&lt;&lt;-
 group=5
@@ -665,17 +470,10 @@ fg=red</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-<<<<<<< HEAD
       <x>792</x>
       <y>216</y>
       <w>132</w>
       <h>264</h>
-=======
-      <x>462</x>
-      <y>42</y>
-      <w>70</w>
-      <h>154</h>
->>>>>>> da32be0477c50da3fbbab56b5c30a03cea201342
     </coordinates>
     <panel_attributes>lt=-
 è ingrediente in
@@ -686,17 +484,10 @@ m2=0...n</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-<<<<<<< HEAD
       <x>1440</x>
       <y>396</y>
       <w>132</w>
       <h>72</h>
-=======
-      <x>840</x>
-      <y>147</y>
-      <w>77</w>
-      <h>42</h>
->>>>>>> da32be0477c50da3fbbab56b5c30a03cea201342
     </coordinates>
     <panel_attributes>Ricettario
 --
@@ -707,17 +498,10 @@ fg=red
   <element>
     <id>Relation</id>
     <coordinates>
-<<<<<<< HEAD
       <x>1140</x>
       <y>384</y>
       <w>324</w>
       <h>60</h>
-=======
-      <x>665</x>
-      <y>140</y>
-      <w>189</w>
-      <h>35</h>
->>>>>>> da32be0477c50da3fbbab56b5c30a03cea201342
     </coordinates>
     <panel_attributes>lt=-
 m1=0...n
@@ -730,17 +514,10 @@ si trovano nel &gt;</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-<<<<<<< HEAD
       <x>552</x>
       <y>144</y>
       <w>624</w>
       <h>336</h>
-=======
-      <x>322</x>
-      <y>0</y>
-      <w>364</w>
-      <h>196</h>
->>>>>>> da32be0477c50da3fbbab56b5c30a03cea201342
     </coordinates>
     <panel_attributes>lt=-
 m1=1
@@ -752,17 +529,10 @@ m2=0...n
   <element>
     <id>UMLClass</id>
     <coordinates>
-<<<<<<< HEAD
       <x>1008</x>
       <y>1044</y>
       <w>180</w>
       <h>84</h>
-=======
-      <x>588</x>
-      <y>525</y>
-      <w>105</w>
-      <h>49</h>
->>>>>>> da32be0477c50da3fbbab56b5c30a03cea201342
     </coordinates>
     <panel_attributes>Tabellone_dei_Turni
 --
@@ -772,17 +542,10 @@ m2=0...n
   <element>
     <id>UMLClass</id>
     <coordinates>
-<<<<<<< HEAD
       <x>1068</x>
       <y>852</y>
       <w>120</w>
       <h>60</h>
-=======
-      <x>623</x>
-      <y>413</y>
-      <w>70</w>
-      <h>35</h>
->>>>>>> da32be0477c50da3fbbab56b5c30a03cea201342
     </coordinates>
     <panel_attributes>Turno
 --
@@ -792,17 +555,10 @@ m2=0...n
   <element>
     <id>Relation</id>
     <coordinates>
-<<<<<<< HEAD
       <x>1104</x>
       <y>744</y>
       <w>96</w>
       <h>132</h>
-=======
-      <x>644</x>
-      <y>350</y>
-      <w>56</w>
-      <h>77</h>
->>>>>>> da32be0477c50da3fbbab56b5c30a03cea201342
     </coordinates>
     <panel_attributes>lt=-
 m1=0...n
@@ -814,17 +570,10 @@ m2=0...1
   <element>
     <id>Relation</id>
     <coordinates>
-<<<<<<< HEAD
       <x>1080</x>
       <y>900</y>
       <w>96</w>
       <h>168</h>
-=======
-      <x>630</x>
-      <y>441</y>
-      <w>56</w>
-      <h>98</h>
->>>>>>> da32be0477c50da3fbbab56b5c30a03cea201342
     </coordinates>
     <panel_attributes>lt=-
 m1=0...n
@@ -836,17 +585,10 @@ m2=1
   <element>
     <id>Relation</id>
     <coordinates>
-<<<<<<< HEAD
       <x>636</x>
       <y>612</y>
       <w>384</w>
       <h>216</h>
-=======
-      <x>371</x>
-      <y>273</y>
-      <w>224</w>
-      <h>126</h>
->>>>>>> da32be0477c50da3fbbab56b5c30a03cea201342
     </coordinates>
     <panel_attributes>lt=-
 m1=0...1
@@ -857,17 +599,10 @@ m2=0...n </panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-<<<<<<< HEAD
       <x>168</x>
       <y>564</y>
       <w>540</w>
       <h>456</h>
-=======
-      <x>98</x>
-      <y>245</y>
-      <w>315</w>
-      <h>266</h>
->>>>>>> da32be0477c50da3fbbab56b5c30a03cea201342
     </coordinates>
     <panel_attributes>lt=-
 m1=1
@@ -879,17 +614,10 @@ m2=0...n
   <element>
     <id>Relation</id>
     <coordinates>
-<<<<<<< HEAD
       <x>96</x>
       <y>516</y>
       <w>600</w>
       <h>144</h>
-=======
-      <x>56</x>
-      <y>217</y>
-      <w>350</w>
-      <h>84</h>
->>>>>>> da32be0477c50da3fbbab56b5c30a03cea201342
     </coordinates>
     <panel_attributes>lt=-
 m1=1
@@ -902,17 +630,10 @@ di ^
   <element>
     <id>Relation</id>
     <coordinates>
-<<<<<<< HEAD
       <x>1140</x>
       <y>348</y>
       <w>576</w>
       <h>72</h>
-=======
-      <x>630</x>
-      <y>105</y>
-      <w>371</w>
-      <h>56</h>
->>>>>>> da32be0477c50da3fbbab56b5c30a03cea201342
     </coordinates>
     <panel_attributes>lt=-
 m1=0...n
@@ -924,17 +645,10 @@ m2=0...n
   <element>
     <id>Relation</id>
     <coordinates>
-<<<<<<< HEAD
       <x>1140</x>
       <y>444</y>
       <w>288</w>
       <h>180</h>
-=======
-      <x>665</x>
-      <y>175</y>
-      <w>168</w>
-      <h>105</h>
->>>>>>> da32be0477c50da3fbbab56b5c30a03cea201342
     </coordinates>
     <panel_attributes>lt=-
 m1=1
@@ -947,17 +661,10 @@ m2=0...n
   <element>
     <id>UMLClass</id>
     <coordinates>
-<<<<<<< HEAD
       <x>1296</x>
       <y>972</y>
       <w>180</w>
       <h>72</h>
-=======
-      <x>756</x>
-      <y>483</y>
-      <w>105</w>
-      <h>42</h>
->>>>>>> da32be0477c50da3fbbab56b5c30a03cea201342
     </coordinates>
     <panel_attributes>Variante al
 Passo
@@ -972,17 +679,10 @@ fg=magenta</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-<<<<<<< HEAD
       <x>1500</x>
       <y>828</y>
       <w>180</w>
       <h>72</h>
-=======
-      <x>875</x>
-      <y>399</y>
-      <w>105</w>
-      <h>42</h>
->>>>>>> da32be0477c50da3fbbab56b5c30a03cea201342
     </coordinates>
     <panel_attributes>Passo Semplice
 --
@@ -994,17 +694,10 @@ fg=magenta</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-<<<<<<< HEAD
       <x>1308</x>
       <y>768</y>
       <w>252</w>
       <h>84</h>
-=======
-      <x>763</x>
-      <y>364</y>
-      <w>147</w>
-      <h>49</h>
->>>>>>> da32be0477c50da3fbbab56b5c30a03cea201342
     </coordinates>
     <panel_attributes>
 fg=magenta</panel_attributes>
@@ -1013,17 +706,10 @@ fg=magenta</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-<<<<<<< HEAD
       <x>1368</x>
       <y>732</y>
       <w>36</w>
       <h>84</h>
-=======
-      <x>798</x>
-      <y>343</y>
-      <w>21</w>
-      <h>49</h>
->>>>>>> da32be0477c50da3fbbab56b5c30a03cea201342
     </coordinates>
     <panel_attributes>lt=&lt;&lt;-
 fg=magenta</panel_attributes>
@@ -1032,17 +718,10 @@ fg=magenta</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-<<<<<<< HEAD
       <x>1296</x>
       <y>828</y>
       <w>180</w>
       <h>72</h>
-=======
-      <x>756</x>
-      <y>399</y>
-      <w>105</w>
-      <h>42</h>
->>>>>>> da32be0477c50da3fbbab56b5c30a03cea201342
     </coordinates>
     <panel_attributes>Passo Complesso
 --
@@ -1055,17 +734,10 @@ fg=magenta</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-<<<<<<< HEAD
       <x>1236</x>
       <y>672</y>
       <w>84</w>
       <h>348</h>
-=======
-      <x>728</x>
-      <y>308</y>
-      <w>42</w>
-      <h>203</h>
->>>>>>> da32be0477c50da3fbbab56b5c30a03cea201342
     </coordinates>
     <panel_attributes>lt=-
 m1=1
@@ -1077,17 +749,10 @@ fg=magenta</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-<<<<<<< HEAD
       <x>1500</x>
       <y>972</y>
       <w>180</w>
       <h>72</h>
-=======
-      <x>875</x>
-      <y>483</y>
-      <w>105</w>
-      <h>42</h>
->>>>>>> da32be0477c50da3fbbab56b5c30a03cea201342
     </coordinates>
     <panel_attributes>Raggruppamento
 di Passi
@@ -1102,17 +767,10 @@ fg=magenta</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-<<<<<<< HEAD
       <x>1464</x>
       <y>720</y>
       <w>288</w>
       <h>300</h>
-=======
-      <x>854</x>
-      <y>336</y>
-      <w>168</w>
-      <h>175</h>
->>>>>>> da32be0477c50da3fbbab56b5c30a03cea201342
     </coordinates>
     <panel_attributes>lt=-
 m1=0...1
@@ -1123,17 +781,10 @@ fg=magenta</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-<<<<<<< HEAD
       <x>1308</x>
       <y>912</y>
       <w>252</w>
       <h>84</h>
-=======
-      <x>763</x>
-      <y>448</y>
-      <w>147</w>
-      <h>49</h>
->>>>>>> da32be0477c50da3fbbab56b5c30a03cea201342
     </coordinates>
     <panel_attributes>
 fg=magenta</panel_attributes>
@@ -1142,17 +793,10 @@ fg=magenta</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-<<<<<<< HEAD
       <x>1368</x>
       <y>888</y>
       <w>36</w>
       <h>72</h>
-=======
-      <x>798</x>
-      <y>434</y>
-      <w>21</w>
-      <h>42</h>
->>>>>>> da32be0477c50da3fbbab56b5c30a03cea201342
     </coordinates>
     <panel_attributes>lt=&lt;&lt;-
 fg=magenta</panel_attributes>
@@ -1161,17 +805,10 @@ fg=magenta</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-<<<<<<< HEAD
       <x>1464</x>
       <y>624</y>
       <w>168</w>
       <h>84</h>
-=======
-      <x>854</x>
-      <y>280</y>
-      <w>91</w>
-      <h>49</h>
->>>>>>> da32be0477c50da3fbbab56b5c30a03cea201342
     </coordinates>
     <panel_attributes>lt=-
 m1=0...1
@@ -1183,17 +820,10 @@ fg=magenta</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-<<<<<<< HEAD
       <x>1188</x>
       <y>156</y>
       <w>204</w>
       <h>84</h>
-=======
-      <x>693</x>
-      <y>7</y>
-      <w>119</w>
-      <h>49</h>
->>>>>>> da32be0477c50da3fbbab56b5c30a03cea201342
     </coordinates>
     <panel_attributes>lt=-
 m1=0...1
@@ -1206,17 +836,10 @@ m2=0...n
   <element>
     <id>Relation</id>
     <coordinates>
-<<<<<<< HEAD
       <x>780</x>
       <y>468</y>
       <w>180</w>
       <h>96</h>
-=======
-      <x>455</x>
-      <y>189</y>
-      <w>105</w>
-      <h>56</h>
->>>>>>> da32be0477c50da3fbbab56b5c30a03cea201342
     </coordinates>
     <panel_attributes>lt=-
 fg=blue
@@ -1227,17 +850,10 @@ m2=0...n</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-<<<<<<< HEAD
       <x>528</x>
       <y>900</y>
       <w>180</w>
       <h>60</h>
-=======
-      <x>308</x>
-      <y>441</y>
-      <w>105</w>
-      <h>35</h>
->>>>>>> da32be0477c50da3fbbab56b5c30a03cea201342
     </coordinates>
     <panel_attributes>Membro del 
 Personale di Servizio
@@ -1249,17 +865,10 @@ fg=blue</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-<<<<<<< HEAD
       <x>552</x>
       <y>468</y>
       <w>456</w>
       <h>360</h>
-=======
-      <x>322</x>
-      <y>189</y>
-      <w>266</w>
-      <h>210</h>
->>>>>>> da32be0477c50da3fbbab56b5c30a03cea201342
     </coordinates>
     <panel_attributes>lt=-
 fg=blue
@@ -1270,17 +879,10 @@ m2=0...n</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-<<<<<<< HEAD
       <x>804</x>
       <y>708</y>
       <w>144</w>
       <h>300</h>
-=======
-      <x>469</x>
-      <y>329</y>
-      <w>84</w>
-      <h>175</h>
->>>>>>> da32be0477c50da3fbbab56b5c30a03cea201342
     </coordinates>
     <panel_attributes>lt=.
 m1=1
@@ -1292,17 +894,10 @@ m2=1
   <element>
     <id>Relation</id>
     <coordinates>
-<<<<<<< HEAD
       <x>396</x>
       <y>888</y>
       <w>468</w>
       <h>144</h>
-=======
-      <x>231</x>
-      <y>434</y>
-      <w>273</w>
-      <h>84</h>
->>>>>>> da32be0477c50da3fbbab56b5c30a03cea201342
     </coordinates>
     <panel_attributes>lt=-
 ha &gt;
@@ -1314,17 +909,10 @@ m2=0...n
   <element>
     <id>UMLClass</id>
     <coordinates>
-<<<<<<< HEAD
       <x>204</x>
       <y>828</y>
       <w>180</w>
       <h>60</h>
-=======
-      <x>119</x>
-      <y>399</y>
-      <w>105</w>
-      <h>35</h>
->>>>>>> da32be0477c50da3fbbab56b5c30a03cea201342
     </coordinates>
     <panel_attributes>Organizzatore
 --
@@ -1334,17 +922,10 @@ fg=blue</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-<<<<<<< HEAD
       <x>276</x>
       <y>876</y>
       <w>108</w>
       <h>144</h>
-=======
-      <x>161</x>
-      <y>427</y>
-      <w>56</w>
-      <h>84</h>
->>>>>>> da32be0477c50da3fbbab56b5c30a03cea201342
     </coordinates>
     <panel_attributes>lt=-
 m1=1
@@ -1356,17 +937,10 @@ m2=0...n
   <element>
     <id>UMLClass</id>
     <coordinates>
-<<<<<<< HEAD
       <x>1392</x>
       <y>168</y>
       <w>120</w>
       <h>60</h>
-=======
-      <x>812</x>
-      <y>14</y>
-      <w>70</w>
-      <h>35</h>
->>>>>>> da32be0477c50da3fbbab56b5c30a03cea201342
     </coordinates>
     <panel_attributes>Ingrediente
 --
@@ -1379,17 +953,10 @@ fg=red
   <element>
     <id>UMLClass</id>
     <coordinates>
-<<<<<<< HEAD
       <x>1608</x>
       <y>252</y>
       <w>144</w>
       <h>60</h>
-=======
-      <x>938</x>
-      <y>63</y>
-      <w>84</w>
-      <h>35</h>
->>>>>>> da32be0477c50da3fbbab56b5c30a03cea201342
     </coordinates>
     <panel_attributes>Dose
 --
@@ -1402,17 +969,10 @@ fg=red
   <element>
     <id>Relation</id>
     <coordinates>
-<<<<<<< HEAD
       <x>1092</x>
       <y>216</y>
       <w>396</w>
       <h>204</h>
-=======
-      <x>707</x>
-      <y>42</y>
-      <w>161</w>
-      <h>49</h>
->>>>>>> da32be0477c50da3fbbab56b5c30a03cea201342
     </coordinates>
     <panel_attributes>lt=-
 ha &gt;
@@ -1424,17 +984,10 @@ m2=0...n
   <element>
     <id>Relation</id>
     <coordinates>
-<<<<<<< HEAD
       <x>1500</x>
       <y>180</y>
       <w>204</w>
       <h>96</h>
-=======
-      <x>875</x>
-      <y>21</y>
-      <w>119</w>
-      <h>56</h>
->>>>>>> da32be0477c50da3fbbab56b5c30a03cea201342
     </coordinates>
     <panel_attributes>lt=-
 </panel_attributes>
