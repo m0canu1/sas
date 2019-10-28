@@ -8,16 +8,16 @@ Participant "RecipeManager.currentRecipe:  \nr" as CR
 Participant "rec: \nRecipeEventReceiver" as RER
 
 opt
-	User -> RM: exitDontPublish()
+	User -> RM: exitWithoutPublishing()
 	Activate RM
 	alt ["currentRecipe == null"]
 		RM --> User: Throw UseCaseLogicException
 	else
-		RM -> CR: exitWithoutPublishing()
+		RM -> CR: setPublished(false)
 		Activate CR
-		CR -> CR: setPublished(false)
+        Deactivate CR
 	end
-	Deactivate CR
+
 	loop for each rec in reciever
 		RM -> RER: notifyExitWithoutPublishing(currentRecipe)
 		activate RER

@@ -8,8 +8,6 @@ Participant "RecipeManager.currentRecipe:  \nRecipe" as CR
 Participant "rec: \nRecipeEventReceiver" as RER
 Participant "currentRecipe.ingr_doses: HashMap<Ingredient, Dose>" as HM
 
-opt
-
 	User -> RM: addPreparationIngredient(preparation, dose?)
 	Activate RM
 	alt ["currentRecipe == null"]
@@ -17,20 +15,20 @@ opt
 	else
 		RM -> "preparation: Preparation": getPrepName()
 		Activate "preparation: Preparation"
-		"preparation: Preparation" -> RM: prep_name
+		"preparation: Preparation" --> RM: prep_name
 		Deactivate "preparation: Preparation"
 		RM -> CR: addPreparationIngredient(prep_name, dose?)
-
+        Activate CR
 		create "i: Ingredient"
 		CR -> "i: Ingredient": create(prep_name)
 		Activate "i: Ingredient"
 			"i: Ingredient" -> "i: Ingredient": setName(prep_name)
+        Deactivate "i: Ingredient"
 
-		Activate CR
-			CR -> HM: addIngredient(i)
+			CR -> HM: add(i)
 			Activate HM
 				opt ["dose != null"]
-			    CR -> HM: addDose(i, dose)
+			    CR -> HM: add(i, dose)
 				end
 				HM --> CR: ingr_doses
       Deactivate HM
@@ -44,6 +42,5 @@ opt
   end
 	Deactivate RM
 
-end
 
 ```

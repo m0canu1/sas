@@ -13,14 +13,14 @@ Activate RM
 alt ["currentRecipe == null"]
 	RM --> User: throw UseCaseLogicException
 else
-	RM -> CR: addClassification(tag)
+    RM -> CR: setTag(tag)
 	Activate CR
 
-	CR -> CR: setTag(tag)
+	
 	loop for each rec in receivers
 		RM -> RER: notifyRecipeTagged(currentRecipe, tag)
 		activate RER
-		activate RER
+		deactivate RER
 	end
 end
 Deactivate CR
