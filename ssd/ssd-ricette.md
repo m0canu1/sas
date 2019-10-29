@@ -23,28 +23,27 @@ note right: inizialmente una ricetta può essere creata senza titolo\nche può e
     			Sistema --> Cuoco: passo eliminato
     			destroy Sistema 
             else Estensione 2c
-                Cuoco -> Sistema: 2c.1 selezionaPassiDaRaggruppare()
+                Cuoco -> Sistema: 2c.1 selezionaPassiDaRaggruppare(lista_di_passi)
                 Sistema --> Cuoco: passi raggruppati
             else Estensione 2d
-                Cuoco -> Sistema : 2d.1 aggiungiVariante(passo, passo_variante)
-                Sistema --> Cuoco: passo_variante associato a passo
+                Cuoco -> Sistema : 2d.1 aggiungiVariante(passo_originale, dettagli_variante)
+                Sistema --> Cuoco: nuovo passo Variante associato a passo_originale
             else Estensione 2e
-                Cuoco -> Sistema : 2e.1 aggiungiRipetizione(passo, passo_ripetuto)
-                Sistema --> Cuoco: passo ripetuto aggiunto
+                Cuoco -> Sistema : 2e.1 aggiungiRipetizione(passo_originale)
+                Sistema --> Cuoco: ripetizione di passo_originale aggiunta
             end
-    		note right: Le estensioni del passo due possono\nessere delle alternative al passo.
     end
     
     loop
     	opt	
     			Cuoco -> Sistema : 3. segnaIndicazioni(ingredienti, dosi?)
-    			Sistema --> Cuoco : indicazioni salvate
+    			Sistema --> Cuoco : indicazioni su ingredienti e opzionalmente dosi aggiunte
     			alt estensione 3a 
                     Cuoco -> Sistema : 3a.1 segnalaPreparazioneEsistente(preparazione)
     				Sistema --> Cuoco : preparazione registrata tra gli ingredienti della ricetta
     			else Estensione 3b
     				Cuoco -> Sistema : 3b.1 modificaDose(ingrediente, dose)
-    				Sistema --> Cuoco: modifica salvata
+    				Sistema --> Cuoco: dose per l'ingrediente aggiornata
     			end
     	end
     	note right: Segnare note su ingredienti/dosi e segnalare una\npreparazione come base di una ricetta è opzionale\ne può essere ripetuto n volte.
@@ -54,8 +53,8 @@ note right: inizialmente una ricetta può essere creata senza titolo\nche può e
     Sistema --> Cuoco : tag associato alla ricetta
 
 alt Estensione (2-4)a
-    Cuoco -> Sistema : (2-4)a.1 segnaAlternativa(ricetta)
-    Sistema --> Cuoco : registrazione salvata
+    Cuoco -> Sistema : (2-4)a.1 segnaAlternativa(ricetta_originale)
+    Sistema --> Cuoco : ricetta corrente impostata come alternativa di ricetta_originale
 
 else Estensione (2-4)b
 		Cuoco -> Sistema : (2-4)b.1 inserisciTitolo(titolo)
@@ -71,6 +70,7 @@ Sistema --> Cuoco : ricetta pubblicata
 alt Estensione (2-5)a
 	Cuoco -> Sistema :(2-5)a.1 interrompiCompilazione(ricetta)
 	Sistema --> Cuoco : modifiche salvate e interruzione
+    destroy Sistema
 end
 note right: Si può interrompere la compilazione e salvare\nle modifiche in qualunque momento.
 

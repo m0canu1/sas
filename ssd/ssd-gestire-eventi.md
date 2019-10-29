@@ -26,7 +26,6 @@ alt
 		destroy Sistema
 
 end
-note right: Le estensioni del passo 1 possono\nessere delle alternative al passo. 
    	Organizzatore -> Sistema : 2. compilaScheda( data, luogo, n_partecipanti)
  	Sistema --> Organizzatore : scheda salvata
     alt
@@ -59,7 +58,7 @@ alt Estensione (2-4)a
     Organizzatore -> Sistema: (2-4)a.1 modificaDataEvento(scheda, data)
     Sistema --> Organizzatore: data nella scheda cambiata
 else Estensione (2-4)b
-    Organizzatore -> Sistema: (2-4)b.1 modificaLuogoEvento(schedda, luogo)
+    Organizzatore -> Sistema: (2-4)b.1 modificaLuogoEvento(scheda, luogo)
     Sistema --> Organizzatore: luogo nella scheda cambiato
 else Estensione (2-4)c
     Organizzatore -> Sistema: (2-4)c.1 modificaNPartecipanti(scheda, n_partecipanti)
@@ -69,7 +68,7 @@ alt Estensione (3-4)a
     Organizzatore -> Sistema: (3-4)a.1 modificaChef(chef)
     Sistema --> Organizzatore: chef modificato
 else Eccezione (3-4)a.1
-    Sistema --> Organizzatore: chef non disponibile, errore
+    Sistema --> Organizzatore: chef non disponibile, ripeti passo (3-4)a.1
 end    
 opt
     Organizzatore -> Sistema: 5. pubblicaEvento(evento)
