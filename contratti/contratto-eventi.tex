@@ -49,7 +49,7 @@
 
  
 
-\section*{3. assegnaChef(chef: Chef)}
+\section*{3. assegnaChef(c: Chef)}
 
 \textbf{Pre-condizione}
 \begin{itemize}
@@ -94,14 +94,11 @@
 \subsection*{1a.1 scegliEvento(e: Evento)}
 \textbf{Pre-condizione}
 \begin{itemize}
-  % \item Pre-condizione generale.
-  \item ---
-  % \item \textit{org} \textbf{è proprietario} di \textbf{e}
+  \item Pre-condizione generale.
 \end{itemize}
-\textbf{Post-condizione}
+\textbf{Post-condizione} Se \textit{org} è proprietario di e
 \begin{itemize}
-  % \item viene restituita l'istanza \textbf{e} dell'\textit{Evento}
-  \item ---
+   \item viene restituita l'istanza \textbf{e} di $Evento$
 \end{itemize}
 
 %%NdR: Attenzione: gli errori che può dare un’operazione non sono pre-condizioni. Se una pre-condizione è falsa l’operazione non può avvenire. Nel nostro caso l’operazione avviene ma può dare errore. Se avessimo delle post-condizioni potremmo dire che in alcuni casi quelle post-condizioni non si verificano, ma in questo caso non ci sono nemmeno post-condizioni.
@@ -114,7 +111,7 @@
   \item è in corso la modifica di un $Evento$ \textbf{e}
   % \item \textit{org} è proprietario di \textbf{e}
 \end{itemize}
-\textbf{Post-condizione} Se \textit{org} è \textbf{proprietario} di e
+\textbf{Post-condizione} Se \textit{org} è proprietario di e
 \begin{itemize}
   % \item \textit{e.annullato} = sì (non viene eliminato completamente perché si vogliono tenere i dati??)
   \item il Foglio Riepilogativo \textit{foglio\_riepilogativo} che si riferisce a e è eliminato
