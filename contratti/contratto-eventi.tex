@@ -32,7 +32,7 @@
 \end{itemize}
 
 
-\section*{2. compilaScheda(data: Data, luogo: testo, numero\_partecipanti: numero)}
+\section*{2. compilaScheda(\underline{data}: Data, \underline{luogo}: testo, \underline{numero\_partecipanti}: numero)}
 
 \textbf{Pre-condizione}
 \begin{itemize}
@@ -41,15 +41,15 @@
 \textbf{Post-condizione} 
 \begin{itemize}
   \item è stata creata un'istanza \textbf{s} di $Scheda$
-  \item \textbf{s}.data = data
-  \item \textbf{s}.luogo = luogo
+  \item \textbf{s}.data = \underline{data} 
+  \item \textbf{s}.luogo = \underline{luogo} 
   \item \textbf{s}.numero\_partecipanti = numero\_partecipanti
   \item \textbf{e} contiene \textbf{s}
 \end{itemize}
 
  
 
-\section*{3. assegnaChef(c: Chef)}
+\section*{3. assegnaChef(\underline{c}: Chef)}
 
 \textbf{Pre-condizione}
 \begin{itemize}
@@ -63,7 +63,7 @@
 
  
 
-\section*{4. assegnaPersonale(m: Membro del personale)}
+\section*{4. assegnaPersonale(\underline{m}: Membro del personale)}
 
 \textbf{Pre-condizione}
 \begin{itemize}
@@ -71,7 +71,7 @@
 \end{itemize}
 \textbf{Post-condizione}
 \begin{itemize}
-  \item \textbf{m} è assegnato ad \textbf{e}
+  \item \underline{m} è assegnato ad \textbf{e}
 \end{itemize} 
 
 
@@ -90,19 +90,19 @@
   \section*{Contratti per le estensioni}
 \end{center}
 
-\subsection*{1a.1 scegliEvento(e: Evento)}
+\subsection*{1a.1 scegliEvento(\underline{e}: Evento)}
 \textbf{Pre-condizione}
 \begin{itemize}
   \item Pre-condizione generale.
 \end{itemize}
-\textbf{Post-condizione} Se \textit{org} è proprietario di e
+\textbf{Post-condizione} Se \textit{org} è proprietario di \underline{e} 
 \begin{itemize}
    \item viene restituita l'istanza \textbf{e} di $Evento$
 \end{itemize}
 
-%%NdR: Attenzione: gli errori che può dare un’operazione non sono pre-condizioni. Se una pre-condizione è falsa l’operazione non può avvenire. Nel nostro caso l’operazione avviene ma può dare errore. Se avessimo delle post-condizioni potremmo dire che in alcuni casi quelle post-condizioni non si verificano, ma in questo caso non ci sono nemmeno post-condizioni.
+%%NdR: Attenzion\underline{e}: gli errori che può dare un’operazione non sono pre-condizioni. Se una pre-condizione è falsa l’operazione non può avvenire. Nel nostro caso l’operazione avviene ma può dare errore. Se avessimo delle post-condizioni potremmo dire che in alcuni casi quelle post-condizioni non si verificano, ma in questo caso non ci sono nemmeno post-condizioni.
 
-\subsection*{1b.1 eliminaEvento(e: Evento)}
+\subsection*{1b.1 eliminaEvento(\underline{e}: Evento)}
 
 \textbf{Pre-condizione}
 \begin{itemize}
@@ -110,33 +110,33 @@
   \item è in corso la modifica di un $Evento$ \textbf{e}
   % \item \textit{org} è proprietario di \textbf{e}
 \end{itemize}
-\textbf{Post-condizione} Se \textit{org} è proprietario di e
+\textbf{Post-condizione} Se \textit{org} è proprietario di \underline{e} 
 \begin{itemize}
   % \item \textit{e.annullato} = sì (non viene eliminato completamente perché si vogliono tenere i dati??)
-  \item il Foglio Riepilogativo \textit{foglio\_riepilogativo} che si riferisce a e è eliminato
-  \item la Scheda \textit{scheda} associata a e è eliminata
+  \item il Foglio Riepilogativo \textit{foglio\_riepilogativo} che si riferisce a \underline{e}  è eliminato
+  \item la Scheda \textit{scheda} associata a \underline{e}  è eliminata
   \item lo Chef \textit{chef} incaricato dell'evento non è più assegnato all'evento
   \item Ogni istanza di Membro\_del\_Personale \textit{personale} previsto per evento non è più associata all'evento
 \end{itemize}
 
-\subsection*{(2-5)a.1 eliminaEvento(e: Evento)}
+\subsection*{(2-5)a.1 eliminaEvento(\underline{e}: Evento)}
 
 \textbf{Pre-condizione}
 \begin{itemize}
-  \item è in corso la creazione di un $Evento$ \textbf{e}
+  \item è in corso la creazione di un $Evento$ \underline{e}
 \end{itemize}
 \textbf{Post-condizione}
 \begin{itemize}
-  \item l'evento \textbf{e} è eliminato
+  \item l'evento \underline{e} è eliminato
   \item la compilazione è interrotta
 \end{itemize}  
 
 
-\subsection*{(2-5)b.1 annullaEvento(e: Evento)}
+\subsection*{(2-5)b.1 annullaEvento(\underline{e}: Evento)}
 
 \textbf{Pre-condizione}
 \begin{itemize}
-  \item è in corso la creazione di un $Evento$ \textbf{e}
+  \item è in corso la creazione di un $Evento$ \underline{e} 
 \end{itemize}
 \textbf{Post-condizione}
 \begin{itemize}
@@ -144,7 +144,7 @@
 \end{itemize}  
 
 
-\subsection*{(2-5)b.2 impostaPenale(p: si/no)}
+\subsection*{(2-5)b.2 impostaPenale(\underline{p}: si/no)}
 \textbf{Pre-condizione}
 \begin{itemize}
   \item è in corso la creazione di un $Evento$ \textbf{e}
@@ -152,21 +152,21 @@
 \end{itemize}
 \textbf{Post-condizione}
 \begin{itemize}
-  \item \textbf{e}.penale = p;
+  \item \textbf{e}.penale = \underline{p};
   \item la compilazione è interrotta
 \end{itemize}  
 
-\section*{(2-5)c.1 scriviNota(nota: testo)}
+\section*{(2-5)c.1 scriviNota(\underline{nota}: testo)}
 \textbf{Pre-condizione}
 \begin{itemize}
   \item L'evento \textbf{e} è terminato
 \end{itemize}
 \textbf{Post-condizione}
 \begin{itemize}
-  \item \textbf{e}.note = nota
+  \item \textbf{e}.note = \underline{nota}
 \end{itemize}
 
-\subsection*{(2-4)a.1 modificaData(s: Scheda, data: data)}
+\subsection*{(2-4)a.1 modificaData(\underline{s}: Scheda, \underline{data}: Data)}
 
 \textbf{Pre-condizione}
 \begin{itemize}
@@ -175,10 +175,10 @@
 \textbf{Post-condizione}
 \begin{itemize}
   \item \textbf{s}, associata all'evento \textbf{e} è modificata
-  \item \textbf{s}.data = data
+  \item \textbf{s}.data = \underline{data} 
 \end{itemize} 
 
-\subsection*{(2-4)b.1 modificaLuogo(s: Scheda, luogo: Testo)}
+\subsection*{(2-4)b.1 modificaLuogo(\underline{s}: Scheda, \underline{luogo}: Testo)}
 
 \textbf{Pre-condizione}
 \begin{itemize}
@@ -187,11 +187,11 @@
 \textbf{Post-condizione}
 \begin{itemize}
   \item \textbf{s}, associata all'evento \textbf{e} di $Scheda$ è modificata
-  \item \textbf{s}.luogo = luogo
+  \item \textbf{s}.luogo = \underline{luogo} 
 \end{itemize} 
 
 
-\subsection*{(2-4)c.1 modificaNPartecipanti(s: Scheda, numero\_partecipanti: numero)}
+\subsection*{(2-4)c.1 modificaNPartecipanti(\underline{s}: Scheda, \underline{numero\_partecipanti}: numero)}
 \textbf{Pre-condizione}
 \begin{itemize}
   \item è in corso la creazione di un $Evento$ \textbf{e}
@@ -202,47 +202,47 @@
   \item \textbf{s}.numero\_partecipanti = numero\_partecipanti
 \end{itemize}
 
-\subsection*{(3-4)a.1 modificaChef(s: Scheda, c: Chef)}
+\subsection*{(3-4)a.1 modificaChef(\underline{s}: Scheda, \underline{c}: Chef)}
 \textbf{Pre-condizione}
 \begin{itemize}
   \item è in corso la creazione di un $Evento$ \textbf{e}
 \end{itemize} 
 \textbf{Post-condizione}
 \begin{itemize}
-  \item $[$Se c è disponibile$]$ \textbf{s}, associata all'evento \textbf{e}, è modificata
-  \item $[$Se c è disponibile$]$ Lo chef c è assegnato a \textbf{s}
+  \item $[$Se \underline{c}  è disponibile$]$ \underline{n}, associata all'evento \textbf{e}, è modificata
+  \item $[$Se \underline{c}  è disponibile$]$ Lo chef \underline{c}  è assegnato a s
 \end{itemize}
 
 
-\subsection*{4a.1 aggiungiRuoloPersonale(m: \textit{Membro del Personale}, ruolo: Ruolo)}
+\subsection*{4a.1 aggiungiRuoloPersonale(\underline{m}: Membro del Personale, \underline{r}: Ruolo)}
 \textbf{Pre-condizione}
 \begin{itemize}
   \item è in corso la creazione di un $Evento$ \textbf{e}
-  \item m è parte del personale dell'evento
+  \item \underline{m} è parte del personale dell'evento \textbf{e}
 \end{itemize}
 \textbf{Post-condizione}
 \begin{itemize}
-  \item il membro del personale \textbf{m} dell'evento \textbf{e} è associato al ruolo \textbf{r} per l'evento
+  \item il membro del personale \textbf{m} dell'evento \textbf{e} è associato al ruolo \underline{r} per l'evento
 \end{itemize}
 
 
-\subsection*{4b.1 rimuoviPersonale(m: \textit{Membro del Personale})}
+\subsection*{4b.1 rimuoviPersonale(\underline{m}: Membro del Personale)}
 \textbf{Pre-condizione}
 \begin{itemize}
   \item è in corso la creazione di un $Evento$ \textbf{e}
-  \item m è parte del personale dell'evento
+  \item \underline{m} è parte del personale dell'evento \textbf{e}
 \end{itemize}
 \textbf{Post-condizione}
 \begin{itemize}
-  \item m è eliminato dal personale dell'evento
+  \item \underline{m} è eliminato dal personale dell'evento
 \end{itemize}
 
-\subsection*{4c.1 rimuoviRuoloPersonale(m: \textit{Membro del Personale})}
+\subsection*{4c.1 rimuoviRuoloPersonale(\underline{m}: Membro del Personale)}
 \textbf{Pre-condizione}
 \begin{itemize}
   \item è in corso la creazione di un $Evento$ \textbf{e}
-  \item m è parte del personale dell'evento
-  \item m è associato ad un ruolo \textbf{r} per l'evento
+  \item \underline{m} è parte del personale dell'evento \textbf{e}
+  \item \underline{m} è associato ad un ruolo \textbf{r} per l'evento
 \end{itemize}
 \textbf{Post-condizione}
 \begin{itemize}
