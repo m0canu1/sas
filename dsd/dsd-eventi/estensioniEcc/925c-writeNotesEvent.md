@@ -1,6 +1,6 @@
 ```plantuml
 
-title: (2-5)b. writeNotesEvent
+title: (2-5)c. writeNotesEvent
 
 Actor  User
 Participant "CatERingAppManager.EventManager: \nEventManager"  as EM

@@ -1,6 +1,6 @@
 ```plantuml
 
-title: 4a. removeRoleToStaff
+title: 4c. removeRoleToStaff
 
 Actor User
 Participant "CatERingAppManager.EventManager: \nEventManager" as EM
