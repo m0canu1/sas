@@ -43,7 +43,7 @@
   \item è stata creata un'istanza \textbf{s} di $Scheda$
   \item \textbf{s}.data = \underline{data} 
   \item \textbf{s}.luogo = \underline{luogo} 
-  \item \textbf{s}.numero\_partecipanti = numero\_partecipanti
+  \item \textbf{s}.numero\_partecipanti = \underline{numero\_partecipanti}
   \item \textbf{e} contiene \textbf{s}
 \end{itemize}
 
@@ -174,8 +174,8 @@
 \end{itemize} 
 \textbf{Post-condizione}
 \begin{itemize}
-  \item \textbf{s}, associata all'evento \textbf{e} è modificata
-  \item \textbf{s}.data = \underline{data} 
+  \item \underline{s}, associata all'evento \textbf{e} è modificata
+  \item \underline{s}.data = \underline{data} 
 \end{itemize} 
 
 \subsection*{(2-4)b.1 modificaLuogo(\underline{s}: Scheda, \underline{luogo}: Testo)}
@@ -186,8 +186,8 @@
 \end{itemize} 
 \textbf{Post-condizione}
 \begin{itemize}
-  \item \textbf{s}, associata all'evento \textbf{e} di $Scheda$ è modificata
-  \item \textbf{s}.luogo = \underline{luogo} 
+  \item \underline{s}, associata all'evento \textbf{e} di $Scheda$ è modificata
+  \item \underline{s}.luogo = \underline{luogo} 
 \end{itemize} 
 
 
@@ -198,8 +198,8 @@
 \end{itemize} 
 \textbf{Post-condizione}
 \begin{itemize}
-  \item \textbf{s}, associata all'evento \textbf{e} è modificata
-  \item \textbf{s}.numero\_partecipanti = numero\_partecipanti
+  \item \underline{s}, associata all'evento \textbf{e} è modificata
+  \item \underline{s}.numero\_partecipanti = \underline{numero\_partecipanti}
 \end{itemize}
 
 \subsection*{(3-4)a.1 modificaChef(\underline{s}: Scheda, \underline{c}: Chef)}
@@ -209,8 +209,8 @@
 \end{itemize} 
 \textbf{Post-condizione}
 \begin{itemize}
-  \item $[$Se \underline{c}  è disponibile$]$ \underline{n}, associata all'evento \textbf{e}, è modificata
-  \item $[$Se \underline{c}  è disponibile$]$ Lo chef \underline{c}  è assegnato a s
+  \item $[$Se \underline{c}  è disponibile$]$ \underline{s}, associata all'evento \textbf{e}, è modificata
+  \item $[$Se \underline{c}  è disponibile$]$ Lo chef \underline{c}  è assegnato a \underline{s}
 \end{itemize}
 
 
