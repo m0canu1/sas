@@ -291,16 +291,16 @@ form</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>288</x>
+      <x>280</x>
       <y>336</y>
-      <w>112</w>
+      <w>120</w>
       <h>456</h>
     </coordinates>
     <panel_attributes>lt=&lt;-
 m1=0...n
 staff
 </panel_attributes>
-    <additional_attributes>50.0;540.0;30.0;540.0;30.0;10.0;120.0;10.0</additional_attributes>
+    <additional_attributes>60.0;540.0;40.0;540.0;40.0;10.0;130.0;10.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
@@ -366,7 +366,7 @@ staff
     <coordinates>
       <x>392</x>
       <y>520</y>
-      <w>64</w>
+      <w>72</w>
       <h>112</h>
     </coordinates>
     <panel_attributes>lt=&lt;-
@@ -437,7 +437,7 @@ m2=0...1</panel_attributes>
     <coordinates>
       <x>896</x>
       <y>368</y>
-      <w>88</w>
+      <w>96</w>
       <h>248</h>
     </coordinates>
     <panel_attributes>lt=-&gt;
@@ -452,7 +452,7 @@ m2=0..1
     <coordinates>
       <x>944</x>
       <y>216</y>
-      <w>88</w>
+      <w>96</w>
       <h>128</h>
     </coordinates>
     <panel_attributes>lt=&lt;-
@@ -588,8 +588,7 @@ setAlternative(org: Recipe)
 --
 los: List&lt;Step&gt;
 --
-
-
+create(l_steps: List&lt;Step&gt;)
 
 
 group=1</panel_attributes>
@@ -745,7 +744,7 @@ qty: Float
       <h>48</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;-
-a rose is a ros</panel_attributes>
+repetition</panel_attributes>
     <additional_attributes>110.0;40.0;10.0;40.0;10.0;10.0;110.0;10.0</additional_attributes>
   </element>
   <element>
@@ -753,7 +752,7 @@ a rose is a ros</panel_attributes>
     <coordinates>
       <x>1016</x>
       <y>328</y>
-      <w>128</w>
+      <w>136</w>
       <h>128</h>
     </coordinates>
     <panel_attributes>lt=&lt;-
@@ -781,7 +780,7 @@ fg=magenta</panel_attributes>
     <coordinates>
       <x>1224</x>
       <y>368</y>
-      <w>96</w>
+      <w>104</w>
       <h>72</h>
     </coordinates>
     <panel_attributes>lt=&lt;-
@@ -878,7 +877,7 @@ tagName
     <coordinates>
       <x>1400</x>
       <y>312</y>
-      <w>160</w>
+      <w>168</w>
       <h>184</h>
     </coordinates>
     <panel_attributes>lt=&lt;-
