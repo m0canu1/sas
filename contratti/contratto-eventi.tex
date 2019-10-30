@@ -63,7 +63,7 @@
 
  
 
-\section*{4. assegnaPersonale(s: Scheda, m: Membro del personale)}
+\section*{4. assegnaPersonale(m: Membro del personale, ruolo?: Ruolo)}
 
 \textbf{Pre-condizione}
 \begin{itemize}
@@ -71,8 +71,8 @@
 \end{itemize}
 \textbf{Post-condizione}
 \begin{itemize}
-  \item \textbf{s}, associata all'evento \textbf{e} è modificata
-  \item \textbf{s}.numero\_partecipanti = numero\_partecipanti
+  \item \textbf{m} è assegnato ad \textbf{e}
+  \item $[$se è stato specificato un \textbf{ruolo}$]$ \textbf{ruolo} è associato all'associazione assegnata tra \textbf{e} ed \textbf{m}
 \end{itemize} 
 
 
@@ -210,8 +210,8 @@
 \end{itemize} 
 \textbf{Post-condizione}
 \begin{itemize}
-  \item (Se c è disponibile) \textbf{s}, associata all'evento \textbf{e}, è modificata
-  \item (Se c è disponibile) Lo chef c è assegnato a \textbf{s}
+  \item $[$Se c è disponibile$]$ \textbf{s}, associata all'evento \textbf{e}, è modificata
+  \item $[$Se c è disponibile$]$ Lo chef c è assegnato a \textbf{s}
 \end{itemize}
 
 
